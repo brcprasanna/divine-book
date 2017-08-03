@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="android-rate-1.0.1">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.android/build-cache/bf18e0f3706af5ee581a4b0c08555aa3a2e90b7e/output/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.android/build-cache/bf18e0f3706af5ee581a4b0c08555aa3a2e90b7e/output/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
