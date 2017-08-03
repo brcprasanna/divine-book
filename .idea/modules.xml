@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://C:\ram\2017\Divine book\from_git\from git.iml" filepath="C:\ram\2017\Divine book\from_git\from git.iml" />
+      <module fileurl="file://$PROJECT_DIR$/from_git.iml" filepath="$PROJECT_DIR$/from_git.iml" />
+    </modules>
+  </component>
+</project>

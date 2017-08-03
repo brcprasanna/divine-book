@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="main"><source path="C:\ram\2017\Thoughts Mate\from git\app\src\main\jniLibs"/></dataSet><dataSet config="main"><source path="C:\ram\2017\Thoughts Mate\from git\app\src\main\jniLibs"/></dataSet><dataSet config="debug"><source path="C:\ram\2017\Thoughts Mate\from git\app\src\debug\jniLibs"/></dataSet><dataSet config="mainDebug"><source path="C:\ram\2017\Thoughts Mate\from git\app\src\mainDebug\jniLibs"/></dataSet></merger>
