@@ -1,7 +1,4 @@
-#Tue Aug 01 22:05:56 EDT 2017
-base.0=C\:\\ram\\2017\\Thoughts Mate\\from git\\app\\build\\intermediates\\transforms\\dex\\main\\debug\\folders\\1000\\10000\\instant-run_4080975bdd2ee75257a9039841e2159413f93c59
-renamed.1=classes2.dex
+#Fri Aug 04 01:45:57 EDT 2017
+base.0=C\:\\ram\\2017\\Divine book\\from_git\\app\\build\\intermediates\\transforms\\dex\\main\\debug\\folders\\1000\\1f\\main
 renamed.0=classes.dex
-file.1=C\:\\ram\\2017\\Thoughts Mate\\from git\\app\\build\\intermediates\\transforms\\dex\\main\\debug\\folders\\1000\\10000\\instant-run-bootstrap_482f3e971a7752067d41f23293103602f10edeb6\\classes.dex
-base.1=C\:\\ram\\2017\\Thoughts Mate\\from git\\app\\build\\intermediates\\transforms\\dex\\main\\debug\\folders\\1000\\10000\\instant-run-bootstrap_482f3e971a7752067d41f23293103602f10edeb6
-file.0=C\:\\ram\\2017\\Thoughts Mate\\from git\\app\\build\\intermediates\\transforms\\dex\\main\\debug\\folders\\1000\\10000\\instant-run_4080975bdd2ee75257a9039841e2159413f93c59\\classes.dex
+file.0=C\:\\ram\\2017\\Divine book\\from_git\\app\\build\\intermediates\\transforms\\dex\\main\\debug\\folders\\1000\\1f\\main\\classes.dex

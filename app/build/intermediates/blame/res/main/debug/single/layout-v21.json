@@ -1,18 +1,18 @@
 [
     {
-        "merged": "C:\\ram\\2017\\Thoughts Mate\\from git\\app\\build\\intermediates\\res\\merged\\main\\debug\\layout-v21\\notification_template_custom_big.xml",
-        "source": "C:\\Users\\I005\\.android\\build-cache\\31f69db54be6fba594eef504e98c66b3013e860b\\output\\res\\layout-v21\\notification_template_custom_big.xml"
-    },
-    {
-        "merged": "C:\\ram\\2017\\Thoughts Mate\\from git\\app\\build\\intermediates\\res\\merged\\main\\debug\\layout-v21\\notification_action_tombstone.xml",
-        "source": "C:\\Users\\I005\\.android\\build-cache\\31f69db54be6fba594eef504e98c66b3013e860b\\output\\res\\layout-v21\\notification_action_tombstone.xml"
-    },
-    {
-        "merged": "C:\\ram\\2017\\Thoughts Mate\\from git\\app\\build\\intermediates\\res\\merged\\main\\debug\\layout-v21\\notification_template_icon_group.xml",
+        "merged": "C:\\ram\\2017\\Divine book\\from_git\\app\\build\\intermediates\\res\\merged\\main\\debug\\layout-v21\\notification_template_icon_group.xml",
         "source": "C:\\Users\\I005\\.android\\build-cache\\31f69db54be6fba594eef504e98c66b3013e860b\\output\\res\\layout-v21\\notification_template_icon_group.xml"
     },
     {
-        "merged": "C:\\ram\\2017\\Thoughts Mate\\from git\\app\\build\\intermediates\\res\\merged\\main\\debug\\layout-v21\\notification_action.xml",
+        "merged": "C:\\ram\\2017\\Divine book\\from_git\\app\\build\\intermediates\\res\\merged\\main\\debug\\layout-v21\\notification_action.xml",
         "source": "C:\\Users\\I005\\.android\\build-cache\\31f69db54be6fba594eef504e98c66b3013e860b\\output\\res\\layout-v21\\notification_action.xml"
+    },
+    {
+        "merged": "C:\\ram\\2017\\Divine book\\from_git\\app\\build\\intermediates\\res\\merged\\main\\debug\\layout-v21\\notification_action_tombstone.xml",
+        "source": "C:\\Users\\I005\\.android\\build-cache\\31f69db54be6fba594eef504e98c66b3013e860b\\output\\res\\layout-v21\\notification_action_tombstone.xml"
+    },
+    {
+        "merged": "C:\\ram\\2017\\Divine book\\from_git\\app\\build\\intermediates\\res\\merged\\main\\debug\\layout-v21\\notification_template_custom_big.xml",
+        "source": "C:\\Users\\I005\\.android\\build-cache\\31f69db54be6fba594eef504e98c66b3013e860b\\output\\res\\layout-v21\\notification_template_custom_big.xml"
     }
 ]

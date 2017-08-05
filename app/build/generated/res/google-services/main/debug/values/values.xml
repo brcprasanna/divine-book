@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="default_web_client_id" translatable="false">582124109866-k8fiol93bqi4q6km0ljc4jin9aumsrll.apps.googleusercontent.com</string>
-    <string name="firebase_database_url" translatable="false">https://thoughtsmaterelease.firebaseio.com</string>
-    <string name="gcm_defaultSenderId" translatable="false">582124109866</string>
-    <string name="google_api_key" translatable="false">AIzaSyAlUcCC3IOA3GsYS1Y3LNz3SZKdtU9or6Q</string>
-    <string name="google_app_id" translatable="false">1:582124109866:android:dd356ead2e2c5aa6</string>
-    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyAlUcCC3IOA3GsYS1Y3LNz3SZKdtU9or6Q</string>
-    <string name="google_storage_bucket" translatable="false">thoughtsmaterelease.appspot.com</string>
-    <string name="project_id" translatable="false">thoughtsmaterelease</string>
+    <string name="default_web_client_id" translatable="false">169542115392-hffo9595gdpfo2v4vq04a3g4kgod03ug.apps.googleusercontent.com</string>
+    <string name="firebase_database_url" translatable="false">https://divine-book.firebaseio.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">169542115392</string>
+    <string name="google_api_key" translatable="false">AIzaSyBKY8WOt5kGstxuhFiufX3Z-IweCB_GLTU</string>
+    <string name="google_app_id" translatable="false">1:169542115392:android:6b24e9e8fd1c4416</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyBKY8WOt5kGstxuhFiufX3Z-IweCB_GLTU</string>
+    <string name="google_storage_bucket" translatable="false">divine-book.appspot.com</string>
+    <string name="project_id" translatable="false">divine-book</string>
 </resources>

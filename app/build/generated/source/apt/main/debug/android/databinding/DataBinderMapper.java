@@ -1,8 +1,8 @@
 
 package android.databinding;
-import ram.king.com.makebharathi.BR;
+import ram.king.com.divinebook.BR;
 class DataBinderMapper  {
-    final static int TARGET_MIN_SDK = 23;
+    final static int TARGET_MIN_SDK = 17;
     public DataBinderMapper() {
     }
     public android.databinding.ViewDataBinding getDataBinder(android.databinding.DataBindingComponent bindingComponent, android.view.View view, int layoutId) {

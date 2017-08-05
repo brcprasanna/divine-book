@@ -7,14 +7,14 @@
     <item
         android:id="@+id/action_choose_lang"
         android:icon="@drawable/ic_language_white_24dp"
-        android:visible="true"
         android:title="Choose Language"
-        app:showAsAction="ifRoom"/>
+        android:visible="true"
+        app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/action_next"
-        android:visible="true"
         android:title="Next"
-        app:showAsAction="always"/>
+        android:visible="true"
+        app:showAsAction="always" />
 
 </menu>

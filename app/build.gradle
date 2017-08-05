@@ -10,7 +10,7 @@ android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
     defaultConfig {
-        applicationId "ram.king.com.makebharathi"
+        applicationId "ram.king.com.divinebook"
         minSdkVersion 17
         targetSdkVersion 25
         versionCode 5

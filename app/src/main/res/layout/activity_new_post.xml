@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="ram.king.com.makebharathi.activity.NewPostActivity">
+    tools:context="ram.king.com.divinebook.activity.NewPostActivity">
 
     <!--
          <ListView android:id="@android:id/list"

@@ -1,43 +1,43 @@
 {
   "project_info": {
-    "project_number": "582124109866",
-    "firebase_url": "https://thoughtsmaterelease.firebaseio.com",
-    "project_id": "thoughtsmaterelease",
-    "storage_bucket": "thoughtsmaterelease.appspot.com"
+    "project_number": "169542115392",
+    "firebase_url": "https://divine-book.firebaseio.com",
+    "project_id": "divine-book",
+    "storage_bucket": "divine-book.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:582124109866:android:dd356ead2e2c5aa6",
+        "mobilesdk_app_id": "1:169542115392:android:6b24e9e8fd1c4416",
         "android_client_info": {
-          "package_name": "ram.king.com.makebharathi"
+          "package_name": "ram.king.com.divinebook"
         }
       },
       "oauth_client": [
         {
-          "client_id": "582124109866-m1r4o10nfeo8mgp35qu0nbml5r9vf00n.apps.googleusercontent.com",
+          "client_id": "169542115392-b8fe5csvhsn681jp5lfs7n04sbv42slf.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "ram.king.com.makebharathi",
+            "package_name": "ram.king.com.divinebook",
             "certificate_hash": "dadd2bd11d3306572dd3b6ed479630bb6000b552"
           }
         },
         {
-          "client_id": "582124109866-eabcjmrkdn3lpaicbc1br6lnjdqd4n0h.apps.googleusercontent.com",
+          "client_id": "169542115392-e5knqtvli81uhvdpnuv4sgsntmf5n8ul.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "ram.king.com.makebharathi",
+            "package_name": "ram.king.com.divinebook",
             "certificate_hash": "60d3bd77565acc7379c8f5171b2583bac44a17f5"
           }
         },
         {
-          "client_id": "582124109866-k8fiol93bqi4q6km0ljc4jin9aumsrll.apps.googleusercontent.com",
+          "client_id": "169542115392-hffo9595gdpfo2v4vq04a3g4kgod03ug.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAlUcCC3IOA3GsYS1Y3LNz3SZKdtU9or6Q"
+          "current_key": "AIzaSyBKY8WOt5kGstxuhFiufX3Z-IweCB_GLTU"
         }
       ],
       "services": {
@@ -48,7 +48,7 @@
           "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "582124109866-k8fiol93bqi4q6km0ljc4jin9aumsrll.apps.googleusercontent.com",
+              "client_id": "169542115392-hffo9595gdpfo2v4vq04a3g4kgod03ug.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
