@@ -159,11 +159,11 @@ public class SignInActivity extends BaseActivity implements GoogleApiClient.OnCo
 
             // Write new user
             if (user.getPhotoUrl() != null && user.getDisplayName() != null)
-                writeNewUser(user.getUid(), username, user.getEmail(), user.getDisplayName(), user.getPhotoUrl().toString());
+                writeNewUser(user.getUid(), username, user.getEmail(), user.getDisplayName(), user.getPhotoUrl().toString(), "0");
             else if (user.getDisplayName() != null)
-                writeNewUser(user.getUid(), username, user.getEmail(), user.getDisplayName(), null);
+                writeNewUser(user.getUid(), username, user.getEmail(), user.getDisplayName(), null, "0");
             else
-                writeNewUser(user.getUid(), username, user.getEmail(), username, null);
+                writeNewUser(user.getUid(), username, user.getEmail(), username, null, "0");
 
             AppUtil.getDynamicLink(this);
 
@@ -207,8 +207,8 @@ public class SignInActivity extends BaseActivity implements GoogleApiClient.OnCo
 */
 
     // [START basic_write]
-    private void writeNewUser(String userId, String name, String email, String displayName, String photoUrl) {
-        User user = new User(name, email, displayName, photoUrl);
+    private void writeNewUser(String userId, String name, String email, String displayName, String photoUrl, String moderatorFlag) {
+        User user = new User(name, email, displayName, photoUrl, moderatorFlag);
 
         mDatabase.child("users").child(userId).setValue(user);
     }

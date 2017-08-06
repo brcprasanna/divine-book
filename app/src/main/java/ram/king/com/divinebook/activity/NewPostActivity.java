@@ -258,6 +258,7 @@ public class NewPostActivity extends BaseActivity {
             //Get display name field and append to list
             user.displayName = (String) singleUser.get("displayName");
             user.photoUrl = (String) singleUser.get("photoUrl");
+            user.moderatorFlag = (String) singleUser.get("moderatorFlag");
             usersList.add(user);
         }
         if (usersList != null) {

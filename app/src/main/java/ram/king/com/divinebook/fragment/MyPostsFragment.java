@@ -12,7 +12,7 @@ public class MyPostsFragment extends UserListFragment {
     public Query getQuery(DatabaseReference databaseReference) {
         // All my posts
         //showProgressDialog();
-        Query myPostsQuery = databaseReference.child("users");
+        Query myPostsQuery = databaseReference.child("users").orderByChild("moderatorFlag").equalTo("1");
         //hideProgressDialog();
         return myPostsQuery;
     }

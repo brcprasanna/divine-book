@@ -10,16 +10,18 @@ public class User {
     public String email;
     public String displayName;
     public String photoUrl;
+    public String moderatorFlag;
 
     public User() {
         // Default constructor required for calls to DataSnapshot.getValue(User.class)
     }
 
-    public User(String username, String email, String displayName, String photoUrl) {
+    public User(String username, String email, String displayName, String photoUrl, String moderatorFlag) {
         this.username = username;
         this.email = email;
         this.displayName = displayName;
         this.photoUrl = photoUrl;
+        this.moderatorFlag = moderatorFlag;
     }
 
     public String getUsername() {
@@ -55,5 +57,15 @@ public class User {
     public void setDisplayName(String displayName) {
         this.displayName = displayName;
     }
+
+    public String getModeratorFlag() {
+        return moderatorFlag;
+    }
+
+    public void setModeratorFlag(String moderatorFlag) {
+        this.moderatorFlag = moderatorFlag;
+    }
+
+
 }
 // [END blog_user_class]

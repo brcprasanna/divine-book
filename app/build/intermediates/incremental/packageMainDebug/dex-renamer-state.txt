@@ -1,7 +1,7 @@
-#Sat Aug 05 21:41:42 EDT 2017
-base.0=C\:\\ram\\2017\\Divine book\\from_git\\app\\build\\intermediates\\transforms\\dex\\main\\debug\\folders\\1000\\10000\\instant-run_f62a42d10e8cf12838fae3c8ebfc64ebbe8449b7
-renamed.1=classes2.dex
-renamed.0=classes.dex
-file.1=C\:\\ram\\2017\\Divine book\\from_git\\app\\build\\intermediates\\transforms\\dex\\main\\debug\\folders\\1000\\10000\\instant-run-bootstrap_3517a1127d02a78e7002b714faa5db9761353629\\classes.dex
-base.1=C\:\\ram\\2017\\Divine book\\from_git\\app\\build\\intermediates\\transforms\\dex\\main\\debug\\folders\\1000\\10000\\instant-run-bootstrap_3517a1127d02a78e7002b714faa5db9761353629
-file.0=C\:\\ram\\2017\\Divine book\\from_git\\app\\build\\intermediates\\transforms\\dex\\main\\debug\\folders\\1000\\10000\\instant-run_f62a42d10e8cf12838fae3c8ebfc64ebbe8449b7\\classes.dex
+#Sun Aug 06 10:11:24 EDT 2017
+base.0=C\:\\ram\\2017\\Divine book git\\app\\build\\intermediates\\transforms\\dex\\main\\debug\\folders\\1000\\10000\\instant-run_3dc8126493f5a2e3390fc2bbea55097b9eef91bf
+renamed.1=classes.dex
+renamed.0=classes2.dex
+file.1=C\:\\ram\\2017\\Divine book git\\app\\build\\intermediates\\transforms\\dex\\main\\debug\\folders\\1000\\10000\\instant-run-bootstrap_cd3ab97af3f4ea11e91905229db62d137cd5b65d\\classes.dex
+base.1=C\:\\ram\\2017\\Divine book git\\app\\build\\intermediates\\transforms\\dex\\main\\debug\\folders\\1000\\10000\\instant-run-bootstrap_cd3ab97af3f4ea11e91905229db62d137cd5b65d
+file.0=C\:\\ram\\2017\\Divine book git\\app\\build\\intermediates\\transforms\\dex\\main\\debug\\folders\\1000\\10000\\instant-run_3dc8126493f5a2e3390fc2bbea55097b9eef91bf\\classes.dex
