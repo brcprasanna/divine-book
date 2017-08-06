@@ -128,6 +128,11 @@ public class MainActivity extends BaseActivity {
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
 
+        boolean adminToogle = AppUtil.getBoolean(MainActivity.this,AppConstants.ADMIN_USER,false);
+        if (adminToogle)
+            findViewById(R.id.fab_new_post).setVisibility(View.VISIBLE);
+        else
+            findViewById(R.id.fab_new_post).setVisibility(View.GONE);
         // Button launches NewPostActivity
         findViewById(R.id.fab_new_post).setOnClickListener(new View.OnClickListener() {
             @Override

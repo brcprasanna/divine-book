@@ -8,6 +8,7 @@ import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -39,6 +40,7 @@ public class SignInActivity extends BaseActivity implements GoogleApiClient.OnCo
 
     private DatabaseReference mDatabase;
     private FirebaseAuth mAuth;
+    private ToggleButton mAdminToggle;
 
 /*
     private EditText mEmailField;
@@ -56,6 +58,17 @@ public class SignInActivity extends BaseActivity implements GoogleApiClient.OnCo
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
         mAuth = FirebaseAuth.getInstance();
+        mAdminToggle = (ToggleButton) findViewById(R.id.adminToggle);
+
+        mAdminToggle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (mAdminToggle.isChecked())
+                    AppUtil.putBoolean(SignInActivity.this,AppConstants.ADMIN_USER,true);
+                else
+                    AppUtil.putBoolean(SignInActivity.this,AppConstants.ADMIN_USER,false);
+            }
+        });
 
         // Views
 /*
@@ -156,14 +169,20 @@ public class SignInActivity extends BaseActivity implements GoogleApiClient.OnCo
     private void onAuthSuccess(FirebaseUser user) {
         if (user != null) {
             String username = usernameFromEmail(user.getEmail());
+            String moderatorFlag;
 
+            boolean adminToogle = AppUtil.getBoolean(SignInActivity.this,AppConstants.ADMIN_USER,false);
+            if (adminToogle)
+                moderatorFlag = "1";
+            else
+                moderatorFlag = "0";
             // Write new user
             if (user.getPhotoUrl() != null && user.getDisplayName() != null)
-                writeNewUser(user.getUid(), username, user.getEmail(), user.getDisplayName(), user.getPhotoUrl().toString(), "0");
+                writeNewUser(user.getUid(), username, user.getEmail(), user.getDisplayName(), user.getPhotoUrl().toString(), moderatorFlag);
             else if (user.getDisplayName() != null)
-                writeNewUser(user.getUid(), username, user.getEmail(), user.getDisplayName(), null, "0");
+                writeNewUser(user.getUid(), username, user.getEmail(), user.getDisplayName(), null, moderatorFlag);
             else
-                writeNewUser(user.getUid(), username, user.getEmail(), username, null, "0");
+                writeNewUser(user.getUid(), username, user.getEmail(), username, null, moderatorFlag);
 
             AppUtil.getDynamicLink(this);
 

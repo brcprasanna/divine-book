@@ -49,7 +49,7 @@ public abstract class UserListFragment extends BaseFragment {
     private RecyclerView mRecycler;
     private LinearLayoutManager mManager;
     private ProgressBar mProgressBar;
-    private InterstitialAd mInterstitialAd;
+    //private InterstitialAd mInterstitialAd;
 
     public UserListFragment() {
     }
@@ -86,7 +86,7 @@ public abstract class UserListFragment extends BaseFragment {
         setupAdapterWithQuery();
 
         //Ad mob
-        mInterstitialAd = new InterstitialAd(activity);
+        /*mInterstitialAd = new InterstitialAd(activity);
         mInterstitialAd.setAdUnitId(getString(R.string.interstitial_ad_unit_id));
         // [END instantiate_interstitial_ad]
 
@@ -111,19 +111,19 @@ public abstract class UserListFragment extends BaseFragment {
                 // See https://goo.gl/sCZj0H for possible error codes.
                 Log.w(TAG, "onAdFailedToLoad:" + i);
             }
-        });
+        });*/
     }
 
     /**
      * Load a new interstitial ad asynchronously.
      */
     // [START request_new_interstitial]
-    private void requestNewInterstitial() {
+   /* private void requestNewInterstitial() {
         AdRequest adRequest = new AdRequest.Builder()
                 .build();
 
         mInterstitialAd.loadAd(adRequest);
-    }
+    }*/
     // [END request_new_interstitial]
 
 
@@ -147,11 +147,11 @@ public abstract class UserListFragment extends BaseFragment {
                             AppUtil.putString(activity, AppConstants.PREF_USER_POST_QUERY, usersKey);
                             userAllPostIntent = new Intent(activity, UserAllPostActivity.class);
                             userAllPostIntent.putExtra(AppConstants.EXTRA_DISPLAY_NAME, model.displayName);
-
-                            if (mInterstitialAd.isLoaded()) {
+                            startActivityUserAllPost();
+                            /*if (mInterstitialAd.isLoaded()) {
                                 mInterstitialAd.show();
                             } else
-                                startActivityUserAllPost();
+                                //startActivityUserAllPost();*/
                         } else
                             return;
                     }
@@ -225,9 +225,9 @@ public abstract class UserListFragment extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
-        if (!mInterstitialAd.isLoaded()) {
+        /*if (!mInterstitialAd.isLoaded()) {
             requestNewInterstitial();
-        }
+        }*/
     }
 
     // [END post_stars_transaction]
