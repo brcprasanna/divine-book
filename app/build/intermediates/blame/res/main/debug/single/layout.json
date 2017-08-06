@@ -28,12 +28,12 @@
         "source": "C:\\Users\\I005\\.android\\build-cache\\31f69db54be6fba594eef504e98c66b3013e860b\\output\\res\\layout\\abc_screen_toolbar.xml"
     },
     {
-        "merged": "C:\\ram\\2017\\Divine book\\from_git\\app\\build\\intermediates\\res\\merged\\main\\debug\\layout\\activity_new_post.xml",
-        "source": "C:\\ram\\2017\\Divine book\\from_git\\app\\src\\main\\res\\layout\\activity_new_post.xml"
-    },
-    {
         "merged": "C:\\ram\\2017\\Divine book\\from_git\\app\\build\\intermediates\\res\\merged\\main\\debug\\layout\\abc_popup_menu_header_item_layout.xml",
         "source": "C:\\Users\\I005\\.android\\build-cache\\31f69db54be6fba594eef504e98c66b3013e860b\\output\\res\\layout\\abc_popup_menu_header_item_layout.xml"
+    },
+    {
+        "merged": "C:\\ram\\2017\\Divine book\\from_git\\app\\build\\intermediates\\res\\merged\\main\\debug\\layout\\activity_new_post.xml",
+        "source": "C:\\ram\\2017\\Divine book\\from_git\\app\\src\\main\\res\\layout\\activity_new_post.xml"
     },
     {
         "merged": "C:\\ram\\2017\\Divine book\\from_git\\app\\build\\intermediates\\res\\merged\\main\\debug\\layout\\select_dialog_singlechoice_material.xml",
@@ -108,6 +108,10 @@
         "source": "C:\\Users\\I005\\.android\\build-cache\\31f69db54be6fba594eef504e98c66b3013e860b\\output\\res\\layout\\abc_action_menu_layout.xml"
     },
     {
+        "merged": "C:\\ram\\2017\\Divine book\\from_git\\app\\build\\intermediates\\res\\merged\\main\\debug\\layout\\item_user.xml",
+        "source": "C:\\ram\\2017\\Divine book\\from_git\\app\\src\\main\\res\\layout\\item_user.xml"
+    },
+    {
         "merged": "C:\\ram\\2017\\Divine book\\from_git\\app\\build\\intermediates\\res\\merged\\main\\debug\\layout\\abc_action_bar_up_container.xml",
         "source": "C:\\Users\\I005\\.android\\build-cache\\31f69db54be6fba594eef504e98c66b3013e860b\\output\\res\\layout\\abc_action_bar_up_container.xml"
     },
@@ -128,12 +132,12 @@
         "source": "C:\\Users\\I005\\.android\\build-cache\\31f69db54be6fba594eef504e98c66b3013e860b\\output\\res\\layout\\abc_list_menu_item_icon.xml"
     },
     {
-        "merged": "C:\\ram\\2017\\Divine book\\from_git\\app\\build\\intermediates\\res\\merged\\main\\debug\\layout\\activity_sign_in.xml",
-        "source": "C:\\ram\\2017\\Divine book\\from_git\\app\\src\\main\\res\\layout\\activity_sign_in.xml"
-    },
-    {
         "merged": "C:\\ram\\2017\\Divine book\\from_git\\app\\build\\intermediates\\res\\merged\\main\\debug\\layout\\intro_custom_layout1.xml",
         "source": "C:\\ram\\2017\\Divine book\\from_git\\app\\src\\main\\res\\layout\\intro_custom_layout1.xml"
+    },
+    {
+        "merged": "C:\\ram\\2017\\Divine book\\from_git\\app\\build\\intermediates\\res\\merged\\main\\debug\\layout\\activity_sign_in.xml",
+        "source": "C:\\ram\\2017\\Divine book\\from_git\\app\\src\\main\\res\\layout\\activity_sign_in.xml"
     },
     {
         "merged": "C:\\ram\\2017\\Divine book\\from_git\\app\\build\\intermediates\\res\\merged\\main\\debug\\layout\\notification_template_icon_group.xml",
@@ -174,6 +178,10 @@
     {
         "merged": "C:\\ram\\2017\\Divine book\\from_git\\app\\build\\intermediates\\res\\merged\\main\\debug\\layout\\abc_action_menu_item_layout.xml",
         "source": "C:\\Users\\I005\\.android\\build-cache\\31f69db54be6fba594eef504e98c66b3013e860b\\output\\res\\layout\\abc_action_menu_item_layout.xml"
+    },
+    {
+        "merged": "C:\\ram\\2017\\Divine book\\from_git\\app\\build\\intermediates\\res\\merged\\main\\debug\\layout\\fragment_all_users.xml",
+        "source": "C:\\ram\\2017\\Divine book\\from_git\\app\\src\\main\\res\\layout\\fragment_all_users.xml"
     },
     {
         "merged": "C:\\ram\\2017\\Divine book\\from_git\\app\\build\\intermediates\\res\\merged\\main\\debug\\layout\\activity_post_detail.xml",
@@ -274,6 +282,10 @@
     {
         "merged": "C:\\ram\\2017\\Divine book\\from_git\\app\\build\\intermediates\\res\\merged\\main\\debug\\layout\\activity_text_editor.xml",
         "source": "C:\\ram\\2017\\Divine book\\from_git\\app\\src\\main\\res\\layout\\activity_text_editor.xml"
+    },
+    {
+        "merged": "C:\\ram\\2017\\Divine book\\from_git\\app\\build\\intermediates\\res\\merged\\main\\debug\\layout\\include_user_author.xml",
+        "source": "C:\\ram\\2017\\Divine book\\from_git\\app\\src\\main\\res\\layout\\include_user_author.xml"
     },
     {
         "merged": "C:\\ram\\2017\\Divine book\\from_git\\app\\build\\intermediates\\res\\merged\\main\\debug\\layout\\fragment_intro.xml",

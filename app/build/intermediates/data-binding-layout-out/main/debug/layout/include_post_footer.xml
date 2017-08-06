@@ -23,7 +23,7 @@
             android:background="@null"
             android:src="@drawable/ic_favorite_border_black_24dp" />
 
-        <TextView
+        <!--<TextView
             android:id="@+id/star_count"
             style="@style/TextAppearance.AppCompat.Medium"
             android:layout_width="wrap_content"
@@ -32,7 +32,7 @@
             android:layout_toRightOf="@id/button_star"
             android:textSize="16sp"
             android:textStyle="bold"
-            tools:text="7" />
+            tools:text="7" />-->
 
     </RelativeLayout>
 
@@ -42,7 +42,7 @@
 
         android:layout_weight="0.33">
 
-        <ImageButton
+        <!--<ImageButton
             android:id="@+id/button_comment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -61,7 +61,7 @@
             android:layout_toRightOf="@id/button_comment"
             android:textSize="16sp"
             android:textStyle="bold"
-            tools:text="7" />
+            tools:text="7" />-->
 
     </RelativeLayout>
 

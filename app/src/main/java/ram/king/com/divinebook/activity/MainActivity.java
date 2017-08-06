@@ -44,6 +44,7 @@ import java.util.Arrays;
 import ram.king.com.divinebook.BuildConfig;
 import ram.king.com.divinebook.R;
 import ram.king.com.divinebook.fragment.MyFavouritesFragment;
+import ram.king.com.divinebook.fragment.MyPostsFragment;
 import ram.king.com.divinebook.fragment.RecentPostsFragment;
 import ram.king.com.divinebook.util.AppConstants;
 import ram.king.com.divinebook.util.AppUtil;
@@ -95,14 +96,14 @@ public class MainActivity extends BaseActivity {
         // Create the adapter that will return a fragment for each section
         mPagerAdapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
             private final Fragment[] mFragments = new Fragment[]{
+                    new MyPostsFragment(),
                     new RecentPostsFragment(),
-                    /*new MyPostsFragment(),*/
                     new MyFavouritesFragment(),
             };
 
             private final String[] mFragmentNames = new String[]{
+                    getString(R.string.heading_my_posts),
                     getString(R.string.heading_recent),
-                    /*getString(R.string.heading_my_posts),*/
                     getString(R.string.heading_my_favourites)
             };
 

@@ -219,28 +219,7 @@ public class SignInActivity extends BaseActivity implements GoogleApiClient.OnCo
         int i = v.getId();
         if (i == R.id.button_gmail_sign_in) {
             if (AppUtil.isInternetConnected(this)) {
-                boolean termsAgreed = AppUtil.getBoolean(this, AppConstants.TERMS_AGREED, false);
-                if (!termsAgreed) {
-                    this.runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            if (!isFinishing()) {
-                                new AlertDialog.Builder(SignInActivity.this)
-                                        .setMessage(getResources().getString(R.string.terms_conditions))
-                                        .setCancelable(false)
-                                        .setPositiveButton("Agree", new DialogInterface.OnClickListener() {
-                                            @Override
-                                            public void onClick(DialogInterface dialog, int which) {
-                                                AppUtil.putBoolean(SignInActivity.this, AppConstants.TERMS_AGREED, true);
-                                                gmailSignIn();
-                                            }
-                                        }).setNegativeButton("Do not Agree", null).show();
-                            }
-                        }
-                    });
-                } else {
-                    gmailSignIn();
-                }
+                gmailSignIn();
             } else {
                 showNoInternetConnectionDialog();
             }

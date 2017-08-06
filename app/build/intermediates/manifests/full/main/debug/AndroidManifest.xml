@@ -103,11 +103,11 @@
 
                 <data
                     android:host="brcprasanna.wixsite.com"
-                    android:pathPrefix="/thoughtsmate-postid"
+                    android:pathPrefix="/divinebook"
                     android:scheme="http" />
                 <data
                     android:host="brcprasanna.wixsite.com"
-                    android:pathPrefix="/thoughtsmate-postid"
+                    android:pathPrefix="/divinebook"
                     android:scheme="https" />
             </intent-filter>
         </activity>

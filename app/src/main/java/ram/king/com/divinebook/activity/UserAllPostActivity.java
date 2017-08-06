@@ -55,7 +55,7 @@ public class UserAllPostActivity extends BaseActivity {
             };
 
             private final String[] mFragmentNames = new String[]{
-                    userName + "'s " + "posts"
+                    userName
             };
 
             @Override

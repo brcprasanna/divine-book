@@ -34,7 +34,7 @@
             android:textStyle="bold"
             tools:text="someauthor@email.com" />
 
-        <TextView
+        <!--<TextView
             android:id="@+id/post_date"
             style="@style/Base.TextAppearance.AppCompat.Small"
             android:layout_width="wrap_content"
@@ -45,7 +45,7 @@
             android:textColor="@color/white"
             android:textStyle="bold"
             tools:text="someauthor@email.com" />
-
+-->
     </RelativeLayout>
 
 </RelativeLayout>

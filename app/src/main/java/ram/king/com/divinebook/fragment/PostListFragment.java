@@ -1,24 +1,19 @@
 package ram.king.com.divinebook.fragment;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.VisibleForTesting;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.PopupMenu;
 import android.widget.ProgressBar;
 
 import com.bumptech.glide.Glide;
@@ -36,7 +31,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.MutableData;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.Transaction;
-import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.dynamiclinks.DynamicLink;
 import com.google.firebase.dynamiclinks.FirebaseDynamicLinks;
 import com.google.firebase.dynamiclinks.ShortDynamicLink;
@@ -46,16 +40,13 @@ import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import ram.king.com.divinebook.R;
 import ram.king.com.divinebook.activity.MainActivity;
 import ram.king.com.divinebook.activity.PostDetailActivity;
 import ram.king.com.divinebook.activity.UserAllPostActivity;
-import ram.king.com.divinebook.models.Comment;
 import ram.king.com.divinebook.models.Post;
 import ram.king.com.divinebook.util.AppConstants;
 import ram.king.com.divinebook.util.AppUtil;
@@ -75,8 +66,6 @@ public abstract class PostListFragment extends BaseFragment {
     private RecyclerView mRecycler;
     private LinearLayoutManager mManager;
     private ProgressBar mProgressBar;
-    private List<String> mCommentIds = new ArrayList<>();
-    private List<Comment> mComments = new ArrayList<>();
     private DatabaseReference mCommentsReference;
     private InterstitialAd mInterstitialAd;
 
@@ -177,11 +166,6 @@ public abstract class PostListFragment extends BaseFragment {
                     }
                 });*/
 
-                if (activity instanceof MainActivity)
-                    viewHolder.more.setVisibility(View.VISIBLE);
-                else
-                    viewHolder.more.setVisibility(View.GONE);
-
                 mCommentsReference = FirebaseDatabase.getInstance().getReference()
                         .child("post-comments").child(postKey);
 
@@ -192,22 +176,6 @@ public abstract class PostListFragment extends BaseFragment {
                 } else {
                     viewHolder.starView.setImageResource(R.drawable.ic_favorite_border_black_24dp);
                 }
-
-                mCommentsReference.addListenerForSingleValueEvent(
-                        new ValueEventListener() {
-                            @Override
-                            public void onDataChange(DataSnapshot dataSnapshot) {
-                                //Get map of users in datasnapshot
-                                if (dataSnapshot != null)
-                                    setCommentCount((Map<String, Object>) dataSnapshot.getValue(), viewHolder);
-                                //NewPostActivity.this.usersListAdapterForDedicatedTo.notifyDataSetChanged();
-                            }
-
-                            @Override
-                            public void onCancelled(DatabaseError databaseError) {
-                                //handle databaseError
-                            }
-                        });
 
                 Glide
                         .with(activity)
@@ -257,18 +225,8 @@ public abstract class PostListFragment extends BaseFragment {
                     }
                 }, new View.OnClickListener() {
                     @Override
-                    public void onClick(View moreView) {
-                        onClickMore(moreView, postRef, model);
-                    }
-                }, new View.OnClickListener() {
-                    @Override
                     public void onClick(View content) {
                         onClickContent(postKey, false);
-                    }
-                }, new View.OnClickListener() {
-                    @Override
-                    public void onClick(View commentView) {
-                        onClickContent(postKey, true);
                     }
                 }, new View.OnClickListener() {
                     @Override
@@ -329,23 +287,6 @@ public abstract class PostListFragment extends BaseFragment {
         startActivity(userAllPostIntent);
     }
 
-
-    private void setCommentCount(Map<String, Object> value, PostViewHolder viewHolder) {
-        int count = 0;
-        if (value != null) {
-            for (Map.Entry<String, Object> entry : value.entrySet()) {
-                count++;
-            }
-        }
-        if (count > 0) {
-            viewHolder.commentCountView.setVisibility(View.VISIBLE);
-            viewHolder.commentCountView.setText(String.valueOf(count));
-        } else {
-            viewHolder.commentCountView.setVisibility(View.GONE);
-        }
-    }
-
-
     private void onClickContent(String postKey, boolean focusComment) {
         // Launch PostDetailActivity
         Intent postDetailintent = new Intent(activity, PostDetailActivity.class);
@@ -353,71 +294,6 @@ public abstract class PostListFragment extends BaseFragment {
         postDetailintent.putExtra(AppConstants.EXTRA_FOCUS_COMMENT, focusComment);
         startActivity(postDetailintent);
     }
-
-    private void onClickMore(View moreView, final DatabaseReference postRef, final Post model) {
-        PopupMenu popup = new PopupMenu(moreView.getContext(), moreView);
-        MenuInflater inflater = popup.getMenuInflater();
-        inflater.inflate(R.menu.menu_card, popup.getMenu());
-        MenuItem deleteItem = popup.getMenu().findItem(R.id.menu_delete);
-        MenuItem SeeAllPostItem = popup.getMenu().findItem(R.id.menu_see_all_post);
-
-        if (model != null && model.uid.equals(getUid())) {
-            deleteItem.setVisible(true);
-        } else {
-            deleteItem.setVisible(false);
-        }
-
-        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.menu_delete:
-
-                        activity.runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-
-                                if (!activity.isFinishing()) {
-                                    new AlertDialog.Builder(activity)
-                                            .setTitle(getResources().getString(R.string.delete_header))
-                                            .setMessage(getResources().getString(R.string.delete_message))
-                                            .setCancelable(false)
-                                            .setPositiveButton("DELETE", new DialogInterface.OnClickListener() {
-                                                @Override
-                                                public void onClick(DialogInterface dialog, int which) {
-                                                    DatabaseReference globalPostRef = mDatabase.child("posts").child(postRef.getKey());
-                                                    DatabaseReference userPostRef = mDatabase.child("user-posts").child(model.uid).child(postRef.getKey());
-                                                    DatabaseReference starUserPostRef = mDatabase.child("star-user-posts").child(getUid()).child(postRef.getKey());// Run two transactions
-                                                    DatabaseReference commentPostRef = mDatabase.child("post-comments").child(postRef.getKey());
-                                                    globalPostRef.removeValue();
-                                                    userPostRef.removeValue();
-                                                    starUserPostRef.removeValue();
-                                                    commentPostRef.removeValue();
-                                                }
-                                            }).setNegativeButton("CANCEL", null).show();
-                                }
-                            }
-                        });
-                        break;
-                    case R.id.menu_see_all_post:
-                        // Launch PostDetailActivity
-                        AppUtil.putString(activity, AppConstants.PREF_USER_POST_QUERY, model.uid);
-                        Intent intent = new Intent(activity, UserAllPostActivity.class);
-                        intent.putExtra(AppConstants.EXTRA_DISPLAY_NAME, model.author);
-                        startActivity(intent);
-                        break;
-                    default:
-                        return false;
-                }
-                return false;
-            }
-        });
-
-        //popup.setOnMenuItemClickListener(new MyMenuItemClickListener(position));
-        popup.show();
-    }
-
 
     private void onClickStar(View starView, DatabaseReference postRef, Post model) {
 
@@ -460,7 +336,7 @@ public abstract class PostListFragment extends BaseFragment {
                         .build())
                 .setSocialMetaTagParameters(
                         new DynamicLink.SocialMetaTagParameters.Builder()
-                                .setImageUrl(Uri.parse("https://static.wixstatic.com/media/5227b1_0baa4b32227c486d9d868e83a3bf5f2e~mv2.png/v1/fill/w_132,h_132,al_c,usm_0.66_1.00_0.01/5227b1_0baa4b32227c486d9d868e83a3bf5f2e~mv2.png"))
+                                .setImageUrl(Uri.parse("https://static.wixstatic.com/media/5227b1_d42fdcc2ba9a4957874adafdeb735b53~mv2.png"))
                                 .setTitle(activity.getResources().getString(R.string.app_name))
                                 .build())
                 .setLink(deepLink);
@@ -485,7 +361,6 @@ public abstract class PostListFragment extends BaseFragment {
                         if (task.isSuccessful()) {
                             // Short link created
                             final Uri shortLink = task.getResult().getShortLink();
-                            Uri flowchartLink = task.getResult().getPreviewLink();
                             shareDeepLink(shortLink.toString().replace(" ", "%20"), author, title);
                         } else {
                             // Error
@@ -500,7 +375,7 @@ public abstract class PostListFragment extends BaseFragment {
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setType("text/plain");
         intent.putExtra(Intent.EXTRA_SUBJECT, "Firebase Deep Link");
-        intent.putExtra(Intent.EXTRA_TEXT, author + " wrote on " + title + " " + deepLink + " via " + R.string.app_name);
+        intent.putExtra(Intent.EXTRA_TEXT, author + " wrote on " + title + " " + deepLink + " via " + getResources().getString(R.string.app_name));
 
         startActivity(intent);
     }

@@ -30,7 +30,7 @@ android {
 
             // TODO(developer): Replace this with your app code
             //                  See: https://firebase.google.com/docs/dynamic-links/android/create#set-up-firebase-and-the-dynamic-links-sdk
-            resValue "string", "app_code", "jae3w"
+            resValue "string", "app_code", "s4us6"
         }
     }
 
