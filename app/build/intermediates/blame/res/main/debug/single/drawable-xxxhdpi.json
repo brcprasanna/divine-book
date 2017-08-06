@@ -24,16 +24,16 @@
         "source": "C:\\ram\\2017\\Divine book\\from_git\\app\\src\\main\\res\\drawable-xxxhdpi\\ic_mode_edit_black_24dp.png"
     },
     {
-        "merged": "C:\\ram\\2017\\Divine book\\from_git\\app\\build\\intermediates\\res\\merged\\main\\debug\\drawable-xxxhdpi\\ic_android_black_24dp.png",
-        "source": "C:\\ram\\2017\\Divine book\\from_git\\app\\build\\generated\\res\\pngs\\main\\debug\\drawable-xxxhdpi\\ic_android_black_24dp.png"
-    },
-    {
         "merged": "C:\\ram\\2017\\Divine book\\from_git\\app\\build\\intermediates\\res\\merged\\main\\debug\\drawable-xxxhdpi\\ic_comment_black_24dp.png",
         "source": "C:\\ram\\2017\\Divine book\\from_git\\app\\src\\main\\res\\drawable-xxxhdpi\\ic_comment_black_24dp.png"
     },
     {
         "merged": "C:\\ram\\2017\\Divine book\\from_git\\app\\build\\intermediates\\res\\merged\\main\\debug\\drawable-xxxhdpi\\ic_toggle_star_outline_24.png",
         "source": "C:\\ram\\2017\\Divine book\\from_git\\app\\src\\main\\res\\drawable-xxxhdpi\\ic_toggle_star_outline_24.png"
+    },
+    {
+        "merged": "C:\\ram\\2017\\Divine book\\from_git\\app\\build\\intermediates\\res\\merged\\main\\debug\\drawable-xxxhdpi\\ic_android_black_24dp.png",
+        "source": "C:\\ram\\2017\\Divine book\\from_git\\app\\build\\generated\\res\\pngs\\main\\debug\\drawable-xxxhdpi\\ic_android_black_24dp.png"
     },
     {
         "merged": "C:\\ram\\2017\\Divine book\\from_git\\app\\build\\intermediates\\res\\merged\\main\\debug\\drawable-xxxhdpi\\ic_language_white_24dp.png",

@@ -8,8 +8,8 @@
     <color name="blue_200">#FF90CAF9</color>
     <color name="blue_500">#FF2196F3</color>
     <color name="blue_700">#FF1976D2</color>
-    <color name="colorAccent">#FE5F09</color>
-    <color name="colorPrimary">#039BE5</color>
+    <color name="colorAccent">#039BE5</color>
+    <color name="colorPrimary">#FE5F09</color>
     <color name="colorPrimaryDark">#0288D1</color>
     <color name="default_circle_indicator_fill_color">#F5A13C</color>
     <color name="default_circle_indicator_page_color">#AAAAAA</color>

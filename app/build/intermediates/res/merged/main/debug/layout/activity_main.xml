@@ -8,8 +8,8 @@
         android:id="@+id/tabs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#039BE5"
-        app:tabIndicatorColor="@color/white"
+        android:background="@color/colorPrimary"
+        app:tabIndicatorColor="@color/black"
         app:tabSelectedTextColor="@color/white" />
 
     <android.support.v4.view.ViewPager

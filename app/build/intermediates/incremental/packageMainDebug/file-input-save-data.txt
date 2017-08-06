@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Sat Aug 05 20:43:08 EDT 2017
+#Sat Aug 05 21:41:42 EDT 2017
 20.base=C\:\\ram\\2017\\Divine book\\from_git\\app\\build\\intermediates\\res\\resources-main-debug.ap_
 143.base=C\:\\ram\\2017\\Divine book\\from_git\\app\\build\\intermediates\\res\\resources-main-debug.ap_
 340.file=C\:\\ram\\2017\\Divine book\\from_git\\app\\build\\intermediates\\transforms\\dex\\main\\debug\\folders\\1000\\10000\\instant-run_f62a42d10e8cf12838fae3c8ebfc64ebbe8449b7\\classes.dex

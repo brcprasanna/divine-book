@@ -120,12 +120,12 @@
         "source": "C:\\ram\\2017\\Divine book\\from_git\\app\\src\\main\\res\\drawable-mdpi\\ic_action_account_circle_40.png"
     },
     {
-        "merged": "C:\\ram\\2017\\Divine book\\from_git\\app\\build\\intermediates\\res\\merged\\main\\debug\\drawable-mdpi\\ic_android_black_24dp.png",
-        "source": "C:\\ram\\2017\\Divine book\\from_git\\app\\build\\generated\\res\\pngs\\main\\debug\\drawable-mdpi\\ic_android_black_24dp.png"
-    },
-    {
         "merged": "C:\\ram\\2017\\Divine book\\from_git\\app\\build\\intermediates\\res\\merged\\main\\debug\\drawable-mdpi\\ic_action_redo.png",
         "source": "C:\\ram\\2017\\Divine book\\from_git\\app\\src\\main\\res\\drawable-mdpi\\ic_action_redo.png"
+    },
+    {
+        "merged": "C:\\ram\\2017\\Divine book\\from_git\\app\\build\\intermediates\\res\\merged\\main\\debug\\drawable-mdpi\\ic_android_black_24dp.png",
+        "source": "C:\\ram\\2017\\Divine book\\from_git\\app\\build\\generated\\res\\pngs\\main\\debug\\drawable-mdpi\\ic_android_black_24dp.png"
     },
     {
         "merged": "C:\\ram\\2017\\Divine book\\from_git\\app\\build\\intermediates\\res\\merged\\main\\debug\\drawable-mdpi\\ic_favorite_border_white_24dp.png",

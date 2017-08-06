@@ -12,12 +12,12 @@
         "source": "C:\\ram\\2017\\Divine book\\from_git\\app\\src\\main\\res\\drawable-xxhdpi\\ic_expand_less.png"
     },
     {
-        "merged": "C:\\ram\\2017\\Divine book\\from_git\\app\\build\\intermediates\\res\\merged\\main\\debug\\drawable-xxhdpi\\ic_format_bullet.png",
-        "source": "C:\\ram\\2017\\Divine book\\from_git\\app\\src\\main\\res\\drawable-xxhdpi\\ic_format_bullet.png"
-    },
-    {
         "merged": "C:\\ram\\2017\\Divine book\\from_git\\app\\build\\intermediates\\res\\merged\\main\\debug\\drawable-xxhdpi\\ic_delete_white_24dp.png",
         "source": "C:\\ram\\2017\\Divine book\\from_git\\app\\src\\main\\res\\drawable-xxhdpi\\ic_delete_white_24dp.png"
+    },
+    {
+        "merged": "C:\\ram\\2017\\Divine book\\from_git\\app\\build\\intermediates\\res\\merged\\main\\debug\\drawable-xxhdpi\\ic_format_bullet.png",
+        "source": "C:\\ram\\2017\\Divine book\\from_git\\app\\src\\main\\res\\drawable-xxhdpi\\ic_format_bullet.png"
     },
     {
         "merged": "C:\\ram\\2017\\Divine book\\from_git\\app\\build\\intermediates\\res\\merged\\main\\debug\\drawable-xxhdpi\\ic_expand_more_black_24dp.png",

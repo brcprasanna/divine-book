@@ -132,12 +132,12 @@
         "source": "C:\\Users\\I005\\.android\\build-cache\\31f69db54be6fba594eef504e98c66b3013e860b\\output\\res\\layout\\abc_list_menu_item_icon.xml"
     },
     {
-        "merged": "C:\\ram\\2017\\Divine book\\from_git\\app\\build\\intermediates\\res\\merged\\main\\debug\\layout\\intro_custom_layout1.xml",
-        "source": "C:\\ram\\2017\\Divine book\\from_git\\app\\src\\main\\res\\layout\\intro_custom_layout1.xml"
-    },
-    {
         "merged": "C:\\ram\\2017\\Divine book\\from_git\\app\\build\\intermediates\\res\\merged\\main\\debug\\layout\\activity_sign_in.xml",
         "source": "C:\\ram\\2017\\Divine book\\from_git\\app\\src\\main\\res\\layout\\activity_sign_in.xml"
+    },
+    {
+        "merged": "C:\\ram\\2017\\Divine book\\from_git\\app\\build\\intermediates\\res\\merged\\main\\debug\\layout\\intro_custom_layout1.xml",
+        "source": "C:\\ram\\2017\\Divine book\\from_git\\app\\src\\main\\res\\layout\\intro_custom_layout1.xml"
     },
     {
         "merged": "C:\\ram\\2017\\Divine book\\from_git\\app\\build\\intermediates\\res\\merged\\main\\debug\\layout\\notification_template_icon_group.xml",
