@@ -32,12 +32,12 @@
         "source": "C:\\ram\\2017\\Divine book\\from_git\\app\\src\\main\\res\\drawable-hdpi\\ic_favorite_white_24dp.png"
     },
     {
-        "merged": "C:\\ram\\2017\\Divine book\\from_git\\app\\build\\intermediates\\res\\merged\\main\\debug\\drawable-hdpi\\firebase_lockup_400.png",
-        "source": "C:\\ram\\2017\\Divine book\\from_git\\app\\src\\main\\res\\drawable-hdpi\\firebase_lockup_400.png"
-    },
-    {
         "merged": "C:\\ram\\2017\\Divine book\\from_git\\app\\build\\intermediates\\res\\merged\\main\\debug\\drawable-hdpi\\ic_android_black_24dp.png",
         "source": "C:\\ram\\2017\\Divine book\\from_git\\app\\build\\generated\\res\\pngs\\main\\debug\\drawable-hdpi\\ic_android_black_24dp.png"
+    },
+    {
+        "merged": "C:\\ram\\2017\\Divine book\\from_git\\app\\build\\intermediates\\res\\merged\\main\\debug\\drawable-hdpi\\firebase_lockup_400.png",
+        "source": "C:\\ram\\2017\\Divine book\\from_git\\app\\src\\main\\res\\drawable-hdpi\\firebase_lockup_400.png"
     },
     {
         "merged": "C:\\ram\\2017\\Divine book\\from_git\\app\\build\\intermediates\\res\\merged\\main\\debug\\drawable-hdpi\\ic_navigation_check_24.png",

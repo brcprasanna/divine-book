@@ -76,12 +76,12 @@
         "source": "C:\\Users\\I005\\.android\\build-cache\\31f69db54be6fba594eef504e98c66b3013e860b\\output\\res\\drawable-xxxhdpi-v4\\abc_ic_star_half_black_16dp.png"
     },
     {
-        "merged": "C:\\ram\\2017\\Divine book\\from_git\\app\\build\\intermediates\\res\\merged\\main\\debug\\drawable-xxxhdpi-v4\\abc_ic_menu_cut_mtrl_alpha.png",
-        "source": "C:\\Users\\I005\\.android\\build-cache\\31f69db54be6fba594eef504e98c66b3013e860b\\output\\res\\drawable-xxxhdpi-v4\\abc_ic_menu_cut_mtrl_alpha.png"
-    },
-    {
         "merged": "C:\\ram\\2017\\Divine book\\from_git\\app\\build\\intermediates\\res\\merged\\main\\debug\\drawable-xxxhdpi-v4\\design_ic_visibility_off.png",
         "source": "C:\\Users\\I005\\.android\\build-cache\\e49c224190f36ea4856786d9580c66259565d332\\output\\res\\drawable-xxxhdpi-v4\\design_ic_visibility_off.png"
+    },
+    {
+        "merged": "C:\\ram\\2017\\Divine book\\from_git\\app\\build\\intermediates\\res\\merged\\main\\debug\\drawable-xxxhdpi-v4\\abc_ic_menu_cut_mtrl_alpha.png",
+        "source": "C:\\Users\\I005\\.android\\build-cache\\31f69db54be6fba594eef504e98c66b3013e860b\\output\\res\\drawable-xxxhdpi-v4\\abc_ic_menu_cut_mtrl_alpha.png"
     },
     {
         "merged": "C:\\ram\\2017\\Divine book\\from_git\\app\\build\\intermediates\\res\\merged\\main\\debug\\drawable-xxxhdpi-v4\\design_ic_visibility.png",

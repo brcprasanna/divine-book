@@ -12,7 +12,7 @@
         android:layout_gravity="center" />
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/messages_list"
+        android:id="@+id/users_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentTop="true"
@@ -20,6 +20,6 @@
         android:padding="5dp"
         android:scrollbars="vertical"
         android:visibility="gone"
-        tools:listitem="@layout/item_post" />
+        tools:listitem="@layout/item_user" />
 
 </FrameLayout>

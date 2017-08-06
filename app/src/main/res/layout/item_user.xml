@@ -21,7 +21,7 @@
 
             <include
                 android:id="@+id/user_author_layout"
-                layout="@layout/include_post_author"
+                layout="@layout/include_user_author"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true" />
