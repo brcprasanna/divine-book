@@ -172,8 +172,28 @@ public class SignInActivity extends BaseActivity implements GoogleApiClient.OnCo
             String moderatorFlag;
 
             boolean adminToogle = AppUtil.getBoolean(SignInActivity.this,AppConstants.ADMIN_USER,false);
-            if (adminToogle)
-                moderatorFlag = "1";
+            if (user.getEmail().equals(AppConstants.VISHNU_MANTRAS_EMAIL) ||
+                    user.getEmail().equals(AppConstants.SHIVA_MANTRAS_EMAIL) ||
+                    user.getEmail().equals(AppConstants.GANAPATHY_MANTRAS_EMAIL) ||
+                    user.getEmail().equals(AppConstants.SAI_BABA_MANTRAS_EMAIL) ||
+                    user.getEmail().equals(AppConstants.KRISHNA_MANTRAS_EMAIL) ||
+                    user.getEmail().equals(AppConstants.RAMANUJAR_MANTRAS_EMAIL) ||
+                    user.getEmail().equals(AppConstants.LAKSHMI_MANTRAS_EMAIL) ||
+                    user.getEmail().equals(AppConstants.UPANISHAD_EMAIL)) {
+                moderatorFlag = "1E";
+            }
+            else if(user.getEmail().equals(AppConstants.VISHNU_MANTRAS_EMAIL_TAMIL) ||
+                    user.getEmail().equals(AppConstants.SHIVA_MANTRAS_EMAIL_TAMIL) ||
+                    user.getEmail().equals(AppConstants.GANAPATHY_MANTRAS_EMAIL_TAMIL) ||
+                    user.getEmail().equals(AppConstants.SAI_BABA_MANTRAS_EMAIL_TAMIL) ||
+                    user.getEmail().equals(AppConstants.KRISHNA_MANTRAS_EMAIL_TAMIL) ||
+                    user.getEmail().equals(AppConstants.RAMANUJAR_MANTRAS_EMAIL_TAMIL) ||
+                    user.getEmail().equals(AppConstants.LAKSHMI_MANTRAS_EMAIL_TAMIL) ||
+                    user.getEmail().equals(AppConstants.UPANISHAD_EMAIL_TAMIL) ||
+                    user.getEmail().equals(AppConstants.MURUGAN_MANTRAS_EMAIL_TAMIL))
+            {
+                moderatorFlag = "1T";
+            }
             else
                 moderatorFlag = "0";
             // Write new user

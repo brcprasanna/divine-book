@@ -3,11 +3,11 @@ package ram.king.com.divinebook.fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,9 +15,6 @@ import android.widget.ProgressBar;
 
 import com.bumptech.glide.Glide;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.InterstitialAd;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -50,6 +47,8 @@ public abstract class UserListFragment extends BaseFragment {
     private LinearLayoutManager mManager;
     private ProgressBar mProgressBar;
     //private InterstitialAd mInterstitialAd;
+
+    Uri photoUrl;
 
     public UserListFragment() {
     }
@@ -157,10 +156,203 @@ public abstract class UserListFragment extends BaseFragment {
                     }
                 });
 
-                Glide
-                        .with(activity)
-                        .load(model.photoUrl)
-                        .into(viewHolder.authorPhoto);
+                //Custom email and icon
+                //vishnu
+                if (model.email.equals(AppConstants.VISHNU_MANTRAS_EMAIL))
+                {
+                    photoUrl = Uri.parse("file:///android_asset/vishnu.png");
+                    Glide
+                            .with(activity)
+                            .load(photoUrl)
+                            .into(viewHolder.authorPhoto);
+
+                    viewHolder.author.setText(AppConstants.VISHNU_MANTRAS_NAME);
+                }
+                //vishnu tamil
+                else if (model.email.equals(AppConstants.VISHNU_MANTRAS_EMAIL_TAMIL))
+                {
+                    photoUrl = Uri.parse("file:///android_asset/vishnu.png");
+                    Glide
+                            .with(activity)
+                            .load(photoUrl)
+                            .into(viewHolder.authorPhoto);
+
+                    viewHolder.author.setText(AppConstants.VISHNU_MANTRAS_NAME_TAMIL);
+                }
+                //shiva
+                else if (model.email.equals(AppConstants.SHIVA_MANTRAS_EMAIL))
+                {
+                    photoUrl = Uri.parse("file:///android_asset/shiva.png");
+                    Glide
+                            .with(activity)
+                            .load(photoUrl)
+                            .into(viewHolder.authorPhoto);
+
+                    viewHolder.author.setText(AppConstants.SHIVA_MANTRAS_NAME);
+                }
+                //shiva tamil
+                else if (model.email.equals(AppConstants.SHIVA_MANTRAS_EMAIL_TAMIL))
+                {
+                    photoUrl = Uri.parse("file:///android_asset/shiva.png");
+                    Glide
+                            .with(activity)
+                            .load(photoUrl)
+                            .into(viewHolder.authorPhoto);
+
+                    viewHolder.author.setText(AppConstants.SHIVA_MANTRAS_NAME_TAMIL);
+                }
+                //sai baba
+                else if (model.email.equals(AppConstants.SAI_BABA_MANTRAS_EMAIL))
+                {
+                    photoUrl = Uri.parse("file:///android_asset/saibaba.png");
+                    Glide
+                            .with(activity)
+                            .load(photoUrl)
+                            .into(viewHolder.authorPhoto);
+
+                    viewHolder.author.setText(AppConstants.SAI_BABA_MANTRAS_NAME);
+                }
+                //sai baba tamil
+                else if (model.email.equals(AppConstants.SAI_BABA_MANTRAS_EMAIL_TAMIL))
+                {
+                    photoUrl = Uri.parse("file:///android_asset/saibaba.png");
+                    Glide
+                            .with(activity)
+                            .load(photoUrl)
+                            .into(viewHolder.authorPhoto);
+
+                    viewHolder.author.setText(AppConstants.SAI_BABA_MANTRAS_NAME_TAMIL);
+                }
+                //ganapathy
+                else if (model.email.equals(AppConstants.GANAPATHY_MANTRAS_EMAIL))
+                {
+                    photoUrl = Uri.parse("file:///android_asset/ganapathy.png");
+                    Glide
+                            .with(activity)
+                            .load(photoUrl)
+                            .into(viewHolder.authorPhoto);
+
+                    viewHolder.author.setText(AppConstants.GANAPATHY_MANTRAS_NAME);
+                }
+                //ganapathy tamil
+                else if (model.email.equals(AppConstants.GANAPATHY_MANTRAS_EMAIL_TAMIL))
+                {
+                    photoUrl = Uri.parse("file:///android_asset/ganapathy.png");
+                    Glide
+                            .with(activity)
+                            .load(photoUrl)
+                            .into(viewHolder.authorPhoto);
+
+                    viewHolder.author.setText(AppConstants.GANAPATHY_MANTRAS_NAME_TAMIL);
+                }
+                //krishna
+                else if (model.email.equals(AppConstants.KRISHNA_MANTRAS_EMAIL))
+                {
+                    photoUrl = Uri.parse("file:///android_asset/krishna.png");
+                    Glide
+                            .with(activity)
+                            .load(photoUrl)
+                            .into(viewHolder.authorPhoto);
+
+                    viewHolder.author.setText(AppConstants.KRISHNA_MANTRAS_NAME);
+                }
+                //krishna tamil
+                else if (model.email.equals(AppConstants.KRISHNA_MANTRAS_EMAIL_TAMIL))
+                {
+                    photoUrl = Uri.parse("file:///android_asset/krishna.png");
+                    Glide
+                            .with(activity)
+                            .load(photoUrl)
+                            .into(viewHolder.authorPhoto);
+
+                    viewHolder.author.setText(AppConstants.KRISHNA_MANTRAS_NAME_TAMIL);
+                }
+                //lakshmi
+                else if (model.email.equals(AppConstants.LAKSHMI_MANTRAS_EMAIL))
+                {
+                    photoUrl = Uri.parse("file:///android_asset/lakshmi.png");
+                    Glide
+                            .with(activity)
+                            .load(photoUrl)
+                            .into(viewHolder.authorPhoto);
+
+                    viewHolder.author.setText(AppConstants.LAKSHMI_MANTRAS_NAME);
+                }
+                //lakshmi tamil
+                else if (model.email.equals(AppConstants.LAKSHMI_MANTRAS_EMAIL_TAMIL))
+                {
+                    photoUrl = Uri.parse("file:///android_asset/lakshmi.png");
+                    Glide
+                            .with(activity)
+                            .load(photoUrl)
+                            .into(viewHolder.authorPhoto);
+
+                    viewHolder.author.setText(AppConstants.LAKSHMI_MANTRAS_NAME_TAMIL);
+                }
+                //murugan tamil
+                else if (model.email.equals(AppConstants.MURUGAN_MANTRAS_EMAIL_TAMIL)) {
+                    photoUrl = Uri.parse("file:///android_asset/murugan.png");
+                    Glide
+                            .with(activity)
+                            .load(photoUrl)
+                            .into(viewHolder.authorPhoto);
+
+                    viewHolder.author.setText(AppConstants.MURUGAN_MANTRAS_NAME_TAMIL);
+
+                }
+                //Ramanujar
+                else if (model.email.equals(AppConstants.RAMANUJAR_MANTRAS_EMAIL)) {
+                    photoUrl = Uri.parse("file:///android_asset/ramanujar.png");
+                    Glide
+                            .with(activity)
+                            .load(photoUrl)
+                            .into(viewHolder.authorPhoto);
+
+                    viewHolder.author.setText(AppConstants.RAMANUJAR_MANTRAS_NAME);
+
+                }
+                //Ramanujar tamil
+                else if (model.email.equals(AppConstants.RAMANUJAR_MANTRAS_EMAIL_TAMIL)) {
+                    photoUrl = Uri.parse("file:///android_asset/ramanujar.png");
+                    Glide
+                            .with(activity)
+                            .load(photoUrl)
+                            .into(viewHolder.authorPhoto);
+
+                    viewHolder.author.setText(AppConstants.RAMANUJAR_MANTRAS_NAME_TAMIL);
+
+                }
+                //Upanishad
+                else if (model.email.equals(AppConstants.UPANISHAD_EMAIL)) {
+                    photoUrl = Uri.parse("file:///android_asset/upanishad.png");
+                    Glide
+                            .with(activity)
+                            .load(photoUrl)
+                            .into(viewHolder.authorPhoto);
+
+                    viewHolder.author.setText(AppConstants.UPANISHAD_NAME);
+
+                }
+                //Upanishads tamil
+                else if (model.email.equals(AppConstants.UPANISHAD_EMAIL_TAMIL)) {
+                    photoUrl = Uri.parse("file:///android_asset/upanishad.png");
+                    Glide
+                            .with(activity)
+                            .load(photoUrl)
+                            .into(viewHolder.authorPhoto);
+
+                    viewHolder.author.setText(AppConstants.UPANISHAD_NAME_TAMIL);
+
+                }
+                else
+                {
+                    Glide
+                            .with(activity)
+                            .load(model.photoUrl)
+                            .into(viewHolder.authorPhoto);
+                }
+
+
 
 
             }
