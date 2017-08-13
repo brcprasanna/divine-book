@@ -66,7 +66,11 @@ public class MainActivity extends BaseActivity {
 
         AppUtil.getDynamicLink(this);
         String prefLanguage = AppUtil.getString(this, AppConstants.PREFERRED_LANGUAGE, AppConstants.DEFAULT_LANGUAGE);
-        getSupportActionBar().setTitle(getResources().getString(R.string.app_name) + " " + "(" + prefLanguage + ")");
+        //getSupportActionBar().setTitle(getResources().getString(R.string.app_name) + " " + "(" + prefLanguage + ")");
+        if (prefLanguage.equals(AppConstants.TAMIL_LANGUAGE))
+            getSupportActionBar().setTitle(getResources().getString(R.string.app_name_tamil));
+        else
+            getSupportActionBar().setTitle(getResources().getString(R.string.app_name));
 
         // Get Remote Config instance.
         // [START get_remote_config_instance]
@@ -212,7 +216,27 @@ public class MainActivity extends BaseActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
+        MenuItem menuItem  = menu.getItem(1);
+        String prefLanguage = AppUtil.getString(this, AppConstants.PREFERRED_LANGUAGE, AppConstants.DEFAULT_LANGUAGE);
+        //getSupportActionBar().setTitle(getResources().getString(R.string.app_name) + " " + "(" + prefLanguage + ")");
+        if (prefLanguage.equals(AppConstants.TAMIL_LANGUAGE))
+            menuItem.setIcon(R.drawable.ic_english);
+        else
+            menuItem.setIcon(R.drawable.ic_tamil);
         return true;
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        /*MenuItem menuItem  = menu.getItem(R.id.action_choose_lang);
+        String prefLanguage = AppUtil.getString(this, AppConstants.PREFERRED_LANGUAGE, AppConstants.DEFAULT_LANGUAGE);
+        //getSupportActionBar().setTitle(getResources().getString(R.string.app_name) + " " + "(" + prefLanguage + ")");
+        if (prefLanguage.equals(AppConstants.TAMIL_LANGUAGE))
+            menuItem.setIcon(R.drawable.ic_english);
+        else
+            menuItem.setIcon(R.drawable.ic_tamil);
+
+        */return super.onPrepareOptionsMenu(menu);
     }
 
     @Override
@@ -224,16 +248,13 @@ public class MainActivity extends BaseActivity {
             finish();
             return true;
         } else if (i == R.id.action_choose_lang) {
-            buildLangDialogList();
-            return true;
-        } else if (i == R.id.action_search) {
-
+            buildLangDialogList(item);
             return true;
         } else
             return super.onOptionsItemSelected(item);
     }
 
-    private void buildLangDialogList() {
+    private void buildLangDialogList(final MenuItem menuItem) {
 
         AlertDialog.Builder builderSingle = new AlertDialog.Builder(MainActivity.this);
         builderSingle.setIcon(R.drawable.ic_language_black_24dp);
@@ -257,6 +278,14 @@ public class MainActivity extends BaseActivity {
             public void onClick(DialogInterface dialog, int which) {
                 String strName = arrayAdapter.getItem(which);
                 getSupportActionBar().setTitle(getResources().getString(R.string.app_name) + " " + "(" + strName + ")");
+                if (strName.equals(AppConstants.TAMIL_LANGUAGE)) {
+                    getSupportActionBar().setTitle(getResources().getString(R.string.app_name_tamil));
+                    menuItem.setIcon(R.drawable.ic_english);
+                }
+                else {
+                    getSupportActionBar().setTitle(getResources().getString(R.string.app_name));
+                    menuItem.setIcon(R.drawable.ic_tamil);
+                }
 
                 AlertDialog.Builder builderInner = new AlertDialog.Builder(MainActivity.this);
                 //builderInner.setMessage(strName);

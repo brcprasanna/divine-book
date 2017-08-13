@@ -43,7 +43,10 @@ public class UserAllPostActivity extends BaseActivity {
 
         AppUtil.getDynamicLink(this);
         String prefLanguage = AppUtil.getString(this, AppConstants.PREFERRED_LANGUAGE, AppConstants.DEFAULT_LANGUAGE);
-        getSupportActionBar().setTitle(getResources().getString(R.string.app_name));
+        if (prefLanguage.equals(AppConstants.TAMIL_LANGUAGE))
+            getSupportActionBar().setTitle(getResources().getString(R.string.app_name_tamil));
+        else
+            getSupportActionBar().setTitle(getResources().getString(R.string.app_name));
 
         final String userName = getIntent().getStringExtra(AppConstants.EXTRA_DISPLAY_NAME);
 

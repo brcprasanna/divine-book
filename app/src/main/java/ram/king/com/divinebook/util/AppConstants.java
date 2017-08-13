@@ -5,7 +5,7 @@ package ram.king.com.divinebook.util;
  */
 
 public class AppConstants {
-    public static final String[] languages = new String[]{"English", "Hindi", "Kannada", "Malayalam", "Tamil", "Telugu"};
+    public static final String[] languages = new String[]{"English","Tamil"};
     public static final String PREFERRED_LANGUAGE = "PREFERRED_LANGUAGE";
     public static final String DEFAULT_LANGUAGE = "English";
     public static final String TAMIL_LANGUAGE = "Tamil";
@@ -52,7 +52,7 @@ public class AppConstants {
     public static final String UPANISHAD_NAME = "Upanishad";
 
     public static final String RAMANUJAR_MANTRAS_EMAIL = "funnyquotesbrc@gmail.com";
-    public static final String RAMANUJAR_MANTRAS_NAME = "Upanishad";
+    public static final String RAMANUJAR_MANTRAS_NAME = "Ramanujar Mantras";
 
     public static final String LAKSHMI_MANTRAS_EMAIL = "mgnagapreetha@gmail.com";
     public static final String LAKSHMI_MANTRAS_NAME = "Lakshmi Mantras";

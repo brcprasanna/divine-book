@@ -412,7 +412,10 @@ public abstract class PostListFragment extends BaseFragment {
             sharedPref = activity.getSharedPreferences(
                     getString(R.string.preference_file), Context.MODE_PRIVATE);
             preferredLanguage = sharedPref.getString(AppConstants.PREFERRED_LANGUAGE, AppConstants.DEFAULT_LANGUAGE);
-            ((AppCompatActivity) activity).getSupportActionBar().setTitle(getResources().getString(R.string.app_name) + " " + "(" + preferredLanguage + ")");
+            if (preferredLanguage.equals(AppConstants.TAMIL_LANGUAGE))
+                ((AppCompatActivity) activity).getSupportActionBar().setTitle(getResources().getString(R.string.app_name_tamil));
+            else
+                ((AppCompatActivity) activity).getSupportActionBar().setTitle(getResources().getString(R.string.app_name));
         } else if (event.getMessage().equals("refresh")) {
             mManager.scrollToPositionWithOffset(mAdapter.getItemCount(), 0);
         }

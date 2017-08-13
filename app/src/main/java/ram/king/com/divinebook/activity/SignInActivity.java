@@ -40,8 +40,6 @@ public class SignInActivity extends BaseActivity implements GoogleApiClient.OnCo
 
     private DatabaseReference mDatabase;
     private FirebaseAuth mAuth;
-    private ToggleButton mAdminToggle;
-
 /*
     private EditText mEmailField;
     private EditText mPasswordField;
@@ -58,17 +56,7 @@ public class SignInActivity extends BaseActivity implements GoogleApiClient.OnCo
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
         mAuth = FirebaseAuth.getInstance();
-        mAdminToggle = (ToggleButton) findViewById(R.id.adminToggle);
 
-        mAdminToggle.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (mAdminToggle.isChecked())
-                    AppUtil.putBoolean(SignInActivity.this,AppConstants.ADMIN_USER,true);
-                else
-                    AppUtil.putBoolean(SignInActivity.this,AppConstants.ADMIN_USER,false);
-            }
-        });
 
         // Views
 /*
@@ -171,7 +159,6 @@ public class SignInActivity extends BaseActivity implements GoogleApiClient.OnCo
             String username = usernameFromEmail(user.getEmail());
             String moderatorFlag;
 
-            boolean adminToogle = AppUtil.getBoolean(SignInActivity.this,AppConstants.ADMIN_USER,false);
             if (user.getEmail().equals(AppConstants.VISHNU_MANTRAS_EMAIL) ||
                     user.getEmail().equals(AppConstants.SHIVA_MANTRAS_EMAIL) ||
                     user.getEmail().equals(AppConstants.GANAPATHY_MANTRAS_EMAIL) ||
@@ -181,6 +168,7 @@ public class SignInActivity extends BaseActivity implements GoogleApiClient.OnCo
                     user.getEmail().equals(AppConstants.LAKSHMI_MANTRAS_EMAIL) ||
                     user.getEmail().equals(AppConstants.UPANISHAD_EMAIL)) {
                 moderatorFlag = "1E";
+                AppUtil.putBoolean(SignInActivity.this,AppConstants.ADMIN_USER,true);
             }
             else if(user.getEmail().equals(AppConstants.VISHNU_MANTRAS_EMAIL_TAMIL) ||
                     user.getEmail().equals(AppConstants.SHIVA_MANTRAS_EMAIL_TAMIL) ||
@@ -193,9 +181,12 @@ public class SignInActivity extends BaseActivity implements GoogleApiClient.OnCo
                     user.getEmail().equals(AppConstants.MURUGAN_MANTRAS_EMAIL_TAMIL))
             {
                 moderatorFlag = "1T";
+                AppUtil.putBoolean(SignInActivity.this,AppConstants.ADMIN_USER,true);
             }
-            else
+            else {
                 moderatorFlag = "0";
+                AppUtil.putBoolean(SignInActivity.this,AppConstants.ADMIN_USER,false);
+            }
             // Write new user
             if (user.getPhotoUrl() != null && user.getDisplayName() != null)
                 writeNewUser(user.getUid(), username, user.getEmail(), user.getDisplayName(), user.getPhotoUrl().toString(), moderatorFlag);

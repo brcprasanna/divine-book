@@ -1,5 +1,7 @@
 <resources>
-    <string name="app_name">Divine Book</string>
+    <string name="app_name">Hindu Divine Book</string>
+    <string name="app_name_tamil">ஹிந்து பக்தி நூல்</string>
+
 
     <string name="preference_file">PreferenceFile</string>
 
