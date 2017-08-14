@@ -160,7 +160,7 @@ public abstract class UserListFragment extends BaseFragment {
                 //vishnu
                 if (model.email.equals(AppConstants.VISHNU_MANTRAS_EMAIL))
                 {
-                    photoUrl = Uri.parse("file:///android_asset/vishnu.png");
+                    photoUrl = Uri.parse(AppConstants.VISHNU_MANTRAS_IMAGE);
                     Glide
                             .with(activity)
                             .load(photoUrl)
@@ -171,7 +171,7 @@ public abstract class UserListFragment extends BaseFragment {
                 //vishnu tamil
                 else if (model.email.equals(AppConstants.VISHNU_MANTRAS_EMAIL_TAMIL))
                 {
-                    photoUrl = Uri.parse("file:///android_asset/vishnu.png");
+                    photoUrl = Uri.parse(AppConstants.VISHNU_MANTRAS_IMAGE);
                     Glide
                             .with(activity)
                             .load(photoUrl)
@@ -182,7 +182,7 @@ public abstract class UserListFragment extends BaseFragment {
                 //shiva
                 else if (model.email.equals(AppConstants.SHIVA_MANTRAS_EMAIL))
                 {
-                    photoUrl = Uri.parse("file:///android_asset/shiva.png");
+                    photoUrl = Uri.parse(AppConstants.SHIVA_MANTRAS_IMAGE);
                     Glide
                             .with(activity)
                             .load(photoUrl)
@@ -193,7 +193,7 @@ public abstract class UserListFragment extends BaseFragment {
                 //shiva tamil
                 else if (model.email.equals(AppConstants.SHIVA_MANTRAS_EMAIL_TAMIL))
                 {
-                    photoUrl = Uri.parse("file:///android_asset/shiva.png");
+                    photoUrl = Uri.parse(AppConstants.SHIVA_MANTRAS_IMAGE);
                     Glide
                             .with(activity)
                             .load(photoUrl)
@@ -204,7 +204,7 @@ public abstract class UserListFragment extends BaseFragment {
                 //sai baba
                 else if (model.email.equals(AppConstants.SAI_BABA_MANTRAS_EMAIL))
                 {
-                    photoUrl = Uri.parse("file:///android_asset/saibaba.png");
+                    photoUrl = Uri.parse(AppConstants.SAIBABA_MANTRAS_IMAGE);
                     Glide
                             .with(activity)
                             .load(photoUrl)
@@ -215,7 +215,7 @@ public abstract class UserListFragment extends BaseFragment {
                 //sai baba tamil
                 else if (model.email.equals(AppConstants.SAI_BABA_MANTRAS_EMAIL_TAMIL))
                 {
-                    photoUrl = Uri.parse("file:///android_asset/saibaba.png");
+                    photoUrl = Uri.parse(AppConstants.SAIBABA_MANTRAS_IMAGE);
                     Glide
                             .with(activity)
                             .load(photoUrl)
@@ -226,7 +226,7 @@ public abstract class UserListFragment extends BaseFragment {
                 //ganapathy
                 else if (model.email.equals(AppConstants.GANAPATHY_MANTRAS_EMAIL))
                 {
-                    photoUrl = Uri.parse("file:///android_asset/ganapathy.png");
+                    photoUrl = Uri.parse(AppConstants.GANAPATHY_MANTRAS_IMAGE);
                     Glide
                             .with(activity)
                             .load(photoUrl)
@@ -237,7 +237,7 @@ public abstract class UserListFragment extends BaseFragment {
                 //ganapathy tamil
                 else if (model.email.equals(AppConstants.GANAPATHY_MANTRAS_EMAIL_TAMIL))
                 {
-                    photoUrl = Uri.parse("file:///android_asset/ganapathy.png");
+                    photoUrl = Uri.parse(AppConstants.GANAPATHY_MANTRAS_IMAGE);
                     Glide
                             .with(activity)
                             .load(photoUrl)
@@ -248,7 +248,7 @@ public abstract class UserListFragment extends BaseFragment {
                 //krishna
                 else if (model.email.equals(AppConstants.KRISHNA_MANTRAS_EMAIL))
                 {
-                    photoUrl = Uri.parse("file:///android_asset/krishna.png");
+                    photoUrl = Uri.parse(AppConstants.KRISHNA_MANTRAS_IMAGE);
                     Glide
                             .with(activity)
                             .load(photoUrl)
@@ -259,7 +259,7 @@ public abstract class UserListFragment extends BaseFragment {
                 //krishna tamil
                 else if (model.email.equals(AppConstants.KRISHNA_MANTRAS_EMAIL_TAMIL))
                 {
-                    photoUrl = Uri.parse("file:///android_asset/krishna.png");
+                    photoUrl = Uri.parse(AppConstants.KRISHNA_MANTRAS_IMAGE);
                     Glide
                             .with(activity)
                             .load(photoUrl)
@@ -270,7 +270,7 @@ public abstract class UserListFragment extends BaseFragment {
                 //lakshmi
                 else if (model.email.equals(AppConstants.LAKSHMI_MANTRAS_EMAIL))
                 {
-                    photoUrl = Uri.parse("file:///android_asset/lakshmi.png");
+                    photoUrl = Uri.parse(AppConstants.LAKSHMI_MANTRAS_IMAGE);
                     Glide
                             .with(activity)
                             .load(photoUrl)
@@ -281,7 +281,7 @@ public abstract class UserListFragment extends BaseFragment {
                 //lakshmi tamil
                 else if (model.email.equals(AppConstants.LAKSHMI_MANTRAS_EMAIL_TAMIL))
                 {
-                    photoUrl = Uri.parse("file:///android_asset/lakshmi.png");
+                    photoUrl = Uri.parse(AppConstants.LAKSHMI_MANTRAS_IMAGE);
                     Glide
                             .with(activity)
                             .load(photoUrl)
@@ -291,7 +291,7 @@ public abstract class UserListFragment extends BaseFragment {
                 }
                 //murugan tamil
                 else if (model.email.equals(AppConstants.MURUGAN_MANTRAS_EMAIL_TAMIL)) {
-                    photoUrl = Uri.parse("file:///android_asset/murugan.png");
+                    photoUrl = Uri.parse(AppConstants.MURUGAN_MANTRAS_IMAGE);
                     Glide
                             .with(activity)
                             .load(photoUrl)
@@ -302,7 +302,7 @@ public abstract class UserListFragment extends BaseFragment {
                 }
                 //Ramanujar
                 else if (model.email.equals(AppConstants.RAMANUJAR_MANTRAS_EMAIL)) {
-                    photoUrl = Uri.parse("file:///android_asset/ramanujar.png");
+                    photoUrl = Uri.parse(AppConstants.RAMANUJAR_MANTRAS_IMAGE);
                     Glide
                             .with(activity)
                             .load(photoUrl)
@@ -313,7 +313,7 @@ public abstract class UserListFragment extends BaseFragment {
                 }
                 //Ramanujar tamil
                 else if (model.email.equals(AppConstants.RAMANUJAR_MANTRAS_EMAIL_TAMIL)) {
-                    photoUrl = Uri.parse("file:///android_asset/ramanujar.png");
+                    photoUrl = Uri.parse(AppConstants.RAMANUJAR_MANTRAS_IMAGE);
                     Glide
                             .with(activity)
                             .load(photoUrl)
@@ -324,7 +324,7 @@ public abstract class UserListFragment extends BaseFragment {
                 }
                 //Upanishad
                 else if (model.email.equals(AppConstants.UPANISHAD_EMAIL)) {
-                    photoUrl = Uri.parse("file:///android_asset/upanishad.png");
+                    photoUrl = Uri.parse(AppConstants.UPANISHAD_MANTRAS_IMAGE);
                     Glide
                             .with(activity)
                             .load(photoUrl)
@@ -335,7 +335,7 @@ public abstract class UserListFragment extends BaseFragment {
                 }
                 //Upanishads tamil
                 else if (model.email.equals(AppConstants.UPANISHAD_EMAIL_TAMIL)) {
-                    photoUrl = Uri.parse("file:///android_asset/upanishad.png");
+                    photoUrl = Uri.parse(AppConstants.UPANISHAD_MANTRAS_IMAGE);
                     Glide
                             .with(activity)
                             .load(photoUrl)

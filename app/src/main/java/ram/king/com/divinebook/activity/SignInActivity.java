@@ -155,6 +155,9 @@ public class SignInActivity extends BaseActivity implements GoogleApiClient.OnCo
 */
 
     private void onAuthSuccess(FirebaseUser user) {
+        String displayName;
+        String photoUrl;
+
         if (user != null) {
             String username = usernameFromEmail(user.getEmail());
             String moderatorFlag;
@@ -169,6 +172,53 @@ public class SignInActivity extends BaseActivity implements GoogleApiClient.OnCo
                     user.getEmail().equals(AppConstants.UPANISHAD_EMAIL)) {
                 moderatorFlag = "1E";
                 AppUtil.putBoolean(SignInActivity.this,AppConstants.ADMIN_USER,true);
+
+                if(user.getEmail().equals(AppConstants.VISHNU_MANTRAS_EMAIL))
+                {
+                    displayName = AppConstants.VISHNU_MANTRAS_NAME;
+                    photoUrl = AppConstants.VISHNU_MANTRAS_IMAGE;
+                }
+                else if(user.getEmail().equals(AppConstants.SHIVA_MANTRAS_EMAIL))
+                {
+                    displayName = AppConstants.SHIVA_MANTRAS_NAME;
+                    photoUrl = AppConstants.SHIVA_MANTRAS_IMAGE;
+                }
+                else if(user.getEmail().equals(AppConstants.GANAPATHY_MANTRAS_EMAIL))
+                {
+                    displayName = AppConstants.GANAPATHY_MANTRAS_NAME;
+                    photoUrl = AppConstants.GANAPATHY_MANTRAS_IMAGE;
+                }
+                else if(user.getEmail().equals(AppConstants.SAI_BABA_MANTRAS_EMAIL))
+                {
+                    displayName = AppConstants.SAI_BABA_MANTRAS_NAME;
+                    photoUrl = AppConstants.SAIBABA_MANTRAS_IMAGE;
+                }
+                else if(user.getEmail().equals(AppConstants.KRISHNA_MANTRAS_EMAIL))
+                {
+                    displayName = AppConstants.KRISHNA_MANTRAS_NAME;
+                    photoUrl = AppConstants.KRISHNA_MANTRAS_IMAGE;
+                }
+                else if(user.getEmail().equals(AppConstants.RAMANUJAR_MANTRAS_EMAIL))
+                {
+                    displayName = AppConstants.RAMANUJAR_MANTRAS_NAME;
+                    photoUrl = AppConstants.RAMANUJAR_MANTRAS_IMAGE;
+                }
+                else if(user.getEmail().equals(AppConstants.LAKSHMI_MANTRAS_EMAIL))
+                {
+                    displayName = AppConstants.LAKSHMI_MANTRAS_NAME;
+                    photoUrl = AppConstants.LAKSHMI_MANTRAS_IMAGE;
+                }
+                else if(user.getEmail().equals(AppConstants.UPANISHAD_EMAIL))
+                {
+                    displayName = AppConstants.UPANISHAD_NAME;
+                    photoUrl = AppConstants.UPANISHAD_MANTRAS_IMAGE;
+                }
+                else
+                {
+                    displayName = user.getDisplayName();
+                    photoUrl = user.getPhotoUrl().toString();
+                }
+
             }
             else if(user.getEmail().equals(AppConstants.VISHNU_MANTRAS_EMAIL_TAMIL) ||
                     user.getEmail().equals(AppConstants.SHIVA_MANTRAS_EMAIL_TAMIL) ||
@@ -182,16 +232,69 @@ public class SignInActivity extends BaseActivity implements GoogleApiClient.OnCo
             {
                 moderatorFlag = "1T";
                 AppUtil.putBoolean(SignInActivity.this,AppConstants.ADMIN_USER,true);
+
+                if(user.getEmail().equals(AppConstants.VISHNU_MANTRAS_EMAIL_TAMIL))
+                {
+                    displayName = AppConstants.VISHNU_MANTRAS_NAME_TAMIL;
+                    photoUrl = AppConstants.VISHNU_MANTRAS_IMAGE;
+                }
+                else if(user.getEmail().equals(AppConstants.SHIVA_MANTRAS_EMAIL_TAMIL))
+                {
+                    displayName = AppConstants.SHIVA_MANTRAS_NAME_TAMIL;
+                    photoUrl = AppConstants.SHIVA_MANTRAS_IMAGE;
+                }
+                else if(user.getEmail().equals(AppConstants.GANAPATHY_MANTRAS_EMAIL))
+                {
+                    displayName = AppConstants.GANAPATHY_MANTRAS_NAME_TAMIL;
+                    photoUrl = AppConstants.GANAPATHY_MANTRAS_IMAGE;
+                }
+                else if(user.getEmail().equals(AppConstants.SAI_BABA_MANTRAS_EMAIL_TAMIL))
+                {
+                    displayName = AppConstants.SAI_BABA_MANTRAS_NAME_TAMIL;
+                    photoUrl = AppConstants.SAIBABA_MANTRAS_IMAGE;
+                }
+                else if(user.getEmail().equals(AppConstants.KRISHNA_MANTRAS_EMAIL_TAMIL))
+                {
+                    displayName = AppConstants.KRISHNA_MANTRAS_NAME_TAMIL;
+                    photoUrl = AppConstants.KRISHNA_MANTRAS_IMAGE;
+                }
+                else if(user.getEmail().equals(AppConstants.RAMANUJAR_MANTRAS_EMAIL_TAMIL))
+                {
+                    displayName = AppConstants.RAMANUJAR_MANTRAS_NAME_TAMIL;
+                    photoUrl = AppConstants.RAMANUJAR_MANTRAS_IMAGE;
+                }
+                else if(user.getEmail().equals(AppConstants.LAKSHMI_MANTRAS_EMAIL_TAMIL))
+                {
+                    displayName = AppConstants.LAKSHMI_MANTRAS_NAME_TAMIL;
+                    photoUrl = AppConstants.LAKSHMI_MANTRAS_IMAGE;
+                }
+                else if(user.getEmail().equals(AppConstants.UPANISHAD_EMAIL_TAMIL))
+                {
+                    displayName = AppConstants.UPANISHAD_NAME_TAMIL;
+                    photoUrl = AppConstants.UPANISHAD_MANTRAS_IMAGE;
+                }
+                else if(user.getEmail().equals(AppConstants.MURUGAN_MANTRAS_EMAIL_TAMIL))
+                {
+                    displayName = AppConstants.MURUGAN_MANTRAS_NAME_TAMIL;
+                    photoUrl = AppConstants.MURUGAN_MANTRAS_IMAGE;
+                }
+                else
+                {
+                    displayName = user.getDisplayName();
+                    photoUrl = user.getPhotoUrl().toString();
+                }
             }
             else {
                 moderatorFlag = "0";
                 AppUtil.putBoolean(SignInActivity.this,AppConstants.ADMIN_USER,false);
+                displayName = user.getDisplayName();
+                photoUrl = user.getPhotoUrl().toString();
             }
             // Write new user
-            if (user.getPhotoUrl() != null && user.getDisplayName() != null)
-                writeNewUser(user.getUid(), username, user.getEmail(), user.getDisplayName(), user.getPhotoUrl().toString(), moderatorFlag);
+            if (photoUrl != null && displayName != null)
+                writeNewUser(user.getUid(), username, user.getEmail(), displayName, photoUrl, moderatorFlag);
             else if (user.getDisplayName() != null)
-                writeNewUser(user.getUid(), username, user.getEmail(), user.getDisplayName(), null, moderatorFlag);
+                writeNewUser(user.getUid(), username, user.getEmail(), displayName, null, moderatorFlag);
             else
                 writeNewUser(user.getUid(), username, user.getEmail(), username, null, moderatorFlag);
 
