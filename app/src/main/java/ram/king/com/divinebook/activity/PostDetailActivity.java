@@ -15,6 +15,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -101,6 +103,12 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
         //mDateView = (TextView) findViewById(R.id.post_date);
         mDedicatedToView = (TextView) findViewById(R.id.post_dedicated_to);
         mCourtesyView = (TextView) findViewById(R.id.post_courtesy);
+
+        ImageButton btnNext = (ImageButton)this.findViewById(com.example.jean.jcplayer.R.id.btn_next);
+        ImageButton btnPrev = (ImageButton)this.findViewById(com.example.jean.jcplayer.R.id.btn_prev);
+
+        btnNext.setVisibility(View.GONE);
+        btnPrev.setVisibility(View.GONE);
 
         AppRate.with(this)
                 .setInstallDays(1) // default 10, 0 means install day.
