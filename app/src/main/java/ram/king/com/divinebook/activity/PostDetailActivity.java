@@ -2,6 +2,8 @@ package ram.king.com.divinebook.activity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -17,9 +19,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.jean.jcplayer.JcAudio;
+import com.example.jean.jcplayer.JcPlayerView;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -29,9 +35,13 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.dynamiclinks.DynamicLink;
 import com.google.firebase.dynamiclinks.FirebaseDynamicLinks;
 import com.google.firebase.dynamiclinks.ShortDynamicLink;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.mikhaellopez.circularimageview.CircularImageView;
 
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 
 import hotchemi.android.rate.AppRate;
 import hotchemi.android.rate.OnClickButtonListener;
@@ -39,7 +49,7 @@ import ram.king.com.divinebook.R;
 import ram.king.com.divinebook.models.Post;
 import ram.king.com.divinebook.util.AppConstants;
 
-public class PostDetailActivity extends BaseActivity implements View.OnClickListener {
+public class PostDetailActivity extends BaseActivity implements View.OnClickListener{
 
     private static final String TAG = "PostDetailActivity";
     Post post;
@@ -58,6 +68,7 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
 
     private AdView mAdView;
 
+    private JcPlayerView jcplayerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -114,6 +125,32 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
 
         mAdView.loadAd(adRequest);
 
+
+        jcplayerView = (JcPlayerView) findViewById(R.id.jcplayer);
+        fetchAudioUrlFromFirebase();
+
+    }
+
+    private void fetchAudioUrlFromFirebase() {
+        final FirebaseStorage storage = FirebaseStorage.getInstance();
+        // Create a storage reference from our app
+        StorageReference storageRef = storage.getReferenceFromUrl("gs://divine-book.appspot.com/[iSongs.info] 01 - Vishnu Sahasranamam.mp3");
+        storageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                    // Download url of file
+                    final String url = uri.toString();
+                ArrayList<JcAudio> jcAudios = new ArrayList<>();
+                jcAudios.add(JcAudio.createFromURL("url audio",url));
+                jcplayerView.initPlaylist(jcAudios);
+            }
+        })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.i("TAG", e.getMessage());
+                    }
+                });
     }
 
     @Override

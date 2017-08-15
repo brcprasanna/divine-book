@@ -317,7 +317,7 @@ public class TextEditorActivity extends Activity {
     }
 
     private void submitPost() {
-        final String mBody = knife.getText().toString();
+        final String mBody = knife.toHtml();
 
         if (TextUtils.isEmpty(mBody))
             return;

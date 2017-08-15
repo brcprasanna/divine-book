@@ -16,20 +16,33 @@
 
 package ram.king.com.divinebook.activity;
 
+import android.media.AudioManager;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+
+import java.io.IOException;
 
 import ram.king.com.divinebook.R;
 import ram.king.com.divinebook.fragment.UserAllPostFragment;
 import ram.king.com.divinebook.util.AppConstants;
 import ram.king.com.divinebook.util.AppUtil;
 
-public class UserAllPostActivity extends BaseActivity {
+public class UserAllPostActivity extends BaseActivity{
 
     private static final String TAG = "UserAllPostActivity";
 
@@ -85,6 +98,8 @@ public class UserAllPostActivity extends BaseActivity {
         // Button launches NewPostActivity
         findViewById(R.id.fab_new_post).setVisibility(View.GONE);
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

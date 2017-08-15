@@ -50,6 +50,8 @@ dependencies {
     compile 'com.google.firebase:firebase-core:11.0.1'
     compile 'com.google.firebase:firebase-database:11.0.1'
     compile 'com.google.firebase:firebase-auth:11.0.1'
+    compile 'com.google.firebase:firebase-storage:11.0.1'
+
     compile 'com.google.android.gms:play-services-auth:11.0.1'
 
 
@@ -85,6 +87,7 @@ dependencies {
     compile 'com.github.hotchemi:android-rate:1.0.1'
 
     compile 'com.google.firebase:firebase-ads:11.0.1'
+    compile 'io.github.jeancsanchez.jcplayer:jcplayer:2.6.0-alpha'
 
     }
 
