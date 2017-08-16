@@ -21,12 +21,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <com.example.jean.jcplayer.JcPlayerView
-                android:id="@+id/jcplayer"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                />
-
 
             <RelativeLayout
                 android:id="@+id/post_author_layout"
@@ -34,7 +28,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/background_border"
                 android:padding="10dp"
-                android:layout_below="@id/jcplayer">
+               >
 
                 <include
                     layout="@layout/include_post_author_detail"
@@ -45,13 +39,22 @@
 
             </RelativeLayout>
 
+            <com.example.jean.jcplayer.JcPlayerView
+                android:id="@+id/jcplayer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/post_author_layout"
+                />
+
+
+
             <include
                 android:id="@+id/post_text_layout"
                 layout="@layout/include_post_text_detail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
-                android:layout_below="@+id/post_author_layout"
+                android:layout_below="@id/jcplayer"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="10dp" />
 
