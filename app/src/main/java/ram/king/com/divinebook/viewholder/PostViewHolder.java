@@ -29,6 +29,7 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
     public ImageView share;
     public LinearLayout content;
     public RelativeLayout topUserLayout;
+    public ImageView play;
 
 
     public PostViewHolder(View itemView) {
@@ -45,11 +46,13 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
         share = (ImageView) itemView.findViewById(R.id.button_share);
         content = (LinearLayout) itemView.findViewById(R.id.content_layout);
         topUserLayout = (RelativeLayout) itemView.findViewById(R.id.post_author_layout);
+        play = (ImageView) itemView.findViewById(R.id.button_play);
     }
 
     public void bindToPost(Post post, View.OnClickListener starClickListener,
                            View.OnClickListener deleteClickListener, View.OnClickListener contentListener,
-                           View.OnClickListener shareListener, View.OnClickListener topUserLayoutListener) {
+                           View.OnClickListener shareListener, View.OnClickListener topUserLayoutListener,
+                           View.OnClickListener playListener) {
         if (!TextUtils.isEmpty(post.title)) {
             titleView.setVisibility(View.VISIBLE);
             titleView.setText("Title : " + post.title);
@@ -71,11 +74,18 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
             courtesy.setVisibility(View.GONE);
         }
 
+        if (!TextUtils.isEmpty(post.audio)) {
+            play.setVisibility(View.VISIBLE);
+        } else {
+            play.setVisibility(View.GONE);
+        }
+
         bodyView.setText(Html.fromHtml(post.body), TextView.BufferType.SPANNABLE);
         starView.setOnClickListener(starClickListener);
         deleteView.setOnClickListener(deleteClickListener);
         content.setOnClickListener(contentListener);
         share.setOnClickListener(shareListener);
         topUserLayout.setOnClickListener(topUserLayoutListener);
+        play.setOnClickListener(playListener);
     }
 }

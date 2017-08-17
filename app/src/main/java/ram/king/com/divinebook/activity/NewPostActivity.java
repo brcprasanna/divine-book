@@ -60,6 +60,8 @@ public class NewPostActivity extends BaseActivity {
     private TextInputLayout mDedicationTextLayout;
     private TextInputLayout mCourtesyTextLayout;
 
+    private TextInputEditText mSetAudioField;
+
     /*private Button mDedicationButton;
     private Button mCourtesyButton;
 */
@@ -111,6 +113,7 @@ public class NewPostActivity extends BaseActivity {
         // [END initialize_database_ref]
 
         mTitleField = (TextInputEditText) findViewById(R.id.field_title);
+        mSetAudioField = (TextInputEditText) findViewById(R.id.field_audio);
         mDedicatedToField = (TextInputEditText) findViewById(R.id.field_dedicated_to);
         mCourtesyField = (TextInputEditText) findViewById(R.id.field_courtesy);
 
@@ -269,15 +272,6 @@ public class NewPostActivity extends BaseActivity {
         }
     }
 
-    private void setEditingEnabled(boolean enabled) {
-        mTitleField.setEnabled(enabled);
-        /*if (enabled) {
-            mSubmitButton.setVisibility(View.VISIBLE);
-        } else {
-            mSubmitButton.setVisibility(View.GONE);
-        }*/
-    }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_new_post, menu);
@@ -337,12 +331,20 @@ public class NewPostActivity extends BaseActivity {
         final String title = mTitleField.getText().toString().trim();
         final String dedicatedTo = mDedicatedToField.getText().toString().trim();
         final String courtesy = mCourtesyField.getText().toString().trim();
+        final String audio = mSetAudioField.getText().toString().trim();
 
         // Title is required
         if (TextUtils.isEmpty(title)) {
             //mTitleField.setError(REQUIRED);
             //return;
             mTitleField.setText("");
+        }
+
+        // Title is required
+        if (TextUtils.isEmpty(audio)) {
+            //mTitleField.setError(REQUIRED);
+            //return;
+            mSetAudioField.setText("");
         }
 
         if (TextUtils.isEmpty(dedicatedTo)) {
@@ -365,6 +367,7 @@ public class NewPostActivity extends BaseActivity {
         intent.putExtra("title", title);
         intent.putExtra("dedicated_to", dedicatedTo);
         intent.putExtra("courtesy", courtesy);
+        intent.putExtra("audio", audio);
         intent.putExtra("ComposeText", mBackupComposeText);
 
         startActivityForResult(intent, AppConstants.SAVE_WRITE_POST);

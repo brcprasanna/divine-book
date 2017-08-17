@@ -104,6 +104,7 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
         mDedicatedToView = (TextView) findViewById(R.id.post_dedicated_to);
         mCourtesyView = (TextView) findViewById(R.id.post_courtesy);
 
+
         ImageButton btnNext = (ImageButton)this.findViewById(com.example.jean.jcplayer.R.id.btn_next);
         ImageButton btnPrev = (ImageButton)this.findViewById(com.example.jean.jcplayer.R.id.btn_prev);
 
@@ -228,6 +229,12 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
                         mCourtesyView.setText("Courtesy : " + post.courtesy);
                     } else {
                         mCourtesyView.setVisibility(View.GONE);
+                    }
+
+                    if (!TextUtils.isEmpty(post.audio)) {
+                        jcplayerView.setVisibility(View.VISIBLE);
+                    } else {
+                        jcplayerView.setVisibility(View.GONE);
                     }
 
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)

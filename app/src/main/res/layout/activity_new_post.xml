@@ -35,6 +35,29 @@
                 android:singleLine="false" />
         </android.support.design.widget.TextInputLayout>
 
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/textLayoutSetAudio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_below="@id/textLayoutTitle">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/field_audio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Audio (Optional)"
+                android:maxLines="3"
+                android:overScrollMode="always"
+                android:scrollbarStyle="insideInset"
+                android:scrollbars="vertical"
+                android:singleLine="false" />
+        </android.support.design.widget.TextInputLayout>
+
+
         <!--<LinearLayout
             android:id="@+id/button_layout"
             android:layout_width="wrap_content"
@@ -68,7 +91,7 @@
             android:id="@+id/textLayoutDedicateTo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/textLayoutTitle"
+            android:layout_below="@id/textLayoutSetAudio"
             android:layout_marginBottom="5dp"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"

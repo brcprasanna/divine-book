@@ -3,6 +3,8 @@ package ram.king.com.divinebook.fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -17,11 +19,14 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
 import com.bumptech.glide.Glide;
+import com.example.jean.jcplayer.JcAudio;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -34,12 +39,16 @@ import com.google.firebase.database.Transaction;
 import com.google.firebase.dynamiclinks.DynamicLink;
 import com.google.firebase.dynamiclinks.FirebaseDynamicLinks;
 import com.google.firebase.dynamiclinks.ShortDynamicLink;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -53,7 +62,7 @@ import ram.king.com.divinebook.util.AppUtil;
 import ram.king.com.divinebook.util.MessageEvent;
 import ram.king.com.divinebook.viewholder.PostViewHolder;
 
-public abstract class PostListFragment extends BaseFragment {
+public abstract class PostListFragment extends BaseFragment{
 
     private static final String TAG = "PostListFragment";
     SharedPreferences sharedPref;
@@ -86,6 +95,7 @@ public abstract class PostListFragment extends BaseFragment {
         mRecycler.setHasFixedSize(true);
 
         mProgressBar = (ProgressBar) rootView.findViewById(R.id.progress_bar);
+
         return rootView;
     }
 
@@ -252,7 +262,11 @@ public abstract class PostListFragment extends BaseFragment {
                         } else
                             return;
                     }
-                });
+                }, new View.OnClickListener() {
+                    @Override
+                    public void onClick(View play) {
+                    }
+                }) ;
 
             }
 
