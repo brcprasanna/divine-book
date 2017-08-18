@@ -265,6 +265,10 @@ public abstract class PostListFragment extends BaseFragment{
                 }, new View.OnClickListener() {
                     @Override
                     public void onClick(View play) {
+                        Intent postDetailintent = new Intent(activity, PostDetailActivity.class);
+                        postDetailintent.putExtra(AppConstants.EXTRA_POST_KEY, postKey);
+                        postDetailintent.putExtra(AppConstants.EXTRA_PLAY_AUDIO, "play");
+                        startActivity(postDetailintent);
                     }
                 }) ;
 

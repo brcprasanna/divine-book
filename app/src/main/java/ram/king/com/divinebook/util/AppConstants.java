@@ -18,6 +18,7 @@ public class AppConstants {
 
     public static final String EXTRA_POST_KEY = "post_key";
     public static final String EXTRA_FOCUS_COMMENT = "focus_comment";
+    public static final String EXTRA_PLAY_AUDIO = "play_audio";
 
     public static final String EXTRA_USER_ID = "user_id";
     public static final String EXTRA_DISPLAY_NAME = "user_display_name";
@@ -93,4 +94,5 @@ public class AppConstants {
     public static final String MURUGAN_MANTRAS_IMAGE = "file:///android_asset/murugan.png";
     public static final String RAMANUJAR_MANTRAS_IMAGE = "file:///android_asset/ramanujar.png";
     public static final String UPANISHAD_MANTRAS_IMAGE = "file:///android_asset/upanishad.png";
+
 }

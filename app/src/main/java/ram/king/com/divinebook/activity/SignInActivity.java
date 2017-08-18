@@ -243,7 +243,7 @@ public class SignInActivity extends BaseActivity implements GoogleApiClient.OnCo
                     displayName = AppConstants.SHIVA_MANTRAS_NAME_TAMIL;
                     photoUrl = AppConstants.SHIVA_MANTRAS_IMAGE;
                 }
-                else if(user.getEmail().equals(AppConstants.GANAPATHY_MANTRAS_EMAIL))
+                else if(user.getEmail().equals(AppConstants.GANAPATHY_MANTRAS_EMAIL_TAMIL))
                 {
                     displayName = AppConstants.GANAPATHY_MANTRAS_NAME_TAMIL;
                     photoUrl = AppConstants.GANAPATHY_MANTRAS_IMAGE;

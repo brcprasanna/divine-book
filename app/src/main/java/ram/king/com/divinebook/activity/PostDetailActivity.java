@@ -58,6 +58,7 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
     private DatabaseReference mPostReference;
     private ValueEventListener mPostListener;
     private String mPostKey;
+    private String mPlayAudio;
     private CircularImageView mAuthorPhoto;
     private TextView mAuthorView;
     private TextView mTitleView;
@@ -71,6 +72,7 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
     private AdView mAdView;
 
     private JcPlayerView jcplayerView;
+    private ImageButton btnPlay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,6 +89,7 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
 
         // Get post key from intent
         mPostKey = getIntent().getStringExtra(AppConstants.EXTRA_POST_KEY);
+        mPlayAudio = getIntent().getStringExtra(AppConstants.EXTRA_PLAY_AUDIO);
 
         if (mPostKey == null) {
             throw new IllegalArgumentException("Must pass EXTRA_POST_KEY");
@@ -107,6 +110,7 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
 
         ImageButton btnNext = (ImageButton)this.findViewById(com.example.jean.jcplayer.R.id.btn_next);
         ImageButton btnPrev = (ImageButton)this.findViewById(com.example.jean.jcplayer.R.id.btn_prev);
+        btnPlay = (ImageButton)this.findViewById(com.example.jean.jcplayer.R.id.btn_play);
 
         btnNext.setVisibility(View.GONE);
         btnPrev.setVisibility(View.GONE);
@@ -134,23 +138,24 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
 
         mAdView.loadAd(adRequest);
 
+        retrievePostInstance();
 
         jcplayerView = (JcPlayerView) findViewById(R.id.jcplayer);
-        fetchAudioUrlFromFirebase();
+
 
     }
 
     private void fetchAudioUrlFromFirebase() {
         final FirebaseStorage storage = FirebaseStorage.getInstance();
         // Create a storage reference from our app
-        StorageReference storageRef = storage.getReferenceFromUrl("gs://divine-book.appspot.com/[iSongs.info] 01 - Vishnu Sahasranamam.mp3");
+        StorageReference storageRef = storage.getReferenceFromUrl(post.audio);
         storageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
                     // Download url of file
                     final String url = uri.toString();
                 ArrayList<JcAudio> jcAudios = new ArrayList<>();
-                jcAudios.add(JcAudio.createFromURL("url audio",url));
+                jcAudios.add(JcAudio.createFromURL("",url));
                 jcplayerView.initPlaylist(jcAudios);
             }
         })
@@ -178,6 +183,14 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
         }
     }
 
+
+    @Override
+    public void onBackPressed() {
+        jcplayerView.pause();
+        super.onBackPressed();
+
+    }
+
     /**
      * Called before the activity is destroyed
      */
@@ -198,6 +211,11 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
     public void onStart() {
         super.onStart();
 
+
+
+    }
+
+    private void retrievePostInstance(){
         // Add value event listener to the post
         // [START post_value_event_listener]
         ValueEventListener postListener = new ValueEventListener() {
@@ -206,6 +224,7 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
                 // Get Post object and use the values to update the UI
                 post = dataSnapshot.getValue(Post.class);
                 if (post != null) {
+                    fetchAudioUrlFromFirebase();
                     Glide.with(PostDetailActivity.this).load(post.photoUrl)
                             .into(mAuthorPhoto);
 
@@ -338,7 +357,6 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
         mPostListener = postListener;
 
     }
-
     @Override
     public void onStop() {
         super.onStop();

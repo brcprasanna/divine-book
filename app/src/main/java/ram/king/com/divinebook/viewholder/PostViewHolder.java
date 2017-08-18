@@ -46,7 +46,7 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
         share = (ImageView) itemView.findViewById(R.id.button_share);
         content = (LinearLayout) itemView.findViewById(R.id.content_layout);
         topUserLayout = (RelativeLayout) itemView.findViewById(R.id.post_author_layout);
-        play = (ImageView) itemView.findViewById(R.id.button_play);
+        play = (ImageView) itemView.findViewById(R.id.button_audio);
     }
 
     public void bindToPost(Post post, View.OnClickListener starClickListener,

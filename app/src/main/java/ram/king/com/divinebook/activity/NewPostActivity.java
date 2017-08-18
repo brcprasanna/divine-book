@@ -1,11 +1,19 @@
 package ram.king.com.divinebook.activity;
 
+import android.Manifest;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
+import android.support.v4.app.ActivityCompat;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -14,17 +22,24 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.ListView;
 
 import com.firebase.ui.database.FirebaseListAdapter;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import org.greenrobot.eventbus.EventBus;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Map;
@@ -66,6 +81,19 @@ public class NewPostActivity extends BaseActivity {
     private Button mCourtesyButton;
 */
     private String mBackupComposeText;
+
+    private ImageButton mAttachment;
+
+    private static final int SELECT_AUDIO = 2;
+    private String selectedPath = "";
+
+    // Storage Permissions
+    private static final int REQUEST_EXTERNAL_STORAGE = 1;
+    private static String[] PERMISSIONS_STORAGE = {
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE
+    };
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -123,6 +151,13 @@ public class NewPostActivity extends BaseActivity {
         mDedicationTextLayout = (TextInputLayout) findViewById(R.id.textLayoutDedicateTo);
         mCourtesyTextLayout = (TextInputLayout) findViewById(R.id.textLayoutCourtesy);
 
+        mAttachment = (ImageButton) findViewById(R.id.btnAttach);
+        mAttachment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openGalleryAudio();
+            }
+        });
         /*mDedicationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -243,9 +278,58 @@ public class NewPostActivity extends BaseActivity {
                     }
                 });
         // Adding items to listview
+        verifyStoragePermissions(this);
 
 
     }
+
+    /**
+     * Checks if the app has permission to write to device storage
+     *
+     * If the app does not has permission then the user will be prompted to grant permissions
+     *
+     * @param activity
+     */
+    public static void verifyStoragePermissions(Activity activity) {
+        // Check if we have write permission
+        int permission = ActivityCompat.checkSelfPermission(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+
+        if (permission != PackageManager.PERMISSION_GRANTED) {
+            // We don't have permission so prompt the user
+            ActivityCompat.requestPermissions(
+                    activity,
+                    PERMISSIONS_STORAGE,
+                    REQUEST_EXTERNAL_STORAGE
+            );
+        }
+    }
+
+
+    public void openGalleryAudio(){
+
+        Intent intent = new Intent();
+        intent.setType("audio/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(intent,"Select Audio "), SELECT_AUDIO);
+    }
+
+
+    public String getPath(Uri uri) {
+//        String[] projection = { MediaStore.Audio.Media.DATA };
+//        Cursor cursor = managedQuery(uri, projection, null, null, null);
+//        int column_index = cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.DATA);
+//        cursor.moveToFirst();
+//        return cursor.getString(column_index);
+
+        String[] filePathColumn = {MediaStore.Audio.Media.DATA};
+        Cursor cursor = getContentResolver().query(uri, filePathColumn, null, null, null);
+        cursor.moveToFirst();
+        int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+        String path = cursor.getString(columnIndex);
+        cursor.close();
+        return path;
+    }
+
 
     private void handleSendText(Intent intent) {
         mBackupComposeText = intent.getStringExtra(Intent.EXTRA_TEXT);
@@ -375,6 +459,16 @@ public class NewPostActivity extends BaseActivity {
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         // Check which request we're responding to
+        if (requestCode == SELECT_AUDIO)
+        {
+            if (resultCode == RESULT_OK) {
+                System.out.println("SELECT_AUDIO");
+                Uri selectedImageUri = data.getData();
+                selectedPath = getPath(selectedImageUri);
+                System.out.println("SELECT_AUDIO Path : " + selectedPath);
+                doFileUpload(selectedPath);
+            }
+        }
         if (requestCode == AppConstants.SAVE_WRITE_POST) {
             // Make sure the request was successful
             if (resultCode == RESULT_OK && data != null) {
@@ -390,5 +484,28 @@ public class NewPostActivity extends BaseActivity {
                 finish();
             }
         }
+    }
+
+    private void doFileUpload(String selectedPath) {
+        final FirebaseStorage storageRef = FirebaseStorage.getInstance();
+        Uri file = Uri.fromFile(new File(selectedPath));
+        //StorageReference riversRef = storageRef.child("images/"+file.getLastPathSegment());
+        StorageReference riversRef = storageRef.getReference(file.toString());
+        UploadTask uploadTask = riversRef.putFile(file);
+
+// Register observers to listen for when the download is done or if it fails
+        uploadTask.addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                // Handle unsuccessful uploads
+            }
+        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                // taskSnapshot.getMetadata() contains file metadata such as size, content-type, and download URL.
+                Uri downloadUrl = taskSnapshot.getDownloadUrl();
+                mSetAudioField.setText(downloadUrl.toString());
+            }
+        });
     }
 }
