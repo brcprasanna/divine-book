@@ -76,7 +76,7 @@ public abstract class PostListFragment extends BaseFragment{
     private LinearLayoutManager mManager;
     private ProgressBar mProgressBar;
     private DatabaseReference mCommentsReference;
-    private InterstitialAd mInterstitialAd;
+    //private InterstitialAd mInterstitialAd;
 
     public PostListFragment() {
     }
@@ -114,12 +114,12 @@ public abstract class PostListFragment extends BaseFragment{
         setupAdapterWithQuery();
 
         //Ad mob
-        mInterstitialAd = new InterstitialAd(activity);
-        mInterstitialAd.setAdUnitId(getString(R.string.interstitial_ad_unit_id));
+        //mInterstitialAd = new InterstitialAd(activity);
+        //mInterstitialAd.setAdUnitId(getString(R.string.interstitial_ad_unit_id));
         // [END instantiate_interstitial_ad]
 
         // [START create_interstitial_ad_listener]
-        mInterstitialAd.setAdListener(new AdListener() {
+        /*mInterstitialAd.setAdListener(new AdListener() {
             @Override
             public void onAdClosed() {
                 requestNewInterstitial();
@@ -139,19 +139,19 @@ public abstract class PostListFragment extends BaseFragment{
                 // See https://goo.gl/sCZj0H for possible error codes.
                 Log.w(TAG, "onAdFailedToLoad:" + i);
             }
-        });
+        });*/
     }
 
     /**
      * Load a new interstitial ad asynchronously.
      */
     // [START request_new_interstitial]
-    private void requestNewInterstitial() {
-        AdRequest adRequest = new AdRequest.Builder()
-                .build();
-
-        mInterstitialAd.loadAd(adRequest);
-    }
+//    private void requestNewInterstitial() {
+//        AdRequest adRequest = new AdRequest.Builder()
+//                .build();
+//
+//        mInterstitialAd.loadAd(adRequest);
+//    }
     // [END request_new_interstitial]
 
 
@@ -255,9 +255,9 @@ public abstract class PostListFragment extends BaseFragment{
                             userAllPostIntent = new Intent(activity, UserAllPostActivity.class);
                             userAllPostIntent.putExtra(AppConstants.EXTRA_DISPLAY_NAME, model.author);
 
-                            if (mInterstitialAd.isLoaded()) {
-                                mInterstitialAd.show();
-                            } else
+                            //if (mInterstitialAd.isLoaded()) {
+                             //   mInterstitialAd.show();
+                            //} else
                                 startActivityUserAllPost();
                         } else
                             return;
@@ -444,9 +444,9 @@ public abstract class PostListFragment extends BaseFragment{
     @Override
     public void onResume() {
         super.onResume();
-        if (!mInterstitialAd.isLoaded()) {
+        /*if (!mInterstitialAd.isLoaded()) {
             requestNewInterstitial();
-        }
+        }*/
     }
 
     // [START post_stars_transaction]

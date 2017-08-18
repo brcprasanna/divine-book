@@ -41,9 +41,12 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.mikhaellopez.circularimageview.CircularImageView;
 
+import org.ocpsoft.prettytime.PrettyTime;
+
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.Date;
 
 import hotchemi.android.rate.AppRate;
 import hotchemi.android.rate.OnClickButtonListener;
@@ -63,7 +66,7 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
     private TextView mAuthorView;
     private TextView mTitleView;
     private TextView mBodyView;
-    //private TextView mDateView;
+    private TextView mDateView;
     private TextView mDedicatedToView;
     private TextView mCourtesyView;
     private DatabaseReference mDatabase;
@@ -73,6 +76,8 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
 
     private JcPlayerView jcplayerView;
     private ImageButton btnPlay;
+
+    private PrettyTime prettyTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,7 +108,7 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
         mAuthorView = (TextView) findViewById(R.id.post_author);
         mTitleView = (TextView) findViewById(R.id.post_title);
         mBodyView = (TextView) findViewById(R.id.post_body);
-        //mDateView = (TextView) findViewById(R.id.post_date);
+        mDateView = (TextView) findViewById(R.id.post_date);
         mDedicatedToView = (TextView) findViewById(R.id.post_dedicated_to);
         mCourtesyView = (TextView) findViewById(R.id.post_courtesy);
 
@@ -142,6 +147,7 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
 
         jcplayerView = (JcPlayerView) findViewById(R.id.jcplayer);
 
+        prettyTime = new PrettyTime();
 
     }
 
@@ -261,10 +267,10 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
                     else
                         mBodyView.setText(Html.fromHtml(post.body), TextView.BufferType.SPANNABLE);
 
-                    /*long yourmilliseconds = (long) post.timestamp;
+                    long yourmilliseconds = (long) post.timestamp;
                     if (prettyTime != null)
                         mDateView.setText(prettyTime.format(new Date(yourmilliseconds)));
-*/
+
                     if (menu != null) {
                         MenuItem itemDelete = menu.findItem(R.id.menu_delete);
 
