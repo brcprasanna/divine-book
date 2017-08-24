@@ -12,7 +12,6 @@ public class AppConstants {
     public static final int SAVE_WRITE_POST = 105;
 
     public static final String FIRST_TIME_LOGIN = "FIRST_TIME_LOGIN";
-    public static final String TERMS_AGREED = "TERMS AGREED";
 
     public static final String DEEP_LINK_URL = "https://brcprasanna.wixsite.com/divinebook";
 
@@ -95,4 +94,5 @@ public class AppConstants {
     public static final String RAMANUJAR_MANTRAS_IMAGE = "file:///android_asset/ramanujar.png";
     public static final String UPANISHAD_MANTRAS_IMAGE = "file:///android_asset/upanishad.png";
 
+    public static final String SEARCH_TEXT = "search_text";
 }

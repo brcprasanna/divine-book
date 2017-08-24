@@ -17,12 +17,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.jean.jcplayer.JcAudio;
 import com.example.jean.jcplayer.JcPlayerView;
+import com.github.chrisbanes.photoview.PhotoView;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -69,6 +71,8 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
     private TextView mDateView;
     private TextView mDedicatedToView;
     private TextView mCourtesyView;
+
+	private PhotoView mImage;
     private DatabaseReference mDatabase;
     private Menu menu;
 
@@ -113,6 +117,7 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
         mCourtesyView = (TextView) findViewById(R.id.post_courtesy);
 
 
+		mImage = (PhotoView) findViewById(R.id.post_detail_image);
         ImageButton btnNext = (ImageButton)this.findViewById(com.example.jean.jcplayer.R.id.btn_next);
         ImageButton btnPrev = (ImageButton)this.findViewById(com.example.jean.jcplayer.R.id.btn_prev);
         btnPlay = (ImageButton)this.findViewById(com.example.jean.jcplayer.R.id.btn_play);
@@ -192,9 +197,9 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
 
     @Override
     public void onBackPressed() {
-        jcplayerView.pause();
+        if (jcplayerView != null)
+            jcplayerView.kill();
         super.onBackPressed();
-
     }
 
     /**
@@ -230,7 +235,8 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
                 // Get Post object and use the values to update the UI
                 post = dataSnapshot.getValue(Post.class);
                 if (post != null) {
-                    fetchAudioUrlFromFirebase();
+                    if (!TextUtils.isEmpty(post.audio))
+                        fetchAudioUrlFromFirebase();
                     Glide.with(PostDetailActivity.this).load(post.photoUrl)
                             .into(mAuthorPhoto);
 
@@ -261,11 +267,24 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
                     } else {
                         jcplayerView.setVisibility(View.GONE);
                     }
+					
+					if (!TextUtils.isEmpty(post.image)) {
+                        mImage.setVisibility(View.VISIBLE);
+                        Glide.with(PostDetailActivity.this)
+                                .load(post.image)
+                                .into(mImage);
+                        mImage.setScaleType(ImageView.ScaleType.FIT_XY);
+                    }
 
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
-                        mBodyView.setText(Html.fromHtml(post.body, Html.FROM_HTML_MODE_COMPACT), TextView.BufferType.SPANNABLE);
-                    else
-                        mBodyView.setText(Html.fromHtml(post.body), TextView.BufferType.SPANNABLE);
+
+                    if (!TextUtils.isEmpty(post.body)) {
+                        mBodyView.setVisibility(View.VISIBLE);
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
+                            mBodyView.setText(Html.fromHtml(post.body, Html.FROM_HTML_MODE_COMPACT), TextView.BufferType.SPANNABLE);
+                        else
+                            mBodyView.setText(Html.fromHtml(post.body), TextView.BufferType.SPANNABLE);
+                    } else
+                        mBodyView.setVisibility(View.GONE);
 
                     long yourmilliseconds = (long) post.timestamp;
                     if (prettyTime != null)

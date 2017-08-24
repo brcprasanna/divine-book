@@ -16,6 +16,7 @@
 
 package ram.king.com.divinebook.activity;
 
+import android.content.Intent;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -26,14 +27,22 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.io.IOException;
 
@@ -41,6 +50,7 @@ import ram.king.com.divinebook.R;
 import ram.king.com.divinebook.fragment.UserAllPostFragment;
 import ram.king.com.divinebook.util.AppConstants;
 import ram.king.com.divinebook.util.AppUtil;
+import ram.king.com.divinebook.util.MessageEvent;
 
 public class UserAllPostActivity extends BaseActivity{
 
@@ -48,6 +58,7 @@ public class UserAllPostActivity extends BaseActivity{
 
     private FragmentPagerAdapter mPagerAdapter;
     private ViewPager mViewPager;
+    private EditText edtSearch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +74,23 @@ public class UserAllPostActivity extends BaseActivity{
 
         final String userName = getIntent().getStringExtra(AppConstants.EXTRA_DISPLAY_NAME);
 
+
+        edtSearch = (EditText) findViewById(R.id.edtSearch);
+
+        edtSearch.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView textView, int actionId, KeyEvent keyEvent) {
+                if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                    //performSearch();
+                    if (edtSearch.getText().length() > 0) {
+                        AppUtil.putString(UserAllPostActivity.this,AppConstants.SEARCH_TEXT,edtSearch.getText().toString());
+                        EventBus.getDefault().post(new MessageEvent("search"));
+                    }
+                    return true;
+                }
+                return false;
+            }
+        });
 
         // Create the adapter that will return a fragment for each section
         mPagerAdapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
@@ -99,12 +127,33 @@ public class UserAllPostActivity extends BaseActivity{
         findViewById(R.id.fab_new_post).setVisibility(View.GONE);
     }
 
-
+    @Override
+    protected void onStop() {
+        edtSearch.setVisibility(View.GONE);
+        super.onStop();
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        //getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_search, menu);
         return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        edtSearch.setVisibility(View.GONE);
+        super.onBackPressed();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int i = item.getItemId();
+        if (i == R.id.action_search) {
+            edtSearch.setVisibility(View.VISIBLE);
+            edtSearch.requestFocus();
+            return true;
+        } else
+            return super.onOptionsItemSelected(item);
     }
 
 /*

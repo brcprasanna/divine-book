@@ -223,7 +223,7 @@ public abstract class PostListFragment extends BaseFragment{
 
 
                 // Bind Post to ViewHolder, setting OnClickListener for the star button
-                viewHolder.bindToPost(model, new View.OnClickListener() {
+                viewHolder.bindToPost(activity,model, new View.OnClickListener() {
                     @Override
                     public void onClick(View starView) {
                         onClickStar(starView, postRef, model);
@@ -436,6 +436,9 @@ public abstract class PostListFragment extends BaseFragment{
                 ((AppCompatActivity) activity).getSupportActionBar().setTitle(getResources().getString(R.string.app_name));
         } else if (event.getMessage().equals("refresh")) {
             mManager.scrollToPositionWithOffset(mAdapter.getItemCount(), 0);
+        } else if (event.getMessage().equals("search"))
+        {
+            getQuery(mDatabase);
         }
     }
 

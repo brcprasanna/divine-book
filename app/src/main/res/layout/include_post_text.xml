@@ -43,12 +43,6 @@
 
         tools:text="Courtesy" />
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/toggleLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
         <TextView
             android:id="@+id/post_body"
             style="@style/TextAppearance.AppCompat.Medium"
@@ -67,6 +61,11 @@
             android:visibility="gone"
             style="@style/Widget.AppCompat.Button.Colored"/>
 -->
-    </LinearLayout>
+    <ImageView
+        android:id="@+id/post_image"
+        style="@style/TextAppearance.AppCompat.Medium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="Courtesy" />
 
 </LinearLayout>

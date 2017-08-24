@@ -42,6 +42,7 @@ public class TextEditorActivity extends Activity {
     String mCourtesy;
     String mBackupComposeText;
     String mAudio;
+	String mImage;
 
     /*private static final String BOLD = "<b>Bold</b><br><br>";
     private static final String ITALIT = "<i>Italic</i><br><br>";
@@ -64,6 +65,7 @@ public class TextEditorActivity extends Activity {
         mDedicatedTo = getIntent().getExtras().get("dedicated_to").toString();
         mCourtesy = getIntent().getExtras().get("courtesy").toString();
         mBackupComposeText = getIntent().getExtras().get("ComposeText").toString();
+		mImage = getIntent().getExtras().get("image").toString();
         mAudio = getIntent().getExtras().get("audio").toString();
 
         getActionBar().setTitle("Compose");
@@ -343,7 +345,8 @@ public class TextEditorActivity extends Activity {
                                     Toast.LENGTH_SHORT).show();
                         } else {
                             // Write new post
-                            writeNewPost(userId, user.displayName, mTitle, mBody, user.photoUrl, mDedicatedTo, mCourtesy,mAudio);
+                            writeNewPost(userId, user.displayName, mTitle, mBody, user.photoUrl, mDedicatedTo, mCourtesy, mAudio,mImage);
+                            AppUtil.deleteTempFolder(TextEditorActivity.this);
                         }
                         setResult(RESULT_OK);
                         EventBus.getDefault().post(new MessageEvent("refresh"));
@@ -357,11 +360,11 @@ public class TextEditorActivity extends Activity {
                 });
     }
 
-    private void writeNewPost(String userId, String displayName, String title, String body, String photoUrl, String dedicatedTo, String courtesy, String audio) {
+    private void writeNewPost(String userId, String displayName, String title, String body, String photoUrl, String dedicatedTo, String courtesy, String audio, String image) {
         // Create new post at /user-posts/$userid/$postid and at
         // /posts/$postid simultaneously
         String key = mDatabase.child("posts").push().getKey();
-        Post post = new Post(userId, displayName, title, body, photoUrl, dedicatedTo, courtesy, AppUtil.getString(this, AppConstants.PREFERRED_LANGUAGE, AppConstants.DEFAULT_LANGUAGE),audio);
+        Post post = new Post(userId, displayName, title, body, photoUrl, dedicatedTo, courtesy, AppUtil.getString(this, AppConstants.PREFERRED_LANGUAGE, AppConstants.DEFAULT_LANGUAGE),audio, image);
         Map<String, Object> postValues = post.toMap();
 
         Map<String, Object> childUpdates = new HashMap<>();

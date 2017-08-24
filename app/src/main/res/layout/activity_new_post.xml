@@ -11,6 +11,7 @@
              android:layout_height="fill_parent"/>
      -->
     <RelativeLayout
+        android:id="@+id/parentLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
@@ -36,11 +37,49 @@
         </android.support.design.widget.TextInputLayout>
 
         <LinearLayout
+            android:id="@+id/textLayoutSetImageLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textLayoutTitle"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+
+            android:weightSum="1">
+
+            <TextView
+                android:id="@+id/textViewSetImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="0.5"
+                android:text="Image (Optional)"></TextView>
+
+            <ImageButton
+                android:id="@+id/btnAttachImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:src="@drawable/ic_attachment_black_24dp" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/attachedImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textLayoutSetImageLayout"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:visibility="gone" />
+        <LinearLayout
             android:id="@+id/textLayoutSetAudioLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_below="@id/textLayoutTitle"
+            android:layout_below="@id/attachedImage"
             android:layout_marginBottom="5dp"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
@@ -66,7 +105,7 @@
                 android:singleLine="false" />
         </android.support.design.widget.TextInputLayout>
 <ImageButton
-    android:id="@+id/btnAttach"
+    android:id="@+id/btnAttachAudio"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:src="@drawable/ic_attachment_black_24dp"
