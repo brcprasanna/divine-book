@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <EditText
+    <!--<EditText
         android:layout_alignParentTop="true"
         android:id="@+id/edtSearch"
         android:layout_width="match_parent"
@@ -13,15 +13,14 @@
         android:imeOptions="actionSearch"
         android:inputType="text"
         android:visibility="gone"/>
-
+-->
     <android.support.design.widget.TabLayout
         android:id="@+id/tabs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary" app:tabIndicatorColor="@color/white"
         app:tabIndicatorHeight="5dp"
-        app:tabSelectedTextColor="@color/white"
-        android:layout_below="@id/edtSearch"/>
+        app:tabSelectedTextColor="@color/white" />
 
     <android.support.v4.view.ViewPager
         android:id="@+id/container"

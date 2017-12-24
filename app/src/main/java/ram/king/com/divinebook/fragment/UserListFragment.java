@@ -40,15 +40,14 @@ public abstract class UserListFragment extends BaseFragment {
     // [END define_database_reference]
     String preferredLanguage;
     Intent userAllPostIntent;
+    Uri photoUrl;
     // [START define_database_reference]
     private DatabaseReference mDatabase;
     private FirebaseRecyclerAdapter<User, UserViewHolder> mAdapter;
     private RecyclerView mRecycler;
     private LinearLayoutManager mManager;
-    private ProgressBar mProgressBar;
     //private InterstitialAd mInterstitialAd;
-
-    Uri photoUrl;
+    private ProgressBar mProgressBar;
 
     public UserListFragment() {
     }
@@ -278,9 +277,18 @@ public abstract class UserListFragment extends BaseFragment {
 
                     viewHolder.author.setText(AppConstants.LAKSHMI_MANTRAS_NAME);
                 }
+                //Purana english
+                else if (model.email.equals(AppConstants.PURANAS_STORY_EMAIL)) {
+                    photoUrl = Uri.parse(AppConstants.PURANAS_STORY_IMAGE);
+                    Glide
+                            .with(activity)
+                            .load(photoUrl)
+                            .into(viewHolder.authorPhoto);
+
+                    viewHolder.author.setText(AppConstants.PURANAS_STORY_NAME);
+                }
                 //lakshmi tamil
-                else if (model.email.equals(AppConstants.LAKSHMI_MANTRAS_EMAIL_TAMIL))
-                {
+                else if (model.email.equals(AppConstants.LAKSHMI_MANTRAS_EMAIL_TAMIL)) {
                     photoUrl = Uri.parse(AppConstants.LAKSHMI_MANTRAS_IMAGE);
                     Glide
                             .with(activity)
@@ -344,8 +352,16 @@ public abstract class UserListFragment extends BaseFragment {
                     viewHolder.author.setText(AppConstants.UPANISHAD_NAME_TAMIL);
 
                 }
-                else
-                {
+                //Purana tamil
+                else if (model.email.equals(AppConstants.PURANAS_STORY_EMAIL_TAMIL)) {
+                    photoUrl = Uri.parse(AppConstants.PURANAS_STORY_IMAGE);
+                    Glide
+                            .with(activity)
+                            .load(photoUrl)
+                            .into(viewHolder.authorPhoto);
+
+                    viewHolder.author.setText(AppConstants.PURANAS_STORY_NAME_TAMIL);
+                } else {
                     Glide
                             .with(activity)
                             .load(model.photoUrl)
@@ -416,8 +432,6 @@ public abstract class UserListFragment extends BaseFragment {
             mManager.scrollToPositionWithOffset(mAdapter.getItemCount(), 0);
         }
     }
-
-    ;
 
     @Override
     public void onResume() {

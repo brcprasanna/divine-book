@@ -2,8 +2,6 @@ package ram.king.com.divinebook.activity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.media.AudioManager;
-import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -15,16 +13,14 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.jean.jcplayer.JcAudio;
 import com.example.jean.jcplayer.JcPlayerView;
-import com.github.chrisbanes.photoview.PhotoView;
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -45,7 +41,6 @@ import com.mikhaellopez.circularimageview.CircularImageView;
 
 import org.ocpsoft.prettytime.PrettyTime;
 
-import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -72,7 +67,7 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
     private TextView mDedicatedToView;
     private TextView mCourtesyView;
 
-	private PhotoView mImage;
+    private SimpleDraweeView mImage;
     private DatabaseReference mDatabase;
     private Menu menu;
 
@@ -117,7 +112,7 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
         mCourtesyView = (TextView) findViewById(R.id.post_courtesy);
 
 
-		mImage = (PhotoView) findViewById(R.id.post_detail_image);
+        mImage = (SimpleDraweeView) findViewById(R.id.post_detail_image);
         ImageButton btnNext = (ImageButton)this.findViewById(com.example.jean.jcplayer.R.id.btn_next);
         ImageButton btnPrev = (ImageButton)this.findViewById(com.example.jean.jcplayer.R.id.btn_prev);
         btnPlay = (ImageButton)this.findViewById(com.example.jean.jcplayer.R.id.btn_play);
@@ -267,13 +262,16 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
                     } else {
                         jcplayerView.setVisibility(View.GONE);
                     }
-					
-					if (!TextUtils.isEmpty(post.image)) {
+
+                    if (!TextUtils.isEmpty(post.image)) {
                         mImage.setVisibility(View.VISIBLE);
-                        Glide.with(PostDetailActivity.this)
+                        mImage.setImageURI(Uri.parse(post.image));
+                        /*Glide.with(PostDetailActivity.this)
                                 .load(post.image)
                                 .into(mImage);
-                        mImage.setScaleType(ImageView.ScaleType.FIT_XY);
+                        mImage.setScaleType(ImageView.ScaleType.FIT_XY);*/
+                    } else {
+                        mImage.setVisibility(View.GONE);
                     }
 
 

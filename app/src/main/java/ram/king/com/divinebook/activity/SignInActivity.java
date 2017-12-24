@@ -8,7 +8,6 @@ import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
-import android.widget.ToggleButton;
 
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -169,7 +168,8 @@ public class SignInActivity extends BaseActivity implements GoogleApiClient.OnCo
                     user.getEmail().equals(AppConstants.KRISHNA_MANTRAS_EMAIL) ||
                     user.getEmail().equals(AppConstants.RAMANUJAR_MANTRAS_EMAIL) ||
                     user.getEmail().equals(AppConstants.LAKSHMI_MANTRAS_EMAIL) ||
-                    user.getEmail().equals(AppConstants.UPANISHAD_EMAIL)) {
+                    user.getEmail().equals(AppConstants.UPANISHAD_EMAIL) ||
+                    user.getEmail().equals(AppConstants.PURANAS_STORY_EMAIL)) {
                 moderatorFlag = "1E";
                 AppUtil.putBoolean(SignInActivity.this,AppConstants.ADMIN_USER,true);
 
@@ -212,9 +212,10 @@ public class SignInActivity extends BaseActivity implements GoogleApiClient.OnCo
                 {
                     displayName = AppConstants.UPANISHAD_NAME;
                     photoUrl = AppConstants.UPANISHAD_MANTRAS_IMAGE;
-                }
-                else
-                {
+                } else if (user.getEmail().equals(AppConstants.PURANAS_STORY_EMAIL)) {
+                    displayName = AppConstants.PURANAS_STORY_NAME;
+                    photoUrl = AppConstants.PURANAS_STORY_IMAGE;
+                } else {
                     displayName = user.getDisplayName();
                     photoUrl = user.getPhotoUrl().toString();
                 }
@@ -228,7 +229,8 @@ public class SignInActivity extends BaseActivity implements GoogleApiClient.OnCo
                     user.getEmail().equals(AppConstants.RAMANUJAR_MANTRAS_EMAIL_TAMIL) ||
                     user.getEmail().equals(AppConstants.LAKSHMI_MANTRAS_EMAIL_TAMIL) ||
                     user.getEmail().equals(AppConstants.UPANISHAD_EMAIL_TAMIL) ||
-                    user.getEmail().equals(AppConstants.MURUGAN_MANTRAS_EMAIL_TAMIL))
+                    user.getEmail().equals(AppConstants.MURUGAN_MANTRAS_EMAIL_TAMIL) ||
+                    user.getEmail().equals(AppConstants.PURANAS_STORY_EMAIL_TAMIL))
             {
                 moderatorFlag = "1T";
                 AppUtil.putBoolean(SignInActivity.this,AppConstants.ADMIN_USER,true);
@@ -277,9 +279,10 @@ public class SignInActivity extends BaseActivity implements GoogleApiClient.OnCo
                 {
                     displayName = AppConstants.MURUGAN_MANTRAS_NAME_TAMIL;
                     photoUrl = AppConstants.MURUGAN_MANTRAS_IMAGE;
-                }
-                else
-                {
+                } else if (user.getEmail().equals(AppConstants.PURANAS_STORY_EMAIL_TAMIL)) {
+                    displayName = AppConstants.PURANAS_STORY_NAME_TAMIL;
+                    photoUrl = AppConstants.PURANAS_STORY_IMAGE;
+                } else {
                     displayName = user.getDisplayName();
                     photoUrl = user.getPhotoUrl().toString();
                 }

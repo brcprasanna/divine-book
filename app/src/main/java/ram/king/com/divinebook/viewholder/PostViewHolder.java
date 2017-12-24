@@ -1,18 +1,18 @@
 package ram.king.com.divinebook.viewholder;
 
 import android.app.Activity;
+import android.net.Uri;
 import android.os.Build;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.mikhaellopez.circularimageview.CircularImageView;
 
 import org.ocpsoft.prettytime.PrettyTime;
@@ -37,7 +37,7 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
     public ImageView share;
     public LinearLayout content;
     public RelativeLayout topUserLayout;
-    public ImageView image;
+    public SimpleDraweeView image;
     public ImageView play;
 
     PrettyTime p;
@@ -59,7 +59,7 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
         topUserLayout = (RelativeLayout) itemView.findViewById(R.id.post_author_layout);
         play = (ImageView) itemView.findViewById(R.id.button_audio);
         p = new PrettyTime();
-        image = (ImageView) itemView.findViewById(R.id.post_image);
+        image = (SimpleDraweeView) itemView.findViewById(R.id.post_image);
 
     }
 
@@ -76,17 +76,11 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
 
         if (!TextUtils.isEmpty(post.image)) {
             image.setVisibility(View.VISIBLE);
-            //image.setImageURI(Uri.parse(post.image));
-            Glide.with(activity)
-                    .load(post.image)
-                    .into(image);
-            image.setScaleType(ImageView.ScaleType.FIT_XY);
-
+            image.setImageURI(Uri.parse(post.image));
         } else {
-            Glide.with(activity)
-                    .load(android.R.drawable.screen_background_light_transparent)
-                    .into(image);
+            image.setVisibility(View.GONE);
         }
+
         authorView.setText(post.author);
 
         long yourmilliseconds = (long) post.timestamp;
