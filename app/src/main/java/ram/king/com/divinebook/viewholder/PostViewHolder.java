@@ -17,8 +17,6 @@ import com.mikhaellopez.circularimageview.CircularImageView;
 
 import org.ocpsoft.prettytime.PrettyTime;
 
-import java.util.Date;
-
 import ram.king.com.divinebook.R;
 import ram.king.com.divinebook.models.Post;
 
@@ -28,7 +26,7 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
     public CircularImageView authorPhoto;
     public TextView titleView;
     public TextView authorView;
-    public TextView date;
+    //public TextView date;
     public ImageView starView;
     public ImageView deleteView;
     public TextView bodyView;
@@ -48,7 +46,7 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
         authorPhoto = (CircularImageView) itemView.findViewById(R.id.post_author_photo);
         titleView = (TextView) itemView.findViewById(R.id.post_title);
         authorView = (TextView) itemView.findViewById(R.id.post_author);
-        date = (TextView) itemView.findViewById(R.id.post_date);
+        //date = (TextView) itemView.findViewById(R.id.post_date);
         starView = (ImageView) itemView.findViewById(R.id.button_star);
         deleteView = (ImageView) itemView.findViewById(R.id.delete);
         bodyView = (TextView) itemView.findViewById(R.id.post_body);
@@ -84,9 +82,9 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
         authorView.setText(post.author);
 
         long yourmilliseconds = (long) post.timestamp;
-        if (p != null)
+        /*if (p != null)
             date.setText(p.format(new Date(yourmilliseconds)));
-
+*/
         if (!TextUtils.isEmpty(post.dedicatedTo)) {
             dedicatedTo.setVisibility(View.VISIBLE);
             dedicatedTo.setText("Dedicated To : " + post.dedicatedTo);

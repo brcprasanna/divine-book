@@ -9,7 +9,7 @@
 
     <TextView
         android:id="@+id/post_title"
-        style="@style/TextAppearance.AppCompat.Headline"
+        style="@style/TextAppearance.AppCompat.Medium"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ellipsize="end"
@@ -27,7 +27,7 @@
         android:ellipsize="end"
         android:textColor="@color/black"
         android:textSize="16sp"
-        android:textStyle="italic|bold"
+        android:textStyle="italic"
         tools:text="Dedicated To" />
 
 
@@ -40,17 +40,27 @@
         android:ellipsize="end"
         android:textColor="@color/black"
         android:textSize="16sp"
-        android:textStyle="italic|bold"
+        android:textStyle="italic"
 
         tools:text="Courtesy" />
 
     <TextView
         android:id="@+id/post_body"
-        style="@style/TextAppearance.AppCompat.Medium"
+        style="@style/TextAppearance.AppCompat.Headline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textStyle="bold"
-        />
+        android:layout_marginBottom="10dp"
+        android:textSize="16sp" />
+
+    <!--
+        <com.github.chrisbanes.photoview.PhotoView
+            android:id="@+id/post_detail_image"
+            style="@style/TextAppearance.AppCompat.Medium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            tools:text="Courtesy" />
+    -->
 
     <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/post_detail_image"

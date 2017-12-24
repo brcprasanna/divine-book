@@ -43,7 +43,6 @@ import org.ocpsoft.prettytime.PrettyTime;
 
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
-import java.util.Date;
 
 import hotchemi.android.rate.AppRate;
 import hotchemi.android.rate.OnClickButtonListener;
@@ -63,7 +62,7 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
     private TextView mAuthorView;
     private TextView mTitleView;
     private TextView mBodyView;
-    private TextView mDateView;
+    //private TextView mDateView;
     private TextView mDedicatedToView;
     private TextView mCourtesyView;
 
@@ -107,7 +106,7 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
         mAuthorView = (TextView) findViewById(R.id.post_author);
         mTitleView = (TextView) findViewById(R.id.post_title);
         mBodyView = (TextView) findViewById(R.id.post_body);
-        mDateView = (TextView) findViewById(R.id.post_date);
+        //mDateView = (TextView) findViewById(R.id.post_date);
         mDedicatedToView = (TextView) findViewById(R.id.post_dedicated_to);
         mCourtesyView = (TextView) findViewById(R.id.post_courtesy);
 
@@ -284,10 +283,10 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
                     } else
                         mBodyView.setVisibility(View.GONE);
 
-                    long yourmilliseconds = (long) post.timestamp;
-                    if (prettyTime != null)
+                    //long yourmilliseconds = (long) post.timestamp;
+                    /*if (prettyTime != null)
                         mDateView.setText(prettyTime.format(new Date(yourmilliseconds)));
-
+*/
                     if (menu != null) {
                         MenuItem itemDelete = menu.findItem(R.id.menu_delete);
 

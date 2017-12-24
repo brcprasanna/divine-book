@@ -325,8 +325,8 @@ public class TextEditorActivity extends Activity {
     private void submitPost() {
         final String mBody = knife.toHtml();
 
-        if (TextUtils.isEmpty(mBody))
-            return;
+        //if (TextUtils.isEmpty(mBody))
+        //    return;
         // [START single_value_read]
         final String userId = getUid();
         mDatabase.child("users").child(userId).addListenerForSingleValueEvent(

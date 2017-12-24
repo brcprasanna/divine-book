@@ -60,8 +60,14 @@ public class AppConstants {
     public static final String PURANAS_STORY_EMAIL = "tm.storyenglish@gmail.com";
     public static final String PURANAS_STORY_NAME = "Purana Stories";
 
+    public static final String HANUMAN_MANTRAS_EMAIL = "tm.hanumanenglish@gmail.com";
+    public static final String HANUMAN_MANTRAS_NAME = "Hanuman Mantras";
+
     public static final String VISHNU_MANTRAS_EMAIL_TAMIL = "brc.prasannavishnuram@gmail.com";
     public static final String VISHNU_MANTRAS_NAME_TAMIL = "விஷ்ணு மந்திரம்";
+
+    public static final String HANUMAN_MANTRAS_EMAIL_TAMIL = "tm.hanumantamil@gmail.com";
+    public static final String HANUMAN_MANTRAS_NAME_TAMIL = "ஹனுமான் மந்திரம்";
 
     public static final String SHIVA_MANTRAS_EMAIL_TAMIL = "devotionalsongslyrics@gmail.com";
     public static final String SHIVA_MANTRAS_NAME_TAMIL = "சிவன் மந்திரம்";
@@ -100,6 +106,7 @@ public class AppConstants {
     public static final String RAMANUJAR_MANTRAS_IMAGE = "file:///android_asset/ramanujar.png";
     public static final String UPANISHAD_MANTRAS_IMAGE = "file:///android_asset/upanishad.png";
     public static final String PURANAS_STORY_IMAGE = "file:///android_asset/puranas.png";
+    public static final String HANUMAN_MANTRAS_IMAGE = "file:///android_asset/hanuman.png";
 
 
     public static final String SEARCH_TEXT = "search_text";

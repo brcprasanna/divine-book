@@ -169,7 +169,8 @@ public class SignInActivity extends BaseActivity implements GoogleApiClient.OnCo
                     user.getEmail().equals(AppConstants.RAMANUJAR_MANTRAS_EMAIL) ||
                     user.getEmail().equals(AppConstants.LAKSHMI_MANTRAS_EMAIL) ||
                     user.getEmail().equals(AppConstants.UPANISHAD_EMAIL) ||
-                    user.getEmail().equals(AppConstants.PURANAS_STORY_EMAIL)) {
+                    user.getEmail().equals(AppConstants.PURANAS_STORY_EMAIL) ||
+                    user.getEmail().equals(AppConstants.HANUMAN_MANTRAS_EMAIL)) {
                 moderatorFlag = "1E";
                 AppUtil.putBoolean(SignInActivity.this,AppConstants.ADMIN_USER,true);
 
@@ -215,6 +216,9 @@ public class SignInActivity extends BaseActivity implements GoogleApiClient.OnCo
                 } else if (user.getEmail().equals(AppConstants.PURANAS_STORY_EMAIL)) {
                     displayName = AppConstants.PURANAS_STORY_NAME;
                     photoUrl = AppConstants.PURANAS_STORY_IMAGE;
+                } else if (user.getEmail().equals(AppConstants.HANUMAN_MANTRAS_EMAIL)) {
+                    displayName = AppConstants.HANUMAN_MANTRAS_NAME;
+                    photoUrl = AppConstants.HANUMAN_MANTRAS_IMAGE;
                 } else {
                     displayName = user.getDisplayName();
                     photoUrl = user.getPhotoUrl().toString();
@@ -230,7 +234,8 @@ public class SignInActivity extends BaseActivity implements GoogleApiClient.OnCo
                     user.getEmail().equals(AppConstants.LAKSHMI_MANTRAS_EMAIL_TAMIL) ||
                     user.getEmail().equals(AppConstants.UPANISHAD_EMAIL_TAMIL) ||
                     user.getEmail().equals(AppConstants.MURUGAN_MANTRAS_EMAIL_TAMIL) ||
-                    user.getEmail().equals(AppConstants.PURANAS_STORY_EMAIL_TAMIL))
+                    user.getEmail().equals(AppConstants.PURANAS_STORY_EMAIL_TAMIL) ||
+                    user.getEmail().equals(AppConstants.HANUMAN_MANTRAS_EMAIL_TAMIL))
             {
                 moderatorFlag = "1T";
                 AppUtil.putBoolean(SignInActivity.this,AppConstants.ADMIN_USER,true);
@@ -282,6 +287,9 @@ public class SignInActivity extends BaseActivity implements GoogleApiClient.OnCo
                 } else if (user.getEmail().equals(AppConstants.PURANAS_STORY_EMAIL_TAMIL)) {
                     displayName = AppConstants.PURANAS_STORY_NAME_TAMIL;
                     photoUrl = AppConstants.PURANAS_STORY_IMAGE;
+                } else if (user.getEmail().equals(AppConstants.HANUMAN_MANTRAS_EMAIL_TAMIL)) {
+                    displayName = AppConstants.HANUMAN_MANTRAS_NAME_TAMIL;
+                    photoUrl = AppConstants.HANUMAN_MANTRAS_IMAGE;
                 } else {
                     displayName = user.getDisplayName();
                     photoUrl = user.getPhotoUrl().toString();
@@ -304,7 +312,7 @@ public class SignInActivity extends BaseActivity implements GoogleApiClient.OnCo
             AppUtil.getDynamicLink(this);
 
             //Redirecting on basis of first time login or not
-            boolean firstTimeLogin = AppUtil.getBoolean(this, AppConstants.FIRST_TIME_LOGIN, true);
+            boolean firstTimeLogin = false;//AppUtil.getBoolean(this, AppConstants.FIRST_TIME_LOGIN, true);
             if (firstTimeLogin)
                 startActivity(new Intent(SignInActivity.this, AppIntroActivity.class));
             else

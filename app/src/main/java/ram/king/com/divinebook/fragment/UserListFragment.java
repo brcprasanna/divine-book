@@ -287,6 +287,16 @@ public abstract class UserListFragment extends BaseFragment {
 
                     viewHolder.author.setText(AppConstants.PURANAS_STORY_NAME);
                 }
+                //hanuman english
+                else if (model.email.equals(AppConstants.HANUMAN_MANTRAS_EMAIL)) {
+                    photoUrl = Uri.parse(AppConstants.HANUMAN_MANTRAS_IMAGE);
+                    Glide
+                            .with(activity)
+                            .load(photoUrl)
+                            .into(viewHolder.authorPhoto);
+
+                    viewHolder.author.setText(AppConstants.HANUMAN_MANTRAS_NAME);
+                }
                 //lakshmi tamil
                 else if (model.email.equals(AppConstants.LAKSHMI_MANTRAS_EMAIL_TAMIL)) {
                     photoUrl = Uri.parse(AppConstants.LAKSHMI_MANTRAS_IMAGE);
@@ -361,6 +371,15 @@ public abstract class UserListFragment extends BaseFragment {
                             .into(viewHolder.authorPhoto);
 
                     viewHolder.author.setText(AppConstants.PURANAS_STORY_NAME_TAMIL);
+                }//hanuman tamil
+                else if (model.email.equals(AppConstants.HANUMAN_MANTRAS_EMAIL_TAMIL)) {
+                    photoUrl = Uri.parse(AppConstants.HANUMAN_MANTRAS_IMAGE);
+                    Glide
+                            .with(activity)
+                            .load(photoUrl)
+                            .into(viewHolder.authorPhoto);
+
+                    viewHolder.author.setText(AppConstants.HANUMAN_MANTRAS_NAME_TAMIL);
                 } else {
                     Glide
                             .with(activity)
