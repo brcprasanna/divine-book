@@ -109,7 +109,7 @@
     <string name="sign_up">Sign Up</string>
     <string name="heading_recent">All</string>
     <string name="heading_my_posts">Select</string>
-    <string name="heading_my_favourites">My Bookmarks</string>
+    <string name="heading_my_favourites">My Favourites</string>
 
     <string name="heading_all_posts">All Posts from the User</string>
 
@@ -165,4 +165,6 @@
     <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
     //
     <string name="real_banner_ad_unit_id">ca-app-pub-2679883314308328/6811394906</string>
+    <string name="added_to_fav">Added to your favourites</string>
+    <string name="removed_from_fav">Removed from your favourites</string>
 </resources>

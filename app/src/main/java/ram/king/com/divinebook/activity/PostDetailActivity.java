@@ -31,6 +31,8 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.MutableData;
+import com.google.firebase.database.Transaction;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.dynamiclinks.DynamicLink;
 import com.google.firebase.dynamiclinks.FirebaseDynamicLinks;
@@ -43,6 +45,8 @@ import org.ocpsoft.prettytime.PrettyTime;
 
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import hotchemi.android.rate.AppRate;
 import hotchemi.android.rate.OnClickButtonListener;
@@ -287,7 +291,13 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
                         mDateView.setText(prettyTime.format(new Date(yourmilliseconds)));
 */
                     if (menu != null) {
+                        MenuItem itemLike = menu.findItem(R.id.menu_like);
                         MenuItem itemDelete = menu.findItem(R.id.menu_delete);
+                        if (post != null && post.stars.containsKey(getUid())) {
+                            itemLike.setIcon(R.drawable.ic_favorite_white_24dp);
+                        } else {
+                            itemLike.setIcon(R.drawable.ic_favorite_border_white_24dp);
+                        }
 
                         if (post != null && post.uid.equals(getUid())) {
                             itemDelete.setVisible(true);
@@ -398,7 +408,13 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
     public boolean onCreateOptionsMenu(Menu menu) {
         this.menu = menu;
         getMenuInflater().inflate(R.menu.menu_detail, menu);
+        MenuItem itemLike = menu.findItem(R.id.menu_like);
         MenuItem itemDelete = menu.findItem(R.id.menu_delete);
+        if (post != null && post.stars.containsKey(getUid())) {
+            itemLike.setIcon(R.drawable.ic_favorite_white_24dp);
+        } else {
+            itemLike.setIcon(R.drawable.ic_favorite_border_white_24dp);
+        }
 
         if (post != null && post.uid.equals(getUid())) {
             itemDelete.setVisible(true);
@@ -411,7 +427,10 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int i = item.getItemId();
-        if (i == R.id.menu_share) {
+        if (i == R.id.menu_like) {
+            onClickStar();
+            return true;
+        } else if (i == R.id.menu_share) {
             try {
                 createShortDynamicLink(Uri.parse(AppConstants.DEEP_LINK_URL + "/" + mPostReference.toString()), 0, post.author, post.title);
             } catch (UnsupportedEncodingException e) {
@@ -447,6 +466,61 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
             return true;
         } else
             return super.onOptionsItemSelected(item);
+    }
+
+    private void onClickStar() {
+
+        // Need to write to both places the post is stored
+        DatabaseReference globalPostRef = mDatabase.child("posts").child(mPostReference.getKey());
+        DatabaseReference userPostRef = mDatabase.child("user-posts").child(post.uid).child(mPostReference.getKey());
+
+        // Run two transactions
+
+        onStarClicked(globalPostRef);
+        onStarClicked(userPostRef);
+
+    }
+
+    private void onStarClicked(final DatabaseReference postRef) {
+        postRef.runTransaction(new Transaction.Handler() {
+            @Override
+            public Transaction.Result doTransaction(MutableData mutableData) {
+                Post p = mutableData.getValue(Post.class);
+                if (p == null) {
+                    return Transaction.success(mutableData);
+                }
+
+                if (p.stars.containsKey(getUid())) {
+                    // Unstar the post and remove self from stars
+                    p.starCount = p.starCount - 1;
+                    p.stars.remove(getUid());
+                    mDatabase.child("star-user-posts").child(getUid()).child(postRef.getKey()).removeValue();
+                    //Toast.makeText(PostDetailActivity.this,R.string.removed_from_fav,Toast.LENGTH_SHORT).show();
+                } else {
+                    // Star the post and add self to stars
+                    p.starCount = p.starCount + 1;
+                    p.stars.put(getUid(), true);
+                    Map<String, Object> postValues = p.toMap();
+
+                    Map<String, Object> childUpdates = new HashMap<>();
+                    childUpdates.put("/star-user-posts/" + getUid() + "/" + postRef.getKey(), postValues);
+
+                    mDatabase.updateChildren(childUpdates);
+                    //Toast.makeText(PostDetailActivity.this,R.string.added_to_fav,Toast.LENGTH_SHORT).show();
+                }
+
+                // Set value and report transaction success
+                mutableData.setValue(p);
+                return Transaction.success(mutableData);
+            }
+
+            @Override
+            public void onComplete(DatabaseError databaseError, boolean b,
+                                   DataSnapshot dataSnapshot) {
+                // Transaction completed
+                Log.d(TAG, "postTransaction:onComplete:" + databaseError);
+            }
+        });
     }
 
     private void createShortDynamicLink(@NonNull Uri deepLink, int minVersion, final String author, final String title) throws UnsupportedEncodingException {

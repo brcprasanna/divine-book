@@ -450,6 +450,7 @@ public abstract class PostListFragment extends BaseFragment {
                     p.starCount = p.starCount - 1;
                     p.stars.remove(getUid());
                     mDatabase.child("star-user-posts").child(getUid()).child(postRef.getKey()).removeValue();
+                    //Toast.makeText(activity,R.string.removed_from_fav,Toast.LENGTH_SHORT).show();
                 } else {
                     // Star the post and add self to stars
                     p.starCount = p.starCount + 1;
@@ -460,6 +461,7 @@ public abstract class PostListFragment extends BaseFragment {
                     childUpdates.put("/star-user-posts/" + getUid() + "/" + postRef.getKey(), postValues);
 
                     mDatabase.updateChildren(childUpdates);
+                    //Toast.makeText(activity,R.string.added_to_fav,Toast.LENGTH_SHORT).show();
                 }
 
                 // Set value and report transaction success
