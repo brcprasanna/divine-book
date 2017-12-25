@@ -9,11 +9,11 @@
 
     <TextView
         android:id="@+id/post_title"
-        style="@style/TextAppearance.AppCompat.Headline"
+        style="@style/TextAppearance.AppCompat.Medium"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ellipsize="end"
-        android:textColor="@color/black"
+        android:textColor="@color/purple"
         android:textSize="16sp"
         android:textStyle="bold"
         tools:text="My First Post" />
@@ -27,7 +27,7 @@
         android:ellipsize="end"
         android:textColor="@color/black"
         android:textSize="16sp"
-        android:textStyle="italic|bold"
+        android:textStyle="italic"
         tools:text="Dedicated To" />
 
 
@@ -38,7 +38,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
         android:ellipsize="end"
-        android:textColor="@color/black"
+        android:textColor="@color/blue"
         android:textSize="16sp"
         android:textStyle="italic|bold"
 
@@ -46,11 +46,14 @@
 
     <TextView
         android:id="@+id/post_body"
-        style="@style/TextAppearance.AppCompat.Medium"
+        style="@style/TextAppearance.AppCompat.Headline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ellipsize="end"
-        android:maxLines="8"
+        android:layout_marginBottom="10dp"
+        android:ellipsize="middle"
+        android:maxLines="2"
+        android:textColor="@color/blue_600"
+        android:textSize="16sp"
         android:textStyle="bold" />
 
     <!-- Optional parameter animation_duration: sets the duration of the expand animation -->
