@@ -15,6 +15,7 @@
         android:paddingTop="86dp">
 
         //ToDo thoughtsmate
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="72dp"
@@ -51,5 +52,5 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:visibility="visible" />
-</LinearLayout>
+    </LinearLayout>
 </ScrollView>

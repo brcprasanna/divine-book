@@ -132,7 +132,7 @@ public class MainActivity extends BaseActivity {
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
 
-        boolean adminToogle = AppUtil.getBoolean(MainActivity.this,AppConstants.ADMIN_USER,false);
+        boolean adminToogle = AppUtil.getBoolean(MainActivity.this, AppConstants.ADMIN_USER, false);
         if (adminToogle)
             findViewById(R.id.fab_new_post).setVisibility(View.VISIBLE);
         else
@@ -216,7 +216,7 @@ public class MainActivity extends BaseActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
-        MenuItem menuItem  = menu.getItem(1);
+        MenuItem menuItem = menu.getItem(1);
         String prefLanguage = AppUtil.getString(this, AppConstants.PREFERRED_LANGUAGE, AppConstants.DEFAULT_LANGUAGE);
         //getSupportActionBar().setTitle(getResources().getString(R.string.app_name) + " " + "(" + prefLanguage + ")");
         if (prefLanguage.equals(AppConstants.TAMIL_LANGUAGE))
@@ -236,7 +236,8 @@ public class MainActivity extends BaseActivity {
         else
             menuItem.setIcon(R.drawable.ic_tamil);
 
-        */return super.onPrepareOptionsMenu(menu);
+        */
+        return super.onPrepareOptionsMenu(menu);
     }
 
     @Override
@@ -281,8 +282,7 @@ public class MainActivity extends BaseActivity {
                 if (strName.equals(AppConstants.TAMIL_LANGUAGE)) {
                     getSupportActionBar().setTitle(getResources().getString(R.string.app_name_tamil));
                     menuItem.setIcon(R.drawable.ic_english);
-                }
-                else {
+                } else {
                     getSupportActionBar().setTitle(getResources().getString(R.string.app_name));
                     menuItem.setIcon(R.drawable.ic_tamil);
                 }

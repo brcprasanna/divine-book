@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -26,15 +27,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/background_border"
-                android:padding="10dp"
-               >
+                android:padding="10dp">
 
                 <include
                     layout="@layout/include_post_author_detail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    />
+                    android:layout_alignParentLeft="true" />
 
             </RelativeLayout>
 
@@ -42,9 +41,7 @@
                 android:id="@+id/jcplayer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/post_author_layout"
-                />
-
+                android:layout_below="@id/post_author_layout" />
 
 
             <include
@@ -61,6 +58,14 @@
 
 
     </android.support.v4.widget.NestedScrollView>
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        ads:adSize="BANNER"
+        ads:adUnitId="@string/banner_ad_unit_id" />
 
 
 </RelativeLayout>

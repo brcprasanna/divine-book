@@ -2,21 +2,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".activity.PostDetailActivity">
-    <!--<group>
+    <group>
         <item
             android:id="@+id/menu_like"
             android:icon="@drawable/ic_favorite_border_white_24dp"
-            android:title="Like"
+            android:title="Bookmark"
             android:visible="true"
             app:showAsAction="always" />
 
-        <item
+        <!--<item
             android:id="@+id/menu_like_num"
             android:title="0"
             android:visible="true"
-            app:showAsAction="always" />
+            app:showAsAction="always" />-->
     </group>
--->
+
     <item
         android:id="@+id/menu_share"
         android:icon="@drawable/ic_share_white_24dp"

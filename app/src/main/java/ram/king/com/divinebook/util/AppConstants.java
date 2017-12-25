@@ -5,7 +5,7 @@ package ram.king.com.divinebook.util;
  */
 
 public class AppConstants {
-    public static final String[] languages = new String[]{"English","Tamil"};
+    public static final String[] languages = new String[]{"English", "Tamil"};
     public static final String PREFERRED_LANGUAGE = "PREFERRED_LANGUAGE";
     public static final String DEFAULT_LANGUAGE = "English";
     public static final String TAMIL_LANGUAGE = "Tamil";
@@ -97,7 +97,7 @@ public class AppConstants {
     public static final String PURANAS_STORY_NAME_TAMIL = "புராணக் கதைகள்";
 
     public static final String VISHNU_MANTRAS_IMAGE = "file:///android_asset/vishnu.png";
-    public static final String SHIVA_MANTRAS_IMAGE ="file:///android_asset/shiva.png";
+    public static final String SHIVA_MANTRAS_IMAGE = "file:///android_asset/shiva.png";
     public static final String SAIBABA_MANTRAS_IMAGE = "file:///android_asset/saibaba.png";
     public static final String GANAPATHY_MANTRAS_IMAGE = "file:///android_asset/ganapathy.png";
     public static final String KRISHNA_MANTRAS_IMAGE = "file:///android_asset/krishna.png";

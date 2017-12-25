@@ -50,7 +50,7 @@ import ram.king.com.divinebook.R;
 import ram.king.com.divinebook.models.Post;
 import ram.king.com.divinebook.util.AppConstants;
 
-public class PostDetailActivity extends BaseActivity implements View.OnClickListener{
+public class PostDetailActivity extends BaseActivity implements View.OnClickListener {
 
     private static final String TAG = "PostDetailActivity";
     Post post;
@@ -112,9 +112,9 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
 
 
         mImage = (SimpleDraweeView) findViewById(R.id.post_detail_image);
-        ImageButton btnNext = (ImageButton)this.findViewById(com.example.jean.jcplayer.R.id.btn_next);
-        ImageButton btnPrev = (ImageButton)this.findViewById(com.example.jean.jcplayer.R.id.btn_prev);
-        btnPlay = (ImageButton)this.findViewById(com.example.jean.jcplayer.R.id.btn_play);
+        ImageButton btnNext = (ImageButton) this.findViewById(com.example.jean.jcplayer.R.id.btn_next);
+        ImageButton btnPrev = (ImageButton) this.findViewById(com.example.jean.jcplayer.R.id.btn_prev);
+        btnPlay = (ImageButton) this.findViewById(com.example.jean.jcplayer.R.id.btn_play);
 
         btnNext.setVisibility(View.GONE);
         btnPrev.setVisibility(View.GONE);
@@ -157,10 +157,10 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
         storageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
-                    // Download url of file
-                    final String url = uri.toString();
+                // Download url of file
+                final String url = uri.toString();
                 ArrayList<JcAudio> jcAudios = new ArrayList<>();
-                jcAudios.add(JcAudio.createFromURL("",url));
+                jcAudios.add(JcAudio.createFromURL("", url));
                 jcplayerView.initPlaylist(jcAudios);
             }
         })
@@ -217,10 +217,9 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
         super.onStart();
 
 
-
     }
 
-    private void retrievePostInstance(){
+    private void retrievePostInstance() {
         // Add value event listener to the post
         // [START post_value_event_listener]
         ValueEventListener postListener = new ValueEventListener() {
@@ -379,6 +378,7 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
         mPostListener = postListener;
 
     }
+
     @Override
     public void onStop() {
         super.onStop();

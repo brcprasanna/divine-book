@@ -61,7 +61,7 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
 
     }
 
-    public void bindToPost(Activity activity,Post post, View.OnClickListener starClickListener,
+    public void bindToPost(Activity activity, Post post, View.OnClickListener starClickListener,
                            View.OnClickListener deleteClickListener, View.OnClickListener contentListener,
                            View.OnClickListener shareListener, View.OnClickListener topUserLayoutListener,
                            View.OnClickListener playListener) {
@@ -112,7 +112,7 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
                 bodyView.setText(Html.fromHtml(post.body), TextView.BufferType.SPANNABLE);
         } else
             bodyView.setVisibility(View.GONE);
-			
+
         starView.setOnClickListener(starClickListener);
         deleteView.setOnClickListener(deleteClickListener);
         content.setOnClickListener(contentListener);

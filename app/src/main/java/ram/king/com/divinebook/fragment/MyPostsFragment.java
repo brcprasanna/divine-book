@@ -16,7 +16,7 @@ public class MyPostsFragment extends UserListFragment {
         // All my posts
         //showProgressDialog();
         Query myPostsQuery;
-        String prefLang = AppUtil.getString(activity,AppConstants.PREFERRED_LANGUAGE,AppConstants.DEFAULT_LANGUAGE);
+        String prefLang = AppUtil.getString(activity, AppConstants.PREFERRED_LANGUAGE, AppConstants.DEFAULT_LANGUAGE);
         if (prefLang.equals(AppConstants.DEFAULT_LANGUAGE))
             myPostsQuery = databaseReference.child("users").orderByChild("moderatorFlag").equalTo("1E");
         else

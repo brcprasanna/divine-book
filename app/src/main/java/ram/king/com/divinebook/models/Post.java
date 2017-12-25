@@ -21,7 +21,7 @@ public class Post {
     public String dedicatedTo;
     public String courtesy;
     public String language;
-	public String image;
+    public String image;
     public String audio;
     public Object timestamp;
 
@@ -40,7 +40,7 @@ public class Post {
         this.courtesy = courtesy;
         this.language = language;
         this.audio = audio;
-		this.image = image;
+        this.image = image;
         HashMap<String, Object> timestampNow = new HashMap<>();
         timestampNow.put("timestamp", ServerValue.TIMESTAMP);
         this.timestamp = ServerValue.TIMESTAMP;
@@ -61,8 +61,8 @@ public class Post {
         result.put("dedicatedTo", dedicatedTo);
         result.put("courtesy", courtesy);
         result.put("language", language);
-        result.put("audio",audio);
-		result.put("image", image);
+        result.put("audio", audio);
+        result.put("image", image);
         result.put("timestamp", timestamp);
         return result;
     }

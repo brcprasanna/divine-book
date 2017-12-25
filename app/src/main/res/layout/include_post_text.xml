@@ -44,23 +44,23 @@
 
         tools:text="Courtesy" />
 
-        <TextView
-            android:id="@+id/post_body"
-            style="@style/TextAppearance.AppCompat.Medium"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:maxLines="8"
-            android:textStyle="bold"/>
+    <TextView
+        android:id="@+id/post_body"
+        style="@style/TextAppearance.AppCompat.Medium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="8"
+        android:textStyle="bold" />
 
-        <!-- Optional parameter animation_duration: sets the duration of the expand animation -->
+    <!-- Optional parameter animation_duration: sets the duration of the expand animation -->
 
-        <!--<Button
-            android:id="@+id/button_toggle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="gone"
-            style="@style/Widget.AppCompat.Button.Colored"/>
+    <!--<Button
+        android:id="@+id/button_toggle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        style="@style/Widget.AppCompat.Button.Colored"/>
 -->
     <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/post_image"

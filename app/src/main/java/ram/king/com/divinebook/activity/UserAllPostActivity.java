@@ -29,7 +29,7 @@ import ram.king.com.divinebook.fragment.UserAllPostFragment;
 import ram.king.com.divinebook.util.AppConstants;
 import ram.king.com.divinebook.util.AppUtil;
 
-public class UserAllPostActivity extends BaseActivity{
+public class UserAllPostActivity extends BaseActivity {
 
     private static final String TAG = "UserAllPostActivity";
 
@@ -123,7 +123,7 @@ public class UserAllPostActivity extends BaseActivity{
             edtSearch.requestFocus();
             return true;
         } else*/
-            return super.onOptionsItemSelected(item);
+        return super.onOptionsItemSelected(item);
     }
 
 /*

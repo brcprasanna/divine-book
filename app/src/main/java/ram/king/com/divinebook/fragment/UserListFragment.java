@@ -123,8 +123,6 @@ public abstract class UserListFragment extends BaseFragment {
         mInterstitialAd.loadAd(adRequest);
     }*/
     // [END request_new_interstitial]
-
-
     public void setupAdapterWithQuery() {
         Query usersQuery = getQuery(mDatabase);
 
@@ -157,8 +155,7 @@ public abstract class UserListFragment extends BaseFragment {
 
                 //Custom email and icon
                 //vishnu
-                if (model.email.equals(AppConstants.VISHNU_MANTRAS_EMAIL))
-                {
+                if (model.email.equals(AppConstants.VISHNU_MANTRAS_EMAIL)) {
                     photoUrl = Uri.parse(AppConstants.VISHNU_MANTRAS_IMAGE);
                     Glide
                             .with(activity)
@@ -168,8 +165,7 @@ public abstract class UserListFragment extends BaseFragment {
                     viewHolder.author.setText(AppConstants.VISHNU_MANTRAS_NAME);
                 }
                 //vishnu tamil
-                else if (model.email.equals(AppConstants.VISHNU_MANTRAS_EMAIL_TAMIL))
-                {
+                else if (model.email.equals(AppConstants.VISHNU_MANTRAS_EMAIL_TAMIL)) {
                     photoUrl = Uri.parse(AppConstants.VISHNU_MANTRAS_IMAGE);
                     Glide
                             .with(activity)
@@ -179,8 +175,7 @@ public abstract class UserListFragment extends BaseFragment {
                     viewHolder.author.setText(AppConstants.VISHNU_MANTRAS_NAME_TAMIL);
                 }
                 //shiva
-                else if (model.email.equals(AppConstants.SHIVA_MANTRAS_EMAIL))
-                {
+                else if (model.email.equals(AppConstants.SHIVA_MANTRAS_EMAIL)) {
                     photoUrl = Uri.parse(AppConstants.SHIVA_MANTRAS_IMAGE);
                     Glide
                             .with(activity)
@@ -190,8 +185,7 @@ public abstract class UserListFragment extends BaseFragment {
                     viewHolder.author.setText(AppConstants.SHIVA_MANTRAS_NAME);
                 }
                 //shiva tamil
-                else if (model.email.equals(AppConstants.SHIVA_MANTRAS_EMAIL_TAMIL))
-                {
+                else if (model.email.equals(AppConstants.SHIVA_MANTRAS_EMAIL_TAMIL)) {
                     photoUrl = Uri.parse(AppConstants.SHIVA_MANTRAS_IMAGE);
                     Glide
                             .with(activity)
@@ -201,8 +195,7 @@ public abstract class UserListFragment extends BaseFragment {
                     viewHolder.author.setText(AppConstants.SHIVA_MANTRAS_NAME_TAMIL);
                 }
                 //sai baba
-                else if (model.email.equals(AppConstants.SAI_BABA_MANTRAS_EMAIL))
-                {
+                else if (model.email.equals(AppConstants.SAI_BABA_MANTRAS_EMAIL)) {
                     photoUrl = Uri.parse(AppConstants.SAIBABA_MANTRAS_IMAGE);
                     Glide
                             .with(activity)
@@ -212,8 +205,7 @@ public abstract class UserListFragment extends BaseFragment {
                     viewHolder.author.setText(AppConstants.SAI_BABA_MANTRAS_NAME);
                 }
                 //sai baba tamil
-                else if (model.email.equals(AppConstants.SAI_BABA_MANTRAS_EMAIL_TAMIL))
-                {
+                else if (model.email.equals(AppConstants.SAI_BABA_MANTRAS_EMAIL_TAMIL)) {
                     photoUrl = Uri.parse(AppConstants.SAIBABA_MANTRAS_IMAGE);
                     Glide
                             .with(activity)
@@ -223,8 +215,7 @@ public abstract class UserListFragment extends BaseFragment {
                     viewHolder.author.setText(AppConstants.SAI_BABA_MANTRAS_NAME_TAMIL);
                 }
                 //ganapathy
-                else if (model.email.equals(AppConstants.GANAPATHY_MANTRAS_EMAIL))
-                {
+                else if (model.email.equals(AppConstants.GANAPATHY_MANTRAS_EMAIL)) {
                     photoUrl = Uri.parse(AppConstants.GANAPATHY_MANTRAS_IMAGE);
                     Glide
                             .with(activity)
@@ -234,8 +225,7 @@ public abstract class UserListFragment extends BaseFragment {
                     viewHolder.author.setText(AppConstants.GANAPATHY_MANTRAS_NAME);
                 }
                 //ganapathy tamil
-                else if (model.email.equals(AppConstants.GANAPATHY_MANTRAS_EMAIL_TAMIL))
-                {
+                else if (model.email.equals(AppConstants.GANAPATHY_MANTRAS_EMAIL_TAMIL)) {
                     photoUrl = Uri.parse(AppConstants.GANAPATHY_MANTRAS_IMAGE);
                     Glide
                             .with(activity)
@@ -245,8 +235,7 @@ public abstract class UserListFragment extends BaseFragment {
                     viewHolder.author.setText(AppConstants.GANAPATHY_MANTRAS_NAME_TAMIL);
                 }
                 //krishna
-                else if (model.email.equals(AppConstants.KRISHNA_MANTRAS_EMAIL))
-                {
+                else if (model.email.equals(AppConstants.KRISHNA_MANTRAS_EMAIL)) {
                     photoUrl = Uri.parse(AppConstants.KRISHNA_MANTRAS_IMAGE);
                     Glide
                             .with(activity)
@@ -256,8 +245,7 @@ public abstract class UserListFragment extends BaseFragment {
                     viewHolder.author.setText(AppConstants.KRISHNA_MANTRAS_NAME);
                 }
                 //krishna tamil
-                else if (model.email.equals(AppConstants.KRISHNA_MANTRAS_EMAIL_TAMIL))
-                {
+                else if (model.email.equals(AppConstants.KRISHNA_MANTRAS_EMAIL_TAMIL)) {
                     photoUrl = Uri.parse(AppConstants.KRISHNA_MANTRAS_IMAGE);
                     Glide
                             .with(activity)
@@ -267,8 +255,7 @@ public abstract class UserListFragment extends BaseFragment {
                     viewHolder.author.setText(AppConstants.KRISHNA_MANTRAS_NAME_TAMIL);
                 }
                 //lakshmi
-                else if (model.email.equals(AppConstants.LAKSHMI_MANTRAS_EMAIL))
-                {
+                else if (model.email.equals(AppConstants.LAKSHMI_MANTRAS_EMAIL)) {
                     photoUrl = Uri.parse(AppConstants.LAKSHMI_MANTRAS_IMAGE);
                     Glide
                             .with(activity)
@@ -388,8 +375,6 @@ public abstract class UserListFragment extends BaseFragment {
                 }
 
 
-
-
             }
 
             @Override
@@ -406,8 +391,6 @@ public abstract class UserListFragment extends BaseFragment {
     private void startActivityUserAllPost() {
         startActivity(userAllPostIntent);
     }
-
-
 
 
     @Override

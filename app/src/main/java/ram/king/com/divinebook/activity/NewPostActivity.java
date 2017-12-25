@@ -76,6 +76,7 @@ public class NewPostActivity extends BaseActivity {
     private static final int SELECT_IMAGE = 1;
     // Storage Permissions
     private static final int REQUEST_EXTERNAL_STORAGE = 1;
+    private static final int SELECT_AUDIO = 2;
     private static String[] PERMISSIONS_STORAGE = {
             Manifest.permission.READ_EXTERNAL_STORAGE,
             Manifest.permission.WRITE_EXTERNAL_STORAGE
@@ -98,17 +99,12 @@ public class NewPostActivity extends BaseActivity {
     private ListView lvUsersForCourtesy;
     private TextInputLayout mDedicationTextLayout;
     private TextInputLayout mCourtesyTextLayout;
-
     private TextInputEditText mSetAudioField;
-
     /*private Button mDedicationButton;
     private Button mCourtesyButton;
 */
     private String mBackupComposeText;
-
     private ImageButton mAttachment;
-
-    private static final int SELECT_AUDIO = 2;
     private String selectedPath = "";
     private String imagePath = "";
     private ImageView attachedImage;
@@ -160,6 +156,7 @@ public class NewPostActivity extends BaseActivity {
 
         return filePath;
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -226,8 +223,8 @@ public class NewPostActivity extends BaseActivity {
                 openGalleryAudio();
             }
         });
-		
-		mAttachment = (ImageButton) findViewById(R.id.btnAttachImage);
+
+        mAttachment = (ImageButton) findViewById(R.id.btnAttachImage);
         mAttachment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -358,15 +355,15 @@ public class NewPostActivity extends BaseActivity {
     }
 
 
-    public void openGalleryAudio(){
+    public void openGalleryAudio() {
 
         Intent intent = new Intent();
         intent.setType("audio/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent,"Select Audio "), SELECT_AUDIO);
+        startActivityForResult(Intent.createChooser(intent, "Select Audio "), SELECT_AUDIO);
     }
-	
-	public void openGalleryImage() {
+
+    public void openGalleryImage() {
 
         //Intent intent = new Intent();
         Intent intent =
@@ -386,7 +383,7 @@ public class NewPostActivity extends BaseActivity {
 //        int column_index = cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.DATA);
 //        cursor.moveToFirst();
 //        return cursor.getString(column_index);
-		
+
         String[] filePathColumn = {MediaStore.Audio.Media.DATA};
         Cursor cursor = getContentResolver().query(uri, filePathColumn, null, null, null);
         cursor.moveToFirst();
@@ -489,8 +486,8 @@ public class NewPostActivity extends BaseActivity {
             //return;
             mTitleField.setText("");
         }
-		
-		if (TextUtils.isEmpty(imagePath)) {
+
+        if (TextUtils.isEmpty(imagePath)) {
             imagePath = "";
         }
 
@@ -530,8 +527,7 @@ public class NewPostActivity extends BaseActivity {
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         // Check which request we're responding to
-        if (requestCode == SELECT_AUDIO)
-        {
+        if (requestCode == SELECT_AUDIO) {
             if (resultCode == RESULT_OK) {
                 System.out.println("SELECT_AUDIO");
                 Uri selectedImageUri = data.getData();
@@ -539,8 +535,7 @@ public class NewPostActivity extends BaseActivity {
                 System.out.println("SELECT_AUDIO Path : " + selectedPath);
                 doAudioUpload(selectedPath);
             }
-        }
-		else if (requestCode == SELECT_IMAGE) {
+        } else if (requestCode == SELECT_IMAGE) {
             if (resultCode == RESULT_OK) {
                 System.out.println("SELECT_IMAGE");
                 Uri selectedImageUri = data.getData();
@@ -549,8 +544,7 @@ public class NewPostActivity extends BaseActivity {
                 System.out.println("SELECT_IMAGE Path : " + selectedPath);
                 doImageUpload(selectedPath);
             }
-        }
-        else if (requestCode == AppConstants.SAVE_WRITE_POST) {
+        } else if (requestCode == AppConstants.SAVE_WRITE_POST) {
             // Make sure the request was successful
             if (resultCode == RESULT_OK && data != null) {
                 Bundle bundle = data.getExtras();
@@ -593,8 +587,8 @@ public class NewPostActivity extends BaseActivity {
             }
         });
     }
-	
-	private void doImageUpload(final String filePath) {
+
+    private void doImageUpload(final String filePath) {
         showProgressDialog();
         final FirebaseStorage storageRef = FirebaseStorage.getInstance();
         final Uri file = Uri.fromFile(new File(filePath));
@@ -757,6 +751,7 @@ public class NewPostActivity extends BaseActivity {
         return strMyImagePath;
 
     }
+
     private void showSnackbar(String message) {
         //noinspection ConstantConditions
         Snackbar.make(parentLayout, message, Snackbar.LENGTH_LONG).show();
