@@ -2,9 +2,7 @@ package ram.king.com.divinebook.viewholder;
 
 import android.app.Activity;
 import android.net.Uri;
-import android.os.Build;
 import android.support.v7.widget.RecyclerView;
-import android.text.Html;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
@@ -29,7 +27,7 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
     //public TextView date;
     public ImageView starView;
     public ImageView deleteView;
-    public TextView bodyView;
+    //public TextView bodyView;
     public TextView dedicatedTo;
     public TextView courtesy;
     public ImageView share;
@@ -49,7 +47,7 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
         //date = (TextView) itemView.findViewById(R.id.post_date);
         starView = (ImageView) itemView.findViewById(R.id.button_star);
         deleteView = (ImageView) itemView.findViewById(R.id.delete);
-        bodyView = (TextView) itemView.findViewById(R.id.post_body);
+        //bodyView = (TextView) itemView.findViewById(R.id.post_body);
         dedicatedTo = (TextView) itemView.findViewById(R.id.post_dedicated_to);
         courtesy = (TextView) itemView.findViewById(R.id.post_courtesy);
         share = (ImageView) itemView.findViewById(R.id.button_share);
@@ -104,7 +102,7 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
             play.setVisibility(View.GONE);
         }
 
-        if (!TextUtils.isEmpty(post.body)) {
+        /*if (!TextUtils.isEmpty(post.body)) {
             bodyView.setVisibility(View.VISIBLE);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
                 bodyView.setText(Html.fromHtml(post.body, Html.FROM_HTML_MODE_COMPACT), TextView.BufferType.SPANNABLE);
@@ -112,7 +110,7 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
                 bodyView.setText(Html.fromHtml(post.body), TextView.BufferType.SPANNABLE);
         } else
             bodyView.setVisibility(View.GONE);
-
+*/
         starView.setOnClickListener(starClickListener);
         deleteView.setOnClickListener(deleteClickListener);
         content.setOnClickListener(contentListener);

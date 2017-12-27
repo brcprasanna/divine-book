@@ -13,8 +13,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ellipsize="end"
+        android:paddingBottom="15dp"
         android:textColor="@color/purple"
-        android:textSize="16sp"
+        android:textSize="20sp"
         android:textStyle="bold"
         tools:text="My First Post" />
 
@@ -44,7 +45,7 @@
 
         tools:text="Courtesy" />
 
-    <TextView
+    <!--<TextView
         android:id="@+id/post_body"
         style="@style/TextAppearance.AppCompat.Headline"
         android:layout_width="wrap_content"
@@ -55,7 +56,7 @@
         android:textColor="@color/blue_600"
         android:textSize="16sp"
         android:textStyle="bold" />
-
+-->
     <!-- Optional parameter animation_duration: sets the duration of the expand animation -->
 
     <!--<Button
