@@ -101,6 +101,7 @@ public class UserAllPostActivity extends BaseActivity {
         tabLayout.setupWithViewPager(mViewPager);
 
         // Button launches NewPostActivity
+        //doRelease
         findViewById(R.id.fab_new_post).setVisibility(View.GONE);
     }
 

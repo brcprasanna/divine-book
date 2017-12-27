@@ -59,6 +59,7 @@
 
     </android.support.v4.widget.NestedScrollView>
 
+    <!-- doRelease-->
     <com.google.android.gms.ads.AdView
         android:id="@+id/adView"
         android:layout_width="match_parent"
