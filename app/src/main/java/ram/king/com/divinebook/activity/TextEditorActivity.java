@@ -43,6 +43,7 @@ public class TextEditorActivity extends Activity {
     String mBackupComposeText;
     String mAudio;
     String mImage;
+    String mLanguage;
 
     /*private static final String BOLD = "<b>Bold</b><br><br>";
     private static final String ITALIT = "<i>Italic</i><br><br>";
@@ -345,7 +346,13 @@ public class TextEditorActivity extends Activity {
                                     Toast.LENGTH_SHORT).show();
                         } else {
                             // Write new post
-                            writeNewPost(userId, user.displayName, mTitle, mBody, user.photoUrl, mDedicatedTo, mCourtesy, mAudio, mImage);
+                            if (AppUtil.getString(TextEditorActivity.this, AppConstants.MODERATOR_FLAG, AppConstants.DEFAULT_MODERATOR_FLAG).equals("1E"))
+                                mLanguage = "English";
+                            else
+                                mLanguage = "Tamil";
+
+
+                            writeNewPost(userId, user.displayName, mTitle, mBody, user.photoUrl, mDedicatedTo, mCourtesy, mAudio, mImage, mLanguage);
                             AppUtil.deleteTempFolder(TextEditorActivity.this);
                         }
                         setResult(RESULT_OK);
@@ -360,11 +367,11 @@ public class TextEditorActivity extends Activity {
                 });
     }
 
-    private void writeNewPost(String userId, String displayName, String title, String body, String photoUrl, String dedicatedTo, String courtesy, String audio, String image) {
+    private void writeNewPost(String userId, String displayName, String title, String body, String photoUrl, String dedicatedTo, String courtesy, String audio, String image, String language) {
         // Create new post at /user-posts/$userid/$postid and at
         // /posts/$postid simultaneously
         String key = mDatabase.child("posts").push().getKey();
-        Post post = new Post(userId, displayName, title, body, photoUrl, dedicatedTo, courtesy, AppUtil.getString(this, AppConstants.PREFERRED_LANGUAGE, AppConstants.DEFAULT_LANGUAGE), audio, image);
+        Post post = new Post(userId, displayName, title, body, photoUrl, dedicatedTo, courtesy, language, audio, image);
         Map<String, Object> postValues = post.toMap();
 
         Map<String, Object> childUpdates = new HashMap<>();

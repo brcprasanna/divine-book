@@ -173,6 +173,7 @@ public class SignInActivity extends BaseActivity implements GoogleApiClient.OnCo
                     user.getEmail().equals(AppConstants.HANUMAN_MANTRAS_EMAIL)) {
                 moderatorFlag = "1E";
                 AppUtil.putBoolean(SignInActivity.this, AppConstants.ADMIN_USER, true);
+                AppUtil.putString(SignInActivity.this, AppConstants.MODERATOR_FLAG, "1E");
 
                 if (user.getEmail().equals(AppConstants.VISHNU_MANTRAS_EMAIL)) {
                     displayName = AppConstants.VISHNU_MANTRAS_NAME;
@@ -222,6 +223,8 @@ public class SignInActivity extends BaseActivity implements GoogleApiClient.OnCo
                     user.getEmail().equals(AppConstants.HANUMAN_MANTRAS_EMAIL_TAMIL)) {
                 moderatorFlag = "1T";
                 AppUtil.putBoolean(SignInActivity.this, AppConstants.ADMIN_USER, true);
+                AppUtil.putString(SignInActivity.this, AppConstants.MODERATOR_FLAG, "1T");
+
 
                 if (user.getEmail().equals(AppConstants.VISHNU_MANTRAS_EMAIL_TAMIL)) {
                     displayName = AppConstants.VISHNU_MANTRAS_NAME_TAMIL;

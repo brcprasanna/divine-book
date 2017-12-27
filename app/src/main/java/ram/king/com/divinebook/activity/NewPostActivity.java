@@ -531,7 +531,7 @@ public class NewPostActivity extends BaseActivity {
             if (resultCode == RESULT_OK) {
                 System.out.println("SELECT_AUDIO");
                 Uri selectedImageUri = data.getData();
-                selectedPath = getPath(selectedImageUri);
+                selectedPath = getAudioPathFromInputStreamUri(selectedImageUri);
                 System.out.println("SELECT_AUDIO Path : " + selectedPath);
                 doAudioUpload(selectedPath);
             }
@@ -636,6 +636,35 @@ public class NewPostActivity extends BaseActivity {
                 filePath = photoFile.getPath();
 
                 filePath = decodeFile(filePath, 500, 400);
+
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                try {
+                    inputStream.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        return filePath;
+    }
+
+    public String getAudioPathFromInputStreamUri(Uri uri) {
+        InputStream inputStream = null;
+        String filePath = null;
+
+        if (uri.getAuthority() != null) {
+            try {
+                inputStream = getContentResolver().openInputStream(uri); // context needed
+                File audioFile = createTemporalFileFrom(inputStream);
+
+                filePath = audioFile.getPath();
+
+                //filePath = decodeFile(filePath, 500, 400);
 
             } catch (FileNotFoundException e) {
                 e.printStackTrace();

@@ -32,6 +32,8 @@ public class AppConstants {
     public static final boolean DEFAULT_USE_LIMIT_TO_LAST = false;
 
     public static final String ADMIN_USER = "admin_user";
+    public static final String MODERATOR_FLAG = "moderator_flag";
+    public static final String DEFAULT_MODERATOR_FLAG = "1E";
 
     public static final String VISHNU_MANTRAS_EMAIL = "brcprasanna@gmail.com";
     public static final String VISHNU_MANTRAS_NAME = "Vishnu Mantras";

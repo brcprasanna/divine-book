@@ -119,6 +119,8 @@
     <string name="no_internet_header">No Internet</string>
     <string name="no_internet_message">Please connect to Internet and try again</string>
 
+    <string name="no_internet_message_audio">Please connect to Internet to play the Audio</string>
+
 
     <!-- Menu -->
     <string name="menu_undo">Undo</string>

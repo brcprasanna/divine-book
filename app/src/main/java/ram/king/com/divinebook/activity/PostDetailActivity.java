@@ -53,6 +53,7 @@ import hotchemi.android.rate.OnClickButtonListener;
 import ram.king.com.divinebook.R;
 import ram.king.com.divinebook.models.Post;
 import ram.king.com.divinebook.util.AppConstants;
+import ram.king.com.divinebook.util.AppUtil;
 
 public class PostDetailActivity extends BaseActivity implements View.OnClickListener {
 
@@ -150,6 +151,14 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
 
         jcplayerView = (JcPlayerView) findViewById(R.id.jcplayer);
 
+        if (AppUtil.isInternetConnected(this)) {
+            jcplayerView.setVisibility(View.VISIBLE);
+        } else {
+            Toast.makeText(PostDetailActivity.this, getResources().getString(R.string.no_internet_message_audio),
+                    Toast.LENGTH_LONG).show();
+            jcplayerView.setVisibility(View.GONE);
+        }
+
         prettyTime = new PrettyTime();
 
     }
@@ -172,6 +181,8 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         Log.i("TAG", e.getMessage());
+                        Toast.makeText(PostDetailActivity.this, "Please check your network connectivity",
+                                Toast.LENGTH_LONG).show();
                     }
                 });
     }
@@ -232,7 +243,7 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
                 // Get Post object and use the values to update the UI
                 post = dataSnapshot.getValue(Post.class);
                 if (post != null) {
-                    if (!TextUtils.isEmpty(post.audio))
+                    if (!TextUtils.isEmpty(post.audio) && AppUtil.isInternetConnected(PostDetailActivity.this))
                         fetchAudioUrlFromFirebase();
                     Glide.with(PostDetailActivity.this).load(post.photoUrl)
                             .into(mAuthorPhoto);
@@ -259,7 +270,7 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
                         mCourtesyView.setVisibility(View.GONE);
                     }
 
-                    if (!TextUtils.isEmpty(post.audio)) {
+                    if (!TextUtils.isEmpty(post.audio) && AppUtil.isInternetConnected(PostDetailActivity.this)) {
                         jcplayerView.setVisibility(View.VISIBLE);
                     } else {
                         jcplayerView.setVisibility(View.GONE);
