@@ -51,7 +51,7 @@ public class AppConstants {
     public static final String KRISHNA_MANTRAS_NAME = "Krishna Mantras";
 
     public static final String UPANISHAD_EMAIL = "brcpvrcanada@gmail.com";
-    public static final String UPANISHAD_NAME = "Upanishad";
+    public static final String UPANISHAD_NAME = "Hindu Philosophy";
 
     public static final String RAMANUJAR_MANTRAS_EMAIL = "funnyquotesbrc@gmail.com";
     public static final String RAMANUJAR_MANTRAS_NAME = "Ramanujar Mantras";
@@ -93,7 +93,7 @@ public class AppConstants {
     public static final String RAMANUJAR_MANTRAS_NAME_TAMIL = "ராமானுஜர் மந்திரம்";
 
     public static final String UPANISHAD_EMAIL_TAMIL = "brcpvrcanada1@gmail.com";
-    public static final String UPANISHAD_NAME_TAMIL = "உபநிஷதம்";
+    public static final String UPANISHAD_NAME_TAMIL = "ஹிந்து தத்துவங்கள்";
 
     public static final String PURANAS_STORY_EMAIL_TAMIL = "tm.storytamil@gmail.com";
     public static final String PURANAS_STORY_NAME_TAMIL = "புராணக் கதைகள்";
