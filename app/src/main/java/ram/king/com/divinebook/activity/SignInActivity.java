@@ -326,6 +326,7 @@ public class SignInActivity extends BaseActivity implements GoogleApiClient.OnCo
     }
     // [END basic_write]
 
+    //test
     @Override
     public void onClick(View v) {
         int i = v.getId();
