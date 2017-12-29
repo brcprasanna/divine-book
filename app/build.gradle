@@ -13,8 +13,9 @@ android {
         applicationId "ram.king.com.divinebook"
         minSdkVersion 17
         targetSdkVersion 25
-        versionCode 5
-        versionName "0.0.5"
+        targetSdkVersion 25
+        versionCode 7
+        versionName "1.0.1"
 
     }
     buildTypes {
@@ -87,7 +88,7 @@ dependencies {
     compile 'com.google.firebase:firebase-config:11.0.1'
     compile 'com.github.hotchemi:android-rate:1.0.1'
 
-    compile 'com.google.firebase:firebase-ads:11.0.1'
+    //compile 'com.google.firebase:firebase-ads:11.0.1'
 
     compile 'io.github.jeancsanchez.jcplayer:jcplayer:2.6.0-alpha'
     compile 'com.github.lawloretienne:imagegallery:0.1.0'

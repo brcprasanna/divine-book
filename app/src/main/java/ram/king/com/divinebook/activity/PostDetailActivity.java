@@ -21,8 +21,6 @@ import com.bumptech.glide.Glide;
 import com.example.jean.jcplayer.JcAudio;
 import com.example.jean.jcplayer.JcPlayerView;
 import com.facebook.drawee.view.SimpleDraweeView;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -76,7 +74,7 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
     private DatabaseReference mDatabase;
     private Menu menu;
 
-    private AdView mAdView;
+    //private AdView mAdView;
 
     private JcPlayerView jcplayerView;
     private ImageButton btnPlay;
@@ -143,10 +141,10 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
         // Show a dialog if meets conditions
         AppRate.showRateDialogIfMeetsConditions(this);
 
-        mAdView = (AdView) findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
+        // mAdView = (AdView) findViewById(R.id.adView);
+        //AdRequest adRequest = new AdRequest.Builder().build();
 
-        mAdView.loadAd(adRequest);
+        // mAdView.loadAd(adRequest);
 
         retrievePostInstance();
 
@@ -190,18 +188,18 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
 
     @Override
     protected void onPause() {
-        if (mAdView != null) {
+        /*if (mAdView != null) {
             mAdView.pause();
-        }
+        }*/
         super.onPause();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        if (mAdView != null) {
+        /*if (mAdView != null) {
             mAdView.resume();
-        }
+        }*/
     }
 
 
@@ -217,9 +215,9 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
      */
     @Override
     public void onDestroy() {
-        if (mAdView != null) {
+        /*if (mAdView != null) {
             mAdView.destroy();
-        }
+        }*/
         super.onDestroy();
     }
 
