@@ -35,11 +35,20 @@
 
             </RelativeLayout>
 
-            <com.example.jean.jcplayer.JcPlayerView
-                android:id="@+id/jcplayer"
+            <RelativeLayout
+                android:id="@+id/playerContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/post_author_layout" />
+                android:layout_below="@id/post_author_layout"
+                android:paddingTop="5dp">
+
+                <include
+                    layout="@layout/audio_player"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true" />
+
+            </RelativeLayout>
 
 
             <include
@@ -48,7 +57,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
-                android:layout_below="@id/jcplayer"
+                android:layout_below="@id/playerContainer"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="10dp" />
 

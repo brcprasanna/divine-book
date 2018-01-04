@@ -2,6 +2,7 @@ package ram.king.com.divinebook.activity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -14,12 +15,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.RelativeLayout;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.example.jean.jcplayer.JcAudio;
-import com.example.jean.jcplayer.JcPlayerView;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -42,13 +43,13 @@ import com.mikhaellopez.circularimageview.CircularImageView;
 import org.ocpsoft.prettytime.PrettyTime;
 
 import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 import hotchemi.android.rate.AppRate;
 import hotchemi.android.rate.OnClickButtonListener;
+import nl.changer.audiowife.AudioWife;
 import ram.king.com.divinebook.R;
 import ram.king.com.divinebook.models.Post;
 import ram.king.com.divinebook.util.AppConstants;
@@ -76,8 +77,15 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
 
     //private AdView mAdView;
 
-    private JcPlayerView jcplayerView;
+    private RelativeLayout mPlayerContainer;
     private ImageButton btnPlay;
+
+    private View mPlayMedia;
+    private View mPauseMedia;
+    private SeekBar mMediaSeekBar;
+    private TextView mRunTime;
+    private TextView mTotalTime;
+    private TextView mPlaybackTime;
 
     private PrettyTime prettyTime;
 
@@ -93,6 +101,7 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
         Uri data = intent.getData();
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
+
 
         // Get post key from intent
         mPostKey = getIntent().getStringExtra(AppConstants.EXTRA_POST_KEY);
@@ -114,14 +123,20 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
         mDedicatedToView = (TextView) findViewById(R.id.post_dedicated_to);
         mCourtesyView = (TextView) findViewById(R.id.post_courtesy);
 
+        // initialize the player controls
+        mPlayMedia = findViewById(R.id.play);
+        mPauseMedia = findViewById(R.id.pause);
+        mMediaSeekBar = (SeekBar) findViewById(R.id.media_seekbar);
+        mRunTime = (TextView) findViewById(R.id.run_time);
+        mTotalTime = (TextView) findViewById(R.id.total_time);
 
         mImage = (SimpleDraweeView) findViewById(R.id.post_detail_image);
-        ImageButton btnNext = (ImageButton) this.findViewById(com.example.jean.jcplayer.R.id.btn_next);
+        /*ImageButton btnNext = (ImageButton) this.findViewById(com.example.jean.jcplayer.R.id.btn_next);
         ImageButton btnPrev = (ImageButton) this.findViewById(com.example.jean.jcplayer.R.id.btn_prev);
         btnPlay = (ImageButton) this.findViewById(com.example.jean.jcplayer.R.id.btn_play);
-
-        btnNext.setVisibility(View.GONE);
-        btnPrev.setVisibility(View.GONE);
+        */
+        /*btnNext.setVisibility(View.GONE);
+        btnPrev.setVisibility(View.GONE);*/
 
         AppRate.with(this)
                 .setInstallDays(1) // default 10, 0 means install day.
@@ -148,15 +163,7 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
 
         retrievePostInstance();
 
-        jcplayerView = (JcPlayerView) findViewById(R.id.jcplayer);
-
-        if (AppUtil.isInternetConnected(this)) {
-            jcplayerView.setVisibility(View.VISIBLE);
-        } else {
-            Toast.makeText(PostDetailActivity.this, getResources().getString(R.string.no_internet_message_audio),
-                    Toast.LENGTH_LONG).show();
-            jcplayerView.setVisibility(View.GONE);
-        }
+        mPlayerContainer = (RelativeLayout) findViewById(R.id.playerContainer);
 
         prettyTime = new PrettyTime();
 
@@ -171,16 +178,30 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
             public void onSuccess(Uri uri) {
                 // Download url of file
                 final String url = uri.toString();
-                ArrayList<JcAudio> jcAudios = new ArrayList<>();
+        /*        ArrayList<JcAudio> jcAudios = new ArrayList<>();
                 jcAudios.add(JcAudio.createFromURL("", url));
-                jcplayerView.initPlaylist(jcAudios);
+                jcplayerView.initPlaylist(jcAudios);*/
+                AudioWife.getInstance()
+                        .init(PostDetailActivity.this, uri)
+                        .setPlayView(mPlayMedia)
+                        .setPauseView(mPauseMedia)
+                        .setSeekBar(mMediaSeekBar)
+                        .setRuntimeView(mRunTime)
+                        .setTotalTimeView(mTotalTime);
+                AudioWife.getInstance().play();
+                AudioWife.getInstance().addOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mediaPlayer) {
+                        AudioWife.getInstance().play();
+                    }
+                });
             }
         })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         Log.i("TAG", e.getMessage());
-                        Toast.makeText(PostDetailActivity.this, "Please check your network connectivity",
+                        Toast.makeText(PostDetailActivity.this, "Server Error",
                                 Toast.LENGTH_LONG).show();
                     }
                 });
@@ -205,9 +226,12 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
 
     @Override
     public void onBackPressed() {
-        if (jcplayerView != null)
-            jcplayerView.kill();
+        /*if (jcplayerView != null)
+            jcplayerView.kill();*/
+        AudioWife.getInstance().pause();
+        AudioWife.getInstance().release();
         super.onBackPressed();
+        finish();
     }
 
     /**
@@ -242,8 +266,15 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
                 // Get Post object and use the values to update the UI
                 post = dataSnapshot.getValue(Post.class);
                 if (post != null) {
-                    if (!TextUtils.isEmpty(post.audio) && AppUtil.isInternetConnected(PostDetailActivity.this))
-                        fetchAudioUrlFromFirebase();
+                    if (!TextUtils.isEmpty(post.audio)) {
+                        if (AppUtil.isInternetConnected(PostDetailActivity.this)) {
+                            fetchAudioUrlFromFirebase();
+                        } else {
+                            Toast.makeText(PostDetailActivity.this, getResources().getString(R.string.no_internet_message_audio),
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
                     Glide.with(PostDetailActivity.this).load(post.photoUrl)
                             .into(mAuthorPhoto);
 
@@ -269,10 +300,10 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
                         mCourtesyView.setVisibility(View.GONE);
                     }
 
-                    if (!TextUtils.isEmpty(post.audio) && AppUtil.isInternetConnected(PostDetailActivity.this)) {
-                        jcplayerView.setVisibility(View.VISIBLE);
+                    if (!TextUtils.isEmpty(post.audio)) {
+                        mPlayerContainer.setVisibility(View.VISIBLE);
                     } else {
-                        jcplayerView.setVisibility(View.GONE);
+                        mPlayerContainer.setVisibility(View.GONE);
                     }
 
                     if (!TextUtils.isEmpty(post.image)) {
