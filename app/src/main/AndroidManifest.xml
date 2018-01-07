@@ -50,6 +50,7 @@
             android:name=".activity.NewPostActivity"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden">
+            <!--doRelease-->
             <intent-filter>
                 <action android:name="android.intent.action.SEND" />
                 <category android:name="android.intent.category.DEFAULT" />

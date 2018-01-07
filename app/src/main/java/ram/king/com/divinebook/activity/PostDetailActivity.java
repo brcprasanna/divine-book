@@ -332,13 +332,13 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
                         mDateView.setText(prettyTime.format(new Date(yourmilliseconds)));
 
                     if (menu != null) {
-                        MenuItem itemLike = menu.findItem(R.id.menu_like);
+                        //MenuItem itemLike = menu.findItem(R.id.menu_like);
                         MenuItem itemDelete = menu.findItem(R.id.menu_delete);
-                        if (post != null && post.stars.containsKey(getUid())) {
+                        /*if (post != null && post.stars.containsKey(getUid())) {
                             itemLike.setIcon(R.drawable.ic_favorite_white_24dp);
                         } else {
                             itemLike.setIcon(R.drawable.ic_favorite_border_white_24dp);
-                        }
+                        }*/
 
                         if (post != null && post.uid.equals(getUid())) {
                             itemDelete.setVisible(true);
@@ -449,14 +449,14 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
     public boolean onCreateOptionsMenu(Menu menu) {
         this.menu = menu;
         getMenuInflater().inflate(R.menu.menu_detail, menu);
-        MenuItem itemLike = menu.findItem(R.id.menu_like);
+        // MenuItem itemLike = menu.findItem(R.id.menu_like);
         MenuItem itemDelete = menu.findItem(R.id.menu_delete);
-        if (post != null && post.stars.containsKey(getUid())) {
+        /*if (post != null && post.stars.containsKey(getUid())) {
             itemLike.setIcon(R.drawable.ic_favorite_white_24dp);
         } else {
             itemLike.setIcon(R.drawable.ic_favorite_border_white_24dp);
         }
-
+*/
         if (post != null && post.uid.equals(getUid())) {
             itemDelete.setVisible(true);
         } else {
@@ -468,10 +468,11 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int i = item.getItemId();
-        if (i == R.id.menu_like) {
+        /*if (i == R.id.menu_like) {
             onClickStar();
             return true;
-        } else if (i == R.id.menu_share) {
+        } else */
+        if (i == R.id.menu_share) {
             try {
                 createShortDynamicLink(Uri.parse(AppConstants.DEEP_LINK_URL + "/" + mPostReference.toString()), 0, post.author, post.title);
             } catch (UnsupportedEncodingException e) {
